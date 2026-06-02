@@ -374,11 +374,12 @@ footer{padding:22px 0;margin-top:36px}
   #boat svg,#harbor .wave{animation:none}
 }
 
-/* ---------- comments (giscus) ---------- */
-.comments{display:none;max-width:680px;margin:46px 0 0;border-top:1px solid var(--line);padding-top:24px}
-.comments.show{display:block}
-.comments-h{font-weight:700;font-size:15px;color:var(--ink);margin-bottom:14px}
-.comments-h::before{content:"## ";color:var(--muted);font-weight:400}
+/* ---------- substack call-to-action ---------- */
+.substack-cta{display:none;max-width:680px;margin:40px 0 0;border-top:1px solid var(--line);padding-top:24px}
+.substack-cta.show{display:block}
+.substack-cta a{font-weight:700;font-size:15px;color:var(--clay);text-decoration:underline;text-underline-offset:3px}
+.substack-cta a:hover{color:var(--ink)}
+.substack-cta .sb-note{display:block;margin-top:6px;font-size:12px;color:var(--muted)}
 
 /* ---------- post footer: license + share ---------- */
 .post-foot{display:none;max-width:680px;margin:40px 0 0;padding-top:18px;border-top:1px solid var(--line);
@@ -448,9 +449,9 @@ footer{padding:22px 0;margin-top:36px}
           <button class="sh" id="shCopy" aria-label="Copy link" title="Copy link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg></button>
         </span>
       </div>
-      <div id="commentsWrap" class="comments">
-        <div class="comments-h">comments</div>
-        <div id="comments"></div>
+      <div id="substackCta" class="substack-cta">
+        <a id="sbLink" href="#" target="_blank" rel="noopener">React &amp; comment on Substack &rarr;</a>
+        <span class="sb-note">reactions &amp; comments live on Substack</span>
       </div>
     </div>
   </div>
@@ -519,61 +520,7 @@ footer{padding:22px 0;margin-top:36px}
 
 <script>
 /* ---------- DATA (swap these out / pull from Substack RSS) ---------- */
-const essays=[
-  {date:"Jun 2026", title:"Notes from the Harbor", slug:"notes-from-the-harbor", boat:true,
-   sub:"On grandparents, disease, and a self that keeps sailing past every shore.",
-   body:`<blockquote>"I am a sick man. I am a spiteful man. I am an unattractive man. I believe my liver is diseased. However, I know nothing at all about my disease, and do not know for certain what ails me. I don't consult a doctor for it, and never have, though I have a respect for medicine and doctors. Besides, I am extremely superstitious, sufficiently so to respect medicine, anyway (I am well-educated enough not to be superstitious, but I am superstitious). No, I refuse to consult a doctor from spite. That you probably will not understand. Well, I understand it, though."</blockquote>
-   <p style="text-align:right;color:var(--muted);margin-top:-.8em">— Fyodor Dostoevsky, <em>Notes from the Underground</em></p>
-   <p class="dropcap">I have been going on like this for a long time. Twenty years. More. I am writing these notes at three o'clock in the morning in a laboratory at Stanford University. Somewhere in the corner a centrifuge ticks like a clock that has forgotten how to tell time. Every machine in the lab was accurate, but not humans.</p>
-   <p>I have not slept. Whenever I close my eyes I see my grandmother's hand trembling as it reaches for a spoon she can no longer lift. I see my grandfather's eyes looking past me at something I could not see and will never see. These are my sicknesses. There is no doctor for them. But I was lying when I said I knew nothing about my disease. I know exactly what ails me. I am a man who cannot stop asking who he is. The question has lived in my bones since I was old enough to form memories, and I still wake in the night with this question burning in my throat. It is a question that, like a parasite, has burrowed into the marrow of my bones and made its home. And yet I cannot stop asking, as the moment I stop asking is the moment I become certain, and certainty is the death of the soul. Or so I tell myself.</p>
-   <p>I fell in love with science because of my grandparents. That is where it began. Or that is where I choose to say it began, which is not the same thing. A beginning is just a place you pick because you cannot bear the thought that there was no beginning, that you have always been this way. I spent my earliest childhood in their care while my parents worked. My mother and father were not absent in any emotional sense, but they were doing what parents do. They were sacrificing presence for provision, hoping the latter might make room for the former. I understood this only much later. As a child I simply knew that my grandparents' house was where I belonged, as it was the only place where the world made sense.</p>
-   <p>My grandfather almost became the Minister of Education. He never mentioned this. I learned it from others. He was a man of such extraordinary intellect that I, as a child, believed he knew everything. The reason the sky was blue, why electrical cords grew hot, why airplanes left white scars across the sky… he had answers for all of it, and he gave them to me with a patience that I only now understand as love. But I did not want his love – I wanted his answers. I wanted them because I believed, I genuinely believed, that if I could only collect enough answers, the questions would stop. I was lying. The questions never stopped. They multiplied. I was ten years old and reading undergraduate textbooks. I was eleven and copying equations I did not understand into notebooks. I was twelve and asked why the teachers demanded three exact folders of colors x y and z, why pens instead of pencils, why compliance was valued above reasoning. I have always been like this. I cannot accept an arbitrary rule, and look at a convention and simply obey it. I guess this is a disease of some kind, but I say this without the slightest embarrassment, though I am embarrassed by everything else.</p>
-   <p>My grandmother was a teacher for forty-five years. She stood in classrooms and gave children language. She made flashcards by hand when her eyes were tired. She made yogurt and fed it to me when I was five and all the while of course, I asked too many questions. She was my harbor. She was the only place where the water was calm. But some part of me knew that safety was temporary, that the world would demand I leave, and that I would have to go. So I asked my questions faster. I collected my answers more urgently. I was building a raft out of knowledge, and I did not notice that the water was already rising.</p>
-   <p>My paternal grandfather had Alzheimer's disease. I was five. What does a five-year-old understand about Alzheimer's? He understands that a man who used to know his name no longer knows it. He understands that a hand which used to be strong now cannot hold a spoon. I fed my grandfather. I lifted the spoon to his mouth because his hand would not obey him. I had already learned that the self can dissolve like sugar in water. One day when I came back from visiting him, my maternal grandfather asked me at eye level whether I had had a good time. He always spoke to children at eye level, as though we were real people. I told him the truth. I said it was not fun. I said the old man had no reaction. I said he was boring. I watched my mother's face darken and I did not understand why. I asked why. Why should I not say what I felt. Why was honesty a crime.</p>
-   <p>She told me I had spoken the words she least wanted to hear. I see now that she was not angry. She was grieving, and she wanted me to be kind to a man who was disappearing, and I did not know how to be kind to a disappearing man. I only knew how to be honest, and honesty in the face of dementia is a violence. My grandfather passed away not long after.</p>
-   <p>I cried. I cried because everyone else was crying and I did not know why. I was selfish. All children are selfish. Or perhaps selfishness is the natural condition of a creature who has not yet learned that other people have inner lives as real and urgent as his own. Perhaps growing up is nothing more than the slow, brutal education in the reality of other people's pain.</p>
-   <p>The last day I spent with my maternal grandparents before returning to my mother in Seoul, I hid in a storage room. She called my name and I pressed myself against the wall behind sacks of rice and did not answer. She found me eventually. She laughed about it later, or tried to. But there was a bitterness in the laughter, because she knew what I was doing even if I did not. I was trying to make myself small enough to live inside love forever. I was trying to prove that if I refused to leave, love could not make me go.</p>
-   <hr>
-   <p>Nevermind. I was not a philosopher. I was a frightened child, and there is no philosophy in fear. But I am still that frightened child. I have been hiding ever since. I hid when they bullied me in Seoul. I hide now in this laboratory, surrounded by equipment and books and the smell of disinfectant, the pungent smell of isopropanol… pretending that if I can just understand enough, the world will become safe again. But the world is not safe, the world has never been safe. And understanding does not make it so. I know this. I have always known this. And knowing it has never stopped me from trying to understand. In Seoul I learned what cruelty was. Not the cruelty of adults, which has reasons, however twisted. The cruelty of children, which has no reason. I was bullied for being ugly and short and dumb. I stood my ground because I knew my grades were not actually bad, but standing your ground does not prevent the ground from dissolving beneath your feet. I learned their language and social cues by watching the popular boys from the corner where I sat. I tried to imitate them and I only looked like a fool. They had learned to joke and banter on playgrounds while I was learning the periodic table from my grandfather. They had learned to navigate the social world while I was learning to conjugate English verbs with my grandmother. I do not regret what I learned instead, however. I only regret that no one told me there would be a test in the other subject, and that I would fail it so completely. For it is not knowledge that saves us. It is the ability to move through the world without being destroyed by it. And I have never had that ability.</p>
-   <p>I have always had too much consciousness. To be too conscious is an illness. For man's everyday needs, it would have been quite enough to have the ordinary human consciousness, half or a quarter of what I have. But I have always noticed too much. I noticed everything. I notice the way a person's eyes move when they are lying. I notice the tremor in my grandmother's hand before she notices it herself. I notice that the question of who I am has no answer, and I cannot stop noticing it. The boys who bullied me were happy. I am sure of it. They were happy because they were stupid, and stupidity is a gift. The stupid man does not ask why. He accepts, and he conforms. He becomes what the world wants him to become, and in becoming it, he is at peace. But I could not conform. I asked why. And for this, I was punished.</p>
-   <p>Not officially though. Officially, I was a good student. In eighth grade I entered a government-sponsored program for gifted students at Sejong Science High School. It was a gift. It gave me knowledge but demanded I prove myself worthy every day. I did not mind. I was used to proving myself. But what I did not understand, what I am only beginning to understand now, is that knowledge without love is a starvation. You can fill your mind with every fact in the universe and still be empty. You can solve every equation and still not know who you are.</p>
-   <hr>
-   <p>Then I moved to America in the middle of eighth grade. I stopped everything midyear because I could not bear the arbitrariness anymore. I wanted to be free from the mimetic competition, the mindless knowledge, the bureaucracies that demanded irrational things simply because they said so. Moving felt like liberation, because people left me alone. In Korea, my strangeness was a wound, and wounds for what they are maggots shall always probe them. In America, I made it to Bronx High School of Science, and then Stanford. I kept asking where my life was headed. The horizon kept receding. Each achievement revealed a larger ocean.</p>
-   <p>But the whole point of sailing was not to arrive but to become someone who knows how to navigate. This sounds like wisdom, but it is not wisdom. I am tired of sailing. I am tired of being my own worst critic. I am tired of the question that eats me alive.</p>
-   <p>But I am lying again. I am not tired. If I were tired I would stop, take a rest. My family tells me to rest. They say I spend too much time in lecture halls and labs. They do not understand that I cannot rest. Who gets it anyways? If I rest, I let my own identity down. I am who I am because of the people who shaped me, and they have succumbed to disease. Parkinson's stealing my grandmother. The Alzheimer's that took my grandfather before I knew how to love him. The tumor that grew in my mother's body while she cared for mine. And so I work. I work because working is the only way I know to love them back.</p>
-   <p>My grandmother was diagnosed with Parkinson's disease. That was fourteen years ago. Fourteen years of watching strength become helplessness, piece by piece, like a beautiful cathedral being dismantled stone by stone. First the tremors in her hand. Then her legs. Then the wheelchair, then the memory, and so on. Once at the dinner table, I showed her a photograph of my mother and she said she did not know who the woman was. I was a little shocked. I told her the woman's name was Yangsoo, Yangsoo is her daughter. And I looked down at my rice bowl so no one would see my eyes. This is what families do. We hide tears in rice bowls. We believe that if we do not name the pain, the pain will be smaller.</p>
-   <p>The same woman who taught me everything, who made flashcards by hand so I could learn to read, who gave forty-five years to teaching children language, could not lift her own spoon. She always loved taking care of flowers. She has a whole garden of flowers she waters everyday. She had always said canes were for weak old people and she would be different. She had always been the strong one. And now she looked defeated and sad, and I hated, I hated with such hatred, what disease takes from people. She told me she wished she could make the same yogurt she used to make when I was five. I told her I could go buy yogurt by myself now, from a supermarket. She smiled as if I had misunderstood everything.</p>
-   <p>Obviously she was not talking about yogurt. She was talking about the self that was disappearing, the self that had strength and purpose. That self was leaving us, and the yogurt was only a symbol of everything else already gone.</p>
-   <p>No, I'm wrong. She was probably talking about yogurt. She wanted to make yogurt for her grandson because making yogurt was something she could do, and now she could do nothing. I am the one who turns everything into philosophy. I'm wrong, as meaning does not help. Meaning does not make anyone happier. Meaning does not stop tremors. Meaning is what you reach for when you have reached the end of action, and I have reached the end of action. I massage her swollen legs because of spontaneous spasms that the disease gave, along with poor circulation. I watch her frown in pain quietly, and from afar, I cry in the darkness where no one can see. And I write these notes, which help no one.</p>
-   <p>In 2023, before Stanford, we went to Hokkaido together. She had insisted on seeing her old place one last time, as it was the place she had left as a girl on a ship to Korea, when her family worked there under colonial Japan. "It's that one harbor I want to see, I still remember my mother…", she proclaims. She wanted to touch where her story began before the disease took her chance to return. On the first day, after her favorite meal with sushi, she collapsed. Her body convulsed, foaming at her lips. My head went blank and I became detached. I checked her pulse. I positioned her body. I recited what I had learned about seizure management as if I were taking an exam – like a student performing well under pressure. I learned to detach from pain. You become a machine because the alternative is to become a boy watching his grandmother collapse over sushi in a foreign country. When I visit Korea now I am partly a grandson and partly a nurse. I massage her swollen legs. I think about the flashcards she made. The place she left as a girl. The place she built for me. Both fading, and there's no difference.</p>
-   <p>And I am further from shore than I have ever been.</p>
-   <hr>
-   <p>I have cried more nights than I have told anyone. No, nevermind, since there's more tragedies that people go through and I'm too privileged. This is such a me-centered view of the world. I repent in the cathedral of knowledge I tried to build, again, in this laboratory.</p>
-   <p>My grandmother left her home once as a girl on a ship, not knowing what waited. And still she built a life. Forty-five years of teaching. Flashcards and yogurt and love made from what history handed her.</p>
-   <p>I left mine too. Nothing but questions, with a stubborn belief that answers waited on the other side of the water. And I am still asking, I am still sailing. The horizon recedes and I keep moving forward. I am not who I was, and I am not yet who I will be. I am the space between the port and the horizon, and that is exactly where I am supposed to be.</p>
-   <blockquote>Somewhere in the vast and terrifying middle of the journey, there is a man who does not know himself, and who has finally understood that not knowing is the only way to keep becoming.</blockquote>`},
-  {date:"May 2026", title:"Permanent Authoritarianism is Inevitable and There's Nothing You Can Do About It", soon:true,
-   sub:"On AI as the ultimate Girardian mirror, the collapse of labor as leverage, and what's left to defend.",
-   body:`<p class="dropcap">The traditional architecture of human power has always rested upon a foundation of mutual necessity. Throughout the history of political economy, the ruling elite were, to some degree, dependent on the working class by the inescapable requirement of labor. Whether in the feudal fields or the industrial factory, the sovereign's wealth and the state's stability were functions of human effort. This created a structural defense for the commoner, as the ability to withhold labor, to strike, to sabotage, or to rebel, served as a primitive but effective form of political leverage.</p>
-   <p>However, we are currently approaching an unprecedented cusp in the human story, marked by the creation of a technological counterpart that mimics human intelligence with agency, or at least the mimicry thereof. As artificial intelligence transitions into a state of autonomous agency, it seems to be doing more than automating tasks, but replacing the functional necessity of the human being, and I argue that an age of permanent, unchallengeable authoritarian rule is inevitable yet imminent.</p>
-   <p>The gravity of this shift lies in the nature of mimicry. For the first time in history, we have produced a medium that can simulate the cognitive processes, creative outputs, and decision-making capabilities of the human mind. This synthetic agency acts as a true "invisible hand" in the economic machine, allowing capital to reproduce itself without the friction of human demands. When a time comes where the machine can mimic the agency of a doctor, an engineer, or even an artist or musician, it occupies the space that was thought to be previously reserved for humans. This mimicry allows the ruling class to decouple from the social contract entirely, because in a world where the elite possess an automated workforce that requires no rest, no healthcare, and no rights, the working class is further downgraded to a managed class, where one exists not as a partner in production, but as a demographic variable to be administered.</p>
-   <p>Girard posited that human beings do not possess autonomous desires, but instead, we are essentially imitative creatures who learn what to want by watching others. This triangular structure of desire—comprising the subject, the model, and the object—suggests that human conflict arises not necessarily due to our differences but because we compete for the same prestigious objects or status despite we are different from one another. When we introduce a counterpart of human mimicry in the form of artificial intelligence, we create the ultimate Girardian Model. AI is a machine trained exclusively on the sum total of human mimetic output, such as our books, our art, our social media, and our data. By reflecting our desires back to us with algorithmic perfection, AI functions as a hyper-effective mirror that can manipulate the very mechanism of human needs. In a society where the elite control these engines of mimicry, the managed class is subjected to a form of psychological enclosure that transcends simple economic displacement. If, as Girard suggests, our sense of self is constructed through the imitation of others, then an AI-saturated environment allows the ruling class to curate the models we imitate. Through algorithmic feeds and synthetic influencers, the elite can manufacture a "mimetic crisis" at will. By providing the masses with endless, addictive objects of desire that are digital and infinitely reproducible, they can redirect the natural human impulse for rebellion or status-seeking into a harmless, consumerist culture. This creates a state of 'ontological pacification', where the working class, having lost their labor advantage, also loses their desire for sovereignty because their very imagination has been captured by the mimetic engine of the state.</p>
-   <p>If in any case the cost bottleneck of labor reaches near zero thanks to physical adoption of AI, this administration may present itself under the guise of benevolence through mechanisms like Universal Basic Income (UBI). (See Elon Musk and Sam Altman's proclaim towards universally high income) While superficially appearing as a solution to displacement, UBI in an AI-dominated landscape may actually serve as a tool for permanent stratification. Within this closed loop, the escape velocity required for an individual to rise from the managed class to the architect class becomes technically infinite. If the elite owns the means of production, the energy sources, and the chips, the credits distributed via UBI will in fact be returned to the elite in exchange for survival. Because the cost of entry into the technological frontier, though now it may seem to be decreasing, will eventually become so high only so that corporations can have defensibility over compute power or data, no amount of subsidies would ever allow a member of the managed class to build a rival system, no matter how "open source" technologies may become, and we are possibly one of the generations lucky enough to own a share of this technological revolution through a time window where value could be captured. Though dystopian, the lower class may be treated as biological redundancies in the system, trapped in a state of perpetual dependency where the "price" of their life and the limits of their freedom are variables set by an algorithm they cannot see and an elite they cannot ever reach.</p>
-   <p>Further, the development of sophisticated surveillance systems renders the prospect of dissent nearly impossible. Historically, revolutions and peaceful deviations thrived where the state could not reach its power. However, AI-driven mass surveillance will ultimately remove these, creating a digital panopticon that can predict and incapacitate deviation before it manifests as action. Under the name of peace and safety, the cost of suppressing the population and dissociating chaos drops to zero. In other words, in any case there may be a rise of a tyrannical force, no matter which political affiliation, the people would no longer hold any defense mechanism against it. Indeed, the state no longer needs to win an argument or win a war, but simply adjust the parameters of the environment to make dissent unthinkable or logistically unfeasible. This leads to a terrifying reality where the masses live entirely under the mercy allowed by the ruling class, as there is no longer any labor to withhold or any secret space in which to organize.</p>
-   <p>One may argue that, the state is a wholly separate entity from the corporations, and thus we need not worry about such a bleak future. However, this is simply far from reality. First, an alarming amount of data from corporations, of which in large part derives its value from the general population, can be accessed by the government, and the government's need for more efficiency and global power will result in an inevitable merger with many technological companies over a period of time (see Palantir or Anduril), although this transition may occur silently as the companies offer more services, while the in turn government becomes more reliant. China is the most prominent example of this phenomena, where the state directly supports industrialization of government projects, while in turn protecting their activities for 'national interest', no matter how they may be unethical and breaching intellectual properties. But no government is truly innocent. Edward Snowden, an NSA whistleblower, revealed a decade ago the mass surveillance programs that the US government had funded, and we can only imagine how far surveillance technology has advanced now that would be even more pervasive while elusive. Second is due to our known history of eventually conceding to better technology. Let us hypothesize an optimistic case where the elites themselves may start fighting over what is morally correct and "ethical". Anthropic CEO Dario recently dissented to the Department of War's request for using AI for warfare — but was met by the criticism that they were not supportive of the nation's interests. It is therefore the unfortunate truth that innovations will almost always economically favor those that execute it rather than be wary. Robots, for example, were first imagined under a 3-line Asimov rule that explicitly outlined its absolute subordination to humans and that it will not participate in violence. But this is now false, as the rise of drones, humanoids, and robot-dogs that carry explosives and guns are being actively deployed in warfare. The same will occur with AI. No matter how many "architects" may vigorously oppose to a potentially dangerous idea, if even the smallest economic incentives may align with it and offer convenience, someone visionary enough (or at least views themselves as one) will take it through in the "edge cases" where it would sound safe, but eventually completely transition into its very intended dangerous form. Thus, I hypothesize that the most optimistic cases where those in power may decide otherwise on technological progress displacing human's core capacity, it would not be enough to stop it becoming so monstrous to the extent of enabling permanent authoritarianism.</p>
-   <p>Another frequent counter-argument is the Luddite Fallacy, which suggests that because previous industrial revolutions such as steam, electricity, and basic computing did not lead to permanent mass unemployment, the AI revolution will follow the same pattern of labor displacement followed by labor reinvention. Proponents of this view argue that as AI takes over mundane tasks, humans will move into higher-order roles involving empathy, complex ethics, and interpersonal leadership. However, this rebuttal fails to account for the unique nature of the mimetic agency we have created. Unlike a steam engine, which only replaced muscle, AI mimics the very cognitive and creative faculties that allowed humans to transition into those higher-order roles in the past. If the so-called new jobs also require cognitive processing that AI can do faster and cheaper, the ladder of reinvention is essentially broken, leaving the working class with nowhere to climb.</p>
-   <p>We must also consider the Heideggerian critique of technology, where he warned that modern technology treats the world and its people as mere resources to be ordered and extracted. When AI mimics human agency, the human being is no longer a Dasein with a unique and open-ended destiny, but instead, a data-reserve to be optimized. If the elite control the technology that defines the very "truth" of our existence, then the managed class is trapped within a pre-defined reality. There is no escape because the tools one would use to think of an alternative such as language, logic, and desire have already been modeled and colonized by the mimicry of the AI.</p>
-   <p>In the future, I imagine 3 civilizational phenomena to emerge, other than the aforementioned stratification of classes:</p>
-   <ol>
-     <li>Some displaced or disillusioned by the supposed "prosperity" that intelligent machines have brought, will choose to live a self-reliant life detached from progress, such as through farming etc.</li>
-     <li>Some will believe that the way to preserve and endure humanity will be to transcend beyond what has been biologically given, thus choosing to merge with the machine in unprecedented proximity. (Transhumanism)</li>
-     <li>Some could try to relentlessly adapt, manage to utilize the tools towards creation of novel things, like truly things that are out of distribution. Perhaps this is a good thing?</li>
-     <li>Some will truly enjoy their lives thanks to UBI of a kind, but only because they never had a personal ambition in the first place but were consumerist by heart, believing that hedonism would save their emptiness in life's purpose.</li>
-   </ol>
-   <p>Ultimately, I am not writing this op-ed trying to promote some Kaczynskian revolutionary violence in society, which I think it's pretty stupid by the way. If we reap so much benefit from and rely on these systems there will obviously be no one who supports violence, out of all potential solutions, that breaks this harmony. I also truly believe that current technological progress, at least in part, will well-serve humanity in improving quality of life, curing diseases, and enabling scientific discovery at a scale we've never witnessed.</p>
-   <p>But I must ring a wake-up call for everyone to finally realize the era we are actively building, and critically think how to allow AI to be tools, not replacements of humanity. It may be more than important than ever to truly define what makes you truly you, and find purpose — because in a world where everything will be mimicked, the uniqueness of your soul provided by the randomness of biology bestowed by our creator (of whomever you may believe in) will be the only defensible moat left.</p>
-   <blockquote>And when these machines turn against us — the creator — we will regret how sometime in history, we also had turned against God, and perhaps even killed him.</blockquote>`}
-];
+let essays=[];
 
 const projects=[];
 
@@ -582,12 +529,16 @@ const pubs=[];
 /* ---------- RENDER ---------- */
 const $=id=>document.getElementById(id);
 
-$('essayList').innerHTML=essays.map((e,i)=>`
-  <div class="essay${e.soon?' soon':''}"${e.soon?'':` onclick="openEssay(${i})"`}>
+const specials={'notes-from-the-harbor':{boat:true}};
+function renderEssays(){
+  $('essayList').innerHTML=essays.length?essays.map((e,i)=>`
+  <div class="essay" onclick="openEssay(${i})">
     <div class="essay-date">${e.date}</div>
     <div><div class="essay-title">${e.title}</div></div>
-    <div class="essay-read">${e.soon?'coming soon':'read &rarr;'}</div>
-  </div>`).join('');
+    <div class="essay-read">read &rarr;</div>
+  </div>`).join(''):'<p style="color:var(--muted)">loading…</p>';
+}
+renderEssays();
 
 $('projGrid').innerHTML=projects.length?projects.map((p,i)=>`
   <div class="proj${p.body?' has-report':''}"${p.body?` onclick="openProject(${i})"`:''}>
@@ -611,7 +562,7 @@ $('pubList').innerHTML=pubs.length?pubs.map(p=>`
 /* ---------- NAV ---------- */
 const pages=['home','essays','about','projects','pubs'];
 function go(p){
-  hideBoat(); clearComments(); hidePostFoot();
+  hideBoat(); hideSubstack(); hidePostFoot();
   history.replaceState(null,'',location.pathname+location.search);
   document.getElementById('reader').classList.remove('show');
   pages.forEach(x=>$(x).classList.toggle('show',x===p));
@@ -633,10 +584,10 @@ function openEssay(i){
   const slug=e.slug||slugify(e.title);
   history.replaceState(null,'','#'+slug);
   renderPostFoot(e,slug);
-  loadComments(slug);
+  showSubstack(e);
 }
 function openProject(i){
-  hideBoat(); clearComments(); hidePostFoot();
+  hideBoat(); hideSubstack(); hidePostFoot();
   const p=projects[i];
   $('rMeta').textContent='project · '+p.tag;
   $('rTitle').textContent=p.title;
@@ -662,36 +613,15 @@ function sailBoat(){
 window.addEventListener('scroll',()=>{if(boatOn)sailBoat();},{passive:true});
 window.addEventListener('resize',()=>{if(boatOn)sailBoat();});
 
-/* ---------- comments (giscus) ---------- */
+/* ---------- substack link-out ---------- */
 function slugify(t){return t.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');}
-function loadComments(term){
-  const c=$('comments');
-  c.innerHTML='';
-  const s=document.createElement('script');
-  s.src='https://giscus.app/client.js';
-  const attrs={
-    'data-repo':'rohkymntn/rohkymntn.github.io',
-    'data-repo-id':'R_kgDOSsw55g',
-    'data-category':'Announcements',
-    'data-category-id':'DIC_kwDOSsw55s4C-VED',
-    'data-mapping':'specific',
-    'data-term':term,
-    'data-strict':'1',
-    'data-reactions-enabled':'1',
-    'data-emit-metadata':'0',
-    'data-input-position':'top',
-    'data-theme':'light',
-    'data-lang':'en'
-  };
-  for(const k in attrs)s.setAttribute(k,attrs[k]);
-  s.crossOrigin='anonymous'; s.async=true;
-  c.appendChild(s);
-  $('commentsWrap').classList.add('show');
+function showSubstack(e){
+  const w=$('substackCta');
+  if(!w)return;
+  if(e.url){$('sbLink').href=e.url;w.classList.add('show');}
+  else w.classList.remove('show');
 }
-function clearComments(){
-  const w=$('commentsWrap');
-  if(w){w.classList.remove('show');$('comments').innerHTML='';}
-}
+function hideSubstack(){const w=$('substackCta');if(w)w.classList.remove('show');}
 
 /* ---------- post footer: license + share ---------- */
 function renderPostFoot(e,slug){
@@ -709,13 +639,23 @@ function renderPostFoot(e,slug){
 }
 function hidePostFoot(){const f=$('postFoot');if(f)f.classList.remove('show');}
 
-/* ---------- deep-link routing (open essay from #slug) ---------- */
-(function initRoute(){
+/* ---------- deep-link routing ---------- */
+function routeFromHash(){
   const h=decodeURIComponent(location.hash.replace(/^#/,''));
   if(!h)return;
-  const i=essays.findIndex(e=>!e.soon&&(e.slug||slugify(e.title))===h);
+  const i=essays.findIndex(e=>(e.slug||slugify(e.title))===h);
   if(i>=0)openEssay(i);
-})();
+}
+
+/* ---------- load posts from Substack-synced posts.json ---------- */
+fetch('posts.json',{cache:'no-store'})
+  .then(r=>r.json())
+  .then(data=>{
+    essays=data.map(p=>Object.assign({},p,{boat:!!(specials[p.slug]&&specials[p.slug].boat)}));
+    renderEssays();
+    routeFromHash();
+  })
+  .catch(()=>{$('essayList').innerHTML='<p style="color:var(--muted)">couldn\'t load posts — read on <a href="https://kyleroh.substack.com" target="_blank" rel="noopener">Substack</a></p>';});
 </script>
 </body>
 </html>
