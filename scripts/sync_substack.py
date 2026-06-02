@@ -106,7 +106,12 @@ def slug_from(link):
 
 
 def main():
-    req = urllib.request.Request(FEED_URL, headers={"User-Agent": "Mozilla/5.0 (substack-sync)"})
+    req = urllib.request.Request(FEED_URL, headers={
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                      "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+        "Accept": "application/rss+xml, application/xml;q=0.9, text/xml;q=0.8, */*;q=0.5",
+        "Accept-Language": "en-US,en;q=0.9",
+    })
     with urllib.request.urlopen(req, timeout=30) as r:
         xml = r.read().decode("utf-8", "replace")
 
