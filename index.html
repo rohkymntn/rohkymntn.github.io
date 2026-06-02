@@ -359,6 +359,12 @@ footer{padding:22px 0;margin-top:36px}
 @media(prefers-reduced-motion:reduce){
   #boat svg,#harbor .wave{animation:none}
 }
+
+/* ---------- comments (giscus) ---------- */
+.comments{display:none;max-width:680px;margin:46px 0 0;border-top:1px solid var(--line);padding-top:24px}
+.comments.show{display:block}
+.comments-h{font-weight:700;font-size:15px;color:var(--ink);margin-bottom:14px}
+.comments-h::before{content:"## ";color:var(--muted);font-weight:400}
 </style>
 </head>
 <body>
@@ -406,6 +412,10 @@ footer{padding:22px 0;margin-top:36px}
       <div class="article-meta" id="rMeta"></div>
       <h1 class="article-title" id="rTitle"></h1>
       <div class="article" id="rBody"></div>
+      <div id="commentsWrap" class="comments">
+        <div class="comments-h">comments</div>
+        <div id="comments"></div>
+      </div>
     </div>
   </div>
 </section>
@@ -474,7 +484,7 @@ footer{padding:22px 0;margin-top:36px}
 <script>
 /* ---------- DATA (swap these out / pull from Substack RSS) ---------- */
 const essays=[
-  {date:"Jun 2026", title:"Notes from the Harbor", boat:true,
+  {date:"Jun 2026", title:"Notes from the Harbor", slug:"notes-from-the-harbor", boat:true,
    sub:"On grandparents, disease, and a self that keeps sailing past every shore.",
    body:`<blockquote>"I am a sick man. I am a spiteful man. I am an unattractive man. I believe my liver is diseased. However, I know nothing at all about my disease, and do not know for certain what ails me. I don't consult a doctor for it, and never have, though I have a respect for medicine and doctors. Besides, I am extremely superstitious, sufficiently so to respect medicine, anyway (I am well-educated enough not to be superstitious, but I am superstitious). No, I refuse to consult a doctor from spite. That you probably will not understand. Well, I understand it, though."</blockquote>
    <p style="text-align:right;color:var(--muted);margin-top:-.8em">— Fyodor Dostoevsky, <em>Notes from the Underground</em></p>
@@ -566,7 +576,7 @@ $('pubList').innerHTML=pubs.length?pubs.map(p=>`
 /* ---------- NAV ---------- */
 const pages=['home','essays','about','projects','pubs'];
 function go(p){
-  hideBoat();
+  hideBoat(); clearComments();
   document.getElementById('reader').classList.remove('show');
   pages.forEach(x=>$(x).classList.toggle('show',x===p));
   document.querySelectorAll('.nav-links button').forEach(b=>b.classList.toggle('active',b.dataset.p===p));
@@ -584,9 +594,10 @@ function openEssay(i){
   document.getElementById('reader').classList.add('show');
   window.scrollTo({top:0,behavior:'instant'});
   e.boat?showBoat():hideBoat();
+  loadComments(e.slug||slugify(e.title));
 }
 function openProject(i){
-  hideBoat();
+  hideBoat(); clearComments();
   const p=projects[i];
   $('rMeta').textContent='project · '+p.tag;
   $('rTitle').textContent=p.title;
@@ -611,6 +622,37 @@ function sailBoat(){
 }
 window.addEventListener('scroll',()=>{if(boatOn)sailBoat();},{passive:true});
 window.addEventListener('resize',()=>{if(boatOn)sailBoat();});
+
+/* ---------- comments (giscus) ---------- */
+function slugify(t){return t.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');}
+function loadComments(term){
+  const c=$('comments');
+  c.innerHTML='';
+  const s=document.createElement('script');
+  s.src='https://giscus.app/client.js';
+  const attrs={
+    'data-repo':'rohkymntn/rohkymntn.github.io',
+    'data-repo-id':'R_kgDOSsw55g',
+    'data-category':'Announcements',
+    'data-category-id':'DIC_kwDOSsw55s4C-VED',
+    'data-mapping':'specific',
+    'data-term':term,
+    'data-strict':'1',
+    'data-reactions-enabled':'1',
+    'data-emit-metadata':'0',
+    'data-input-position':'top',
+    'data-theme':'light',
+    'data-lang':'en'
+  };
+  for(const k in attrs)s.setAttribute(k,attrs[k]);
+  s.crossOrigin='anonymous'; s.async=true;
+  c.appendChild(s);
+  $('commentsWrap').classList.add('show');
+}
+function clearComments(){
+  const w=$('commentsWrap');
+  if(w){w.classList.remove('show');$('comments').innerHTML='';}
+}
 </script>
 </body>
 </html>
