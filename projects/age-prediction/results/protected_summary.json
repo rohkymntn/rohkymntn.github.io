@@ -1,0 +1,35 @@
+{
+  "ols": {
+    "mean": 4.8695900936696095,
+    "low": 3.9559768784853007,
+    "high": 6.009939201416594
+  },
+  "calibration": {
+    "mean": 4.851119702608152,
+    "low": 3.9280802697561783,
+    "high": 5.992115333525003
+  },
+  "protected": {
+    "mean": 4.847501691027479,
+    "low": 3.913513676471178,
+    "high": 6.003418860145521
+  },
+  "calibration_minus_protected": {
+    "mean": 0.0036180115806719666,
+    "low": -0.06144108314868122,
+    "high": 0.07015684811263745,
+    "conditional_sign_flip_p": 0.9189081091890811,
+    "holm_p": 1.0
+  },
+  "ols_minus_calibration": {
+    "mean": 0.018470391061456985,
+    "low": -0.08774292102516104,
+    "high": 0.12351729850676947,
+    "conditional_sign_flip_p": 0.7336266373362663,
+    "holm_p": 1.0
+  },
+  "microbial_correction_selected_folds": 12,
+  "outer_folds": 15,
+  "n_participants": 123,
+  "limitations": "Exploratory adaptive reuse of the same cohort; uncertainty conditional on fitted predictions. Sign-flip tests assume exchangeability/symmetry of participant-level differences and do not account for shared training sets or prior research choices. Independent replication required."
+}

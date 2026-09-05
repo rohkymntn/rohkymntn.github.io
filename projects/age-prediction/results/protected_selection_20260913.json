@@ -1,0 +1,100 @@
+[
+  {
+    "fold": 0,
+    "model": "calibration",
+    "parameters": {
+      "calibration": "ols",
+      "kernel": "none"
+    },
+    "inner_mae": 4.318999218181878
+  },
+  {
+    "fold": 0,
+    "model": "protected",
+    "parameters": {
+      "alpha": 10.0,
+      "calibration": "ols",
+      "kernel": "linear",
+      "strength": 0.25
+    },
+    "inner_mae": 4.314905637152777
+  },
+  {
+    "fold": 1,
+    "model": "calibration",
+    "parameters": {
+      "calibration": "huber",
+      "kernel": "none"
+    },
+    "inner_mae": 5.054773801858612
+  },
+  {
+    "fold": 1,
+    "model": "protected",
+    "parameters": {
+      "calibration": "huber",
+      "kernel": "none"
+    },
+    "inner_mae": 5.054773801858612
+  },
+  {
+    "fold": 2,
+    "model": "calibration",
+    "parameters": {
+      "calibration": "median",
+      "kernel": "none"
+    },
+    "inner_mae": 4.903323039704443
+  },
+  {
+    "fold": 2,
+    "model": "protected",
+    "parameters": {
+      "alpha": 10.0,
+      "calibration": "median",
+      "kernel": "linear",
+      "strength": 0.25
+    },
+    "inner_mae": 4.9007382429077895
+  },
+  {
+    "fold": 3,
+    "model": "calibration",
+    "parameters": {
+      "calibration": "median",
+      "kernel": "none"
+    },
+    "inner_mae": 4.655268354838402
+  },
+  {
+    "fold": 3,
+    "model": "protected",
+    "parameters": {
+      "alpha": 10.0,
+      "calibration": "median",
+      "kernel": "linear",
+      "strength": 1.0
+    },
+    "inner_mae": 4.584045476846271
+  },
+  {
+    "fold": 4,
+    "model": "calibration",
+    "parameters": {
+      "calibration": "ols",
+      "kernel": "none"
+    },
+    "inner_mae": 4.99869816757117
+  },
+  {
+    "fold": 4,
+    "model": "protected",
+    "parameters": {
+      "alpha": 0.1,
+      "calibration": "median",
+      "kernel": "rbf",
+      "strength": 0.25
+    },
+    "inner_mae": 4.973909192352362
+  }
+]

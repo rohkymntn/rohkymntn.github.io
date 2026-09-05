@@ -1,0 +1,7 @@
+{
+  "mean": 4.681732984214168,
+  "low": 3.420754782647362,
+  "high": 6.067562225801659,
+  "relative_mae_reduction": 0.49130209757327076,
+  "status": "Post hoc engineering comparison against the earlier fusion implementation; not the prespecified microbial-complementarity endpoint."
+}

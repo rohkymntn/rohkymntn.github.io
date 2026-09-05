@@ -1,0 +1,8 @@
+{
+  "timestamp_utc": "2026-09-05T23:21:19.393676+00:00",
+  "code_sha256": "b1e14ab169cd0ed68d740b7bce8f3febe40039deb73077cdff3af7e768cc7916",
+  "primary": "Calibration-only MAE minus protected residual fusion MAE. Secondary: OLS MAE minus calibration-only MAE.",
+  "design": "Same three five-fold participant partitions as earlier pilot; three-fold inner MAE tuning. Clock calibration OLS, Huber, or median regression; no microbial correction or orthogonal linear/RBF kernel ridge with alpha .1,1,10 and strength .25,1. RBF gamma fixed 1. All trainable transformations fit within training partitions.",
+  "inference": "10,000 paired participant bootstrap draws conditional on fitted predictions; two contrast P values adjusted by Holm. Exploratory reuse of previously analyzed cohort, not independent confirmation. No search beyond this recorded model family in this experiment.",
+  "hypothesis": "Preserving the clock calibration may avoid the shrinkage-induced degradation of early fusion; microbial residuals may add information. Neither improvement nor microbial value is assumed."
+}

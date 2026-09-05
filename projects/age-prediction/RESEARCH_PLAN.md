@@ -61,3 +61,7 @@ Modal is available for prespecified CPU model sweeps and, if data size warrants 
 Architecture styling adapts conventions from [figures4papers](https://github.com/ChenLiu-1996/figures4papers), commit 565e6b97a9609e14ac07bee83dcb94589034fe27. The Matplotlib diagram and statistical figures are original code; outputs are editable SVG/PDF and high-resolution PNG.
 
 Access status: the investigator reports no existing Lifelines-DEEP or BIOS access. Controlled-cohort work is contingent on a future approved application.
+
+## Executed clock-preserving model extension
+
+The proposed residual experiment has now been run with three calibration options, training-only clock orthogonalization, linear/RBF kernel ridge corrections and a clock-only fallback. In 15 outer folds across the same three repetitions, protected fusion achieved MAE 4.848 years versus 4.851 for selected calibration alone. The primary paired gain was 0.004 years (conditional 95% interval −0.061 to 0.070); microbial benefit was not detected. The post hoc engineering comparison against early fusion showed a 49.1% MAE reduction (9.529 to 4.848 years). This supports recovery from early-fusion degradation, not superiority over the clock or methodological novelty. All choices, predictions and outcomes are recorded in protected_design.json and protected_summary.json. Further testing requires independent data to support a scientific discovery claim.
