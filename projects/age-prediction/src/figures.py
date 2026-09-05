@@ -20,27 +20,44 @@ def save(fig,name):
     plt.close(fig)
 
 def fig1():
-    b=pd.read_csv(D/'blood_metadata.csv');e=pd.read_csv(D/'external_metadata.csv');s=pd.read_csv(D/'skin_metadata.csv');sm=s.groupby('group').age.mean()
-    fig,ax=plt.subplots(2,2,figsize=(7.2,5.6),layout='constrained')
-    a=ax[0,0];panel(a,'a','Cohort age distributions')
-    for v,l,c in [(b.age,'Blood discovery · 360',BLUE),(e.age,'Blood external · 274',ORANGE),(sm,'Skin · 339 participant IDs',TEAL)]:
-        a.hist(v,bins=np.arange(15,96,5),density=True,histtype='step',lw=1.5,label=l,color=c)
-    a.set(xlabel='Age (years)',ylabel='Density');a.legend(loc='upper right',fontsize=6)
-    a=ax[0,1];panel(a,'b','Samples versus participant IDs')
-    audit=pd.read_csv(R/'skin_study_audit.csv');xs=np.arange(len(audit));a.bar(xs-.18,audit.samples,.36,color=GRAY,label='Samples');a.bar(xs+.18,audit.participants,.36,color=TEAL,label='Subject identifiers')
-    for i,row in audit.iterrows():a.text(i-.18,row.samples+25,str(int(row.samples)),ha='center',fontsize=6);a.text(i+.18,row.participants+25,str(int(row.participants)),ha='center',fontsize=6)
-    a.set(xticks=xs,xticklabels=audit.study.astype(str),ylabel='Count',xlabel='Qiita study ID',ylim=(0,1550));a.legend();a.text(.04,.74,'11052 excluded:\n177 rows / one identifier;\nages 31 and 36',ha='left',transform=a.transAxes,fontsize=7,color=RED)
-    a=ax[1,0];panel(a,'c','Donor overlap across splits')
+    from scipy.stats import gaussian_kde
+    b=pd.read_csv(D/'blood_metadata.csv');e=pd.read_csv(D/'external_metadata.csv');s=pd.read_csv(D/'skin_metadata.csv')
+    cohorts=[('Blood discovery · GSE41037',b.age.to_numpy(),BLUE),('Blood validation · GSE19711',e.age.to_numpy(),ORANGE)]
+    for study,col in [(1841,'#006D77'),(2010,'#4F9085'),(10317,'#86ACA1')]:
+        v=s[s.study==study].groupby('group').age.mean().to_numpy()
+        cohorts.append((f'Skin · Qiita {study}',v,col))
+    fig=plt.figure(figsize=(7.2,6.4),layout='constrained')
+    top,bottom=fig.subfigures(2,1,height_ratios=[1.6,1.15],hspace=.10)
+    a=top.subplots();panel(a,'a','Age distribution by modality and study')
+    rng=np.random.default_rng(20260905)
+    for i,(label,v,c) in enumerate(cohorts):
+        xx=np.linspace(v.min(),v.max(),250);density=gaussian_kde(v,bw_method=.28)(xx)
+        a.fill_between(xx,i-.05,i-.05-.32*density/density.max(),color=c,alpha=.32,lw=.6,edgecolor=c)
+        a.scatter(v,i+.12+rng.uniform(-.035,.035,len(v)),s=3.2,color=c,alpha=.32,edgecolors='none',rasterized=True)
+        lo,med,hi=np.quantile(v,[.25,.5,.75]);a.plot([lo,hi],[i-.05]*2,color=c,lw=3,solid_capstyle='round')
+        a.scatter([med],[i-.05],s=16,facecolors='white',edgecolors=c,lw=.8,zorder=4)
+    a.set(yticks=range(5),yticklabels=[f'{label}  (n = {len(v)})' for label,v,c in cohorts],xlabel='Chronological age (years)',xlim=(15,95),ylim=(4.42,-.55),xticks=np.arange(20,100,10))
+    a.tick_params(axis='y',length=0,pad=8);a.spines['left'].set_visible(False)
+    a.xaxis.grid(True,color='#E4E6E8',lw=.5);a.set_axisbelow(True)
+    a.text(1,1.02,'Median / interquartile range · individual observations',ha='right',transform=a.transAxes,fontsize=6.5,color='#666666')
+    lower=bottom.subplots(1,2,gridspec_kw={'wspace':.20})
+    a=lower[0];panel(a,'b','Skin sampling structure')
+    audit=pd.read_csv(R/'skin_study_audit.csv');ys=np.arange(len(audit))
+    a.hlines(ys,audit.participants,audit.samples,color='#C4C9CA',lw=1.8)
+    a.scatter(audit.samples,ys,color=GRAY,s=23,label='Samples',zorder=3)
+    a.scatter(audit.participants,ys,color=TEAL,s=23,label='Participant IDs',zorder=4)
+    a.set(yticks=ys,yticklabels=[str(x)+(' *' if x==11052 else '') for x in audit.study],xscale='log',xlabel='Count (log scale)',ylabel='Qiita study',xlim=(.6,3000))
+    a.invert_yaxis();a.legend(loc='upper left',bbox_to_anchor=(0,-.40),fontsize=6,ncol=2)
+    a.text(0,-.32,'* Study 11052 excluded: ambiguous participant identifiers.',transform=a.transAxes,fontsize=6.2,color='#666666')
+    a=lower[1];panel(a,'c','Participant overlap')
     t=pd.read_csv(R/'skin_split_overlap.csv');labels=['Random sample split','Participant split','Leave study out'];vals=[]
     for l in labels:
-        q=t[t.validation==l];vals.append(np.average(q.test_participant_overlap_fraction,weights=q.test_rows))
-    # convert proportions to percentages for plotting
-    vals=np.array(vals)*100
-    a.barh(range(3),vals,color=[ORANGE,TEAL,BLUE]);a.set(yticks=range(3),yticklabels=['Random samples','Participant holdout','Study holdout'],xlabel='Test samples with donor in training (%)',xlim=(0,110));a.invert_yaxis()
-    for i,v in enumerate(vals):a.text(v+2,i,f'{v:.1f}%',va='center',fontsize=7)
-    a=ax[1,1];panel(a,'d','Why paired errors matter')
-    rho=np.linspace(-1,1,201);a.plot(rho,np.sqrt((1+rho)/2),color=BLUE,lw=1.8);a.axhline(1,color=GRAY,ls='--',lw=.8)
-    a.set(xlabel='Correlation of paired prediction errors (ρ)',ylabel='Ensemble RMSE / single-model RMSE',ylim=(0,1.08),xlim=(-1,1));a.text(.04,.17,'Illustration only: equal, unbiased errors\nand a 50:50 average. No empirical fusion result.',va='top',transform=a.transAxes,fontsize=6.5)
+        q=t[t.validation==l];vals.append(100*np.average(q.test_participant_overlap_fraction,weights=q.test_rows))
+    a.hlines(range(3),0,vals,color='#D4D8DC',lw=2)
+    a.scatter(vals,range(3),color=[ORANGE,TEAL,BLUE],s=30,zorder=3)
+    for i,v in enumerate(vals):a.annotate(f'{v:.1f}%',(v,i),xytext=(5,0),textcoords='offset points',va='center',fontsize=7)
+    a.set(yticks=range(3),yticklabels=['Random samples','Participant holdout','Study holdout'],xlabel='Test samples with participant\nin training (%)',xlim=(-3,112),ylim=(2.55,-.55),xticks=[0,25,50,75,100])
+    a.xaxis.grid(True,color='#E4E6E8',lw=.5);a.set_axisbelow(True)
     save(fig,'fig1_data_and_design')
 
 def scatter(a,p,c,title,label):
@@ -58,7 +75,7 @@ def fig2():
     for i,k in enumerate(keys):
         for offset,key,c in [(-.16,k,BLUE),(.16,k+' median baseline',GRAY)]:
             z=met.loc[key];a.errorbar(z.mae,i+offset,xerr=[[z.mae-z.mae_low],[z.mae_high-z.mae]],fmt='o',color=c,ms=4,capsize=2,label=('Model' if c==BLUE else 'Median') if i==0 else None)
-    a.set(yticks=range(3),yticklabels=labels,xlabel='Mean absolute error (years)',xlim=(0,32));a.invert_yaxis();a.legend(loc='lower right',fontsize=6)
+    a.set(yticks=range(3),yticklabels=labels,xlabel='Mean absolute error (years)',xlim=(0,32));a.invert_yaxis();a.legend(loc='upper left',bbox_to_anchor=(0,-.40),fontsize=6,ncol=2)
     a=ax[1,1];panel(a,'e','Skin age-related bias')
     q=s.assign(band=pd.cut(s.age,[18,30,40,50,60,70,100],right=False),error=s.prediction-s.age)
     g=q.groupby(['group','band'],observed=True).error.mean().reset_index();v=g.groupby('band',observed=True).error.agg(['mean','count','std']);xs=np.arange(len(v));a.errorbar(xs,v['mean'],yerr=1.96*v['std']/np.sqrt(v['count']),fmt='o-',color=TEAL,ms=4,capsize=2,lw=1);a.axhline(0,color=GRAY,ls='--',lw=.8)

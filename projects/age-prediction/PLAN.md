@@ -10,3 +10,7 @@ Run date: 2026-09-05. The original code and participant-level paired data are un
 6. Produce reproducible code, saved predictions/metrics, source checksums, publication-style vector figures and a portfolio report. Publish the completed project to the requested GitHub Pages site, preserving unrelated local drafts. Update the resume only with results supported by the executed analysis.
 
 Model grids (declared before results): methylation top 100/500 training-correlated CpGs, ridge alpha 10/100/1000; microbiome Hellinger transform with training prevalence >=1%, 160-tree RF, sqrt feature subsampling, minimum leaf 1/3/5. Fixed RF diagnostics use leaf 3. Seed 20260905. Ten shuffled-label runs are descriptive negative controls, not a high-resolution significance test.
+
+## 2026-09-05 architecture amendment
+
+After retrieval of the fuller author-provided abstract specifying late fusion, fitted a serializable blood-ridge and skin-random-forest model with a prespecified equal-weight prediction operator on Modal. Blood parameters use the previously recorded discovery-only final selection; skin refit uses the minimum leaf size selected in all previous outer folds. This amendment implements inference and does not add a joint accuracy estimate or retrospectively alter primary validation. No synthetic or age-matched pairs were created.

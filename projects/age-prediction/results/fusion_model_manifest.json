@@ -1,0 +1,25 @@
+{
+  "architecture": "Independent modality regressors with fixed equal-weight late fusion",
+  "blood_training_samples": 360,
+  "skin_training_samples": 1798,
+  "skin_training_participant_ids": 339,
+  "blood_hyperparameters": {
+    "selected_cpgs": 500,
+    "ridge_alpha": 100
+  },
+  "skin_hyperparameters": {
+    "trees": 160,
+    "min_samples_leaf": 1,
+    "max_features": "sqrt"
+  },
+  "hyperparameter_provenance": "Blood: existing discovery-only final selection; skin: common optimum in all five prior outer folds. No additional claim of CV performance for final refit.",
+  "blood_weight": 0.5,
+  "fusion_weight_calibration": "None; equal weight is prespecified",
+  "paired_test_participants": 0,
+  "fusion_accuracy": null,
+  "external_blood_refit_max_prediction_difference": 0.0001374182128905943,
+  "runtime_seconds": 5.556143760681152,
+  "model_sha256": "c1d4c201875bbf255ec00784cc084a541b4a1732a2f4188d323a88ad80f9f612",
+  "execution_backend": "Modal CPU",
+  "date": "2026-09-05"
+}

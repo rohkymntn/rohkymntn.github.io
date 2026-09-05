@@ -1,18 +1,18 @@
 {
   "order": 3,
   "slug": "age-prediction",
-  "tag": "computational biology · model evaluation",
-  "title": "Blood and skin age prediction: what survives a new cohort?",
+  "tag": "computational biology",
+  "title": "Integration of blood methylation and skin microbiome data for age prediction",
   "date": "Sep 2026",
-  "desc": "Built and stress-tested age-prediction models from public blood methylation and skin microbiome data. Follow the analysis from cohort curation and leakage checks to held-out predictions, missing-data failures, and the limits of combining unpaired biological measurements.",
+  "desc": "Implementation of a late-fusion architecture for chronological-age prediction from blood DNA methylation and skin microbial composition. Includes fitted modality-specific regressors, nested validation, assay-quality analyses, and an assessment of the paired-data requirements for evaluating integration.",
   "tech": [
     "DNA methylation",
-    "microbiome",
-    "nested CV",
+    "skin microbiome",
+    "late fusion",
     "scikit-learn",
-    "reproducibility"
+    "Modal"
   ],
-  "hero": "projects/age-prediction/figures/fig2_prediction_and_generalization.png",
-  "heroCaption": "Held-out age predictions, independent-cohort failures and skin study-transfer error",
+  "hero": "projects/age-prediction/figures/fig1_data_and_design.png",
+  "heroCaption": "Cohort age distributions, repeated sampling, and participant-level validation.",
   "url": "/#age-prediction"
 }

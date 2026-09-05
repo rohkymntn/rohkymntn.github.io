@@ -13,7 +13,7 @@ This is a newly executed public-data reconstruction of the concept in the 2023 W
 | Skin, participant-held-out nested CV, 339 participant identifiers / 1,798 samples | 9.17 | 0.44 |
 | Skin, leave-one-study-out, fixed forest | 18.35 | -0.89 |
 
-The cohorts are unpaired. **No validated blood-plus-skin model or measured integration gain is claimed.** The paired-data utility is a tested input guardrail, not an evaluated fusion model.
+The cohorts are unpaired. **No validated blood-plus-skin model or measured integration gain is claimed.** A fitted late-fusion implementation is provided in `models/late_fusion_age_model.joblib`. Its independently trained ridge and random-forest components are combined with a prespecified 0.5/0.5 prediction rule. Component fitting ran on Modal CPU. The implementation is tested, but joint predictive accuracy remains unestimated without paired test participants.
 
 The primary independent blood test retains two highly incomplete samples and their extreme predictions. The missingness-filtered sensitivity analysis is explicitly post hoc. Skin errors weight each participant equally, preventing repeatedly sampled donors from dominating the reported metric. See the report for baselines, conditional bootstrap intervals, cohort dependence and limits on interpretation.
 
@@ -30,8 +30,11 @@ python src/prepare.py
 python src/analyze.py
 python src/diagnostics.py
 python src/figures.py
+pip install modal==1.5.5
+modal run src/modal_fusion.py
 python src/report.py
 python src/test_analysis.py
+python -m unittest discover -s src -p 'test_fusion.py'
 ```
 
 The raw public inputs total approximately 230 MB. The GEO and author-repository URLs are in `data/sources.json`. Downloaded input hashes are in `results/audit.json`. Public source files can change; a checksum mismatch stops the downloader rather than silently substituting different data. No original participant-level private data are needed.
@@ -46,6 +49,11 @@ The analysis does not access raw sequencing or IDAT files. It uses released proc
 - `src/diagnostics.py`: locked-prediction QC sensitivity and matched error comparisons.
 - `src/figures.py`: three multi-panel figures as vector SVG/PDF and 400-dpi PNG.
 - `src/paired_fusion.py`: refuses invalid pairing by unrelated or duplicate IDs.
+- `src/fusion_model.py`: equal-weight prediction-level fusion with feature-schema and linkage checks.
+- `src/modal_fusion.py`: bounded Modal CPU job for component fitting and serialization.
+- `src/test_fusion.py`: nine software checks of fusion arithmetic, subject alignment, schemas, provenance and weights.
+- `models/late_fusion_age_model.joblib`: fitted component regressors plus fusion operator (downloaded separately from the report).
+- `results/fusion_model_manifest.json`: execution provenance and explicit absence of a paired accuracy estimate.
 - `src/test_analysis.py`: ten integrity checks, including fold isolation and metric recomputation.
 - `results/`: executed predictions, model-selection records, coefficients, feature annotation and metric tables.
 - `figures/`: final figure exports.
@@ -58,3 +66,16 @@ For complete regeneration, source data are downloaded into `data/raw` and proces
 Huang et al., mSystems 2020, doi:10.1128/mSystems.00630-19, and the linked author repository; GSE41037; GSE19711; GPL8490. Full source attribution is in the report and manifest. Original datasets remain subject to their source terms. Newly written project code is provided for reproducibility; third-party datasets are not relicensed here.
 
 Chronological-age prediction does not establish biological age, health benefit, causality or clinical validity. This reconstruction is not a peer-reviewed paper.
+
+## Paired inference
+
+```python
+import sys, joblib
+sys.path.insert(0, "src")
+model = joblib.load("models/late_fusion_age_model.joblib")
+# Frames must have fitted feature columns and verified shared participant/visit indices.
+predictions = model.predict_paired(blood_frame, skin_frame,
+    pairing_provenance="Documented shared cohort and specimen linkage")
+```
+
+Only load a serialized model from a trusted source. The downloadable archive contains source code; the fitted model is a separate download. No synthetic pairs or biological fusion accuracy are reported.
