@@ -1,0 +1,71 @@
+{
+  "blood_discovery": {
+    "accession": "GSE41037",
+    "total_samples": 720,
+    "eligible_controls": 360,
+    "excluded": 360,
+    "rules": "control, source QC yes, numeric age >=18; no outcome-based exclusions",
+    "cpgs": 27578,
+    "missing_fraction": 0.0004078331359134898,
+    "age_min": 18.0,
+    "age_max": 88.0,
+    "unique_array_profiles": 360
+  },
+  "blood_external": {
+    "accession": "GSE19711",
+    "total_samples": 540,
+    "eligible_controls": 274,
+    "excluded": 266,
+    "age_definition": "age at recruitment (not exact age at phlebotomy); external cohort of women",
+    "cpgs": 27578,
+    "missing_fraction": 0.0038627002482143546,
+    "age_min": 52.0,
+    "age_max": 78.0,
+    "unique_array_profiles": 274
+  },
+  "skin": {
+    "total_samples": 1975,
+    "total_subject_labels": 340,
+    "excluded_identity_ambiguous_study": "11052",
+    "excluded_rows": 177,
+    "eligible_rows": 1798,
+    "eligible_subjects": 339,
+    "input_asvs": 7311,
+    "source_filter": "Published processed abundance table was already prevalence-filtered without age labels; additional prevalence filtering fits inside every fold.",
+    "row_sum_range": [
+      390.0,
+      169234.0
+    ],
+    "subjects_with_age_discrepancy": 13
+  },
+  "pairing": {
+    "verified_paired_blood_skin_participants": 0,
+    "action": "No cross-person concatenation, age matching, or empirical fusion accuracy. Separate clocks and a mathematical fusion sensitivity analysis only."
+  },
+  "files": {
+    "skin_abundance.tsv": {
+      "bytes": 29972142,
+      "sha256": "62aea6a2a4109d875b592f4e8912749be56ffc820c3a1fca1af6d673ae90ae34"
+    },
+    "GSE41037_series_matrix.txt.gz": {
+      "bytes": 81458707,
+      "sha256": "672d31ef4220eac692c358ff1bbdc77c0f895ec3ffd788845261489ec0e5f9ce"
+    },
+    "skin_metadata.tsv": {
+      "bytes": 7057486,
+      "sha256": "af47362697ac27833d3355abab7e272aab417692a53f6e1b8a4197636cf6e764"
+    },
+    "GSE19711_series_matrix.txt.gz": {
+      "bytes": 61080964,
+      "sha256": "60b1a3bce0a0b9a6e66707c280a27caa09cfa68f34fa03cf2eeb7c7a09feb71c"
+    },
+    "skin_taxonomy.tsv": {
+      "bytes": 27964555,
+      "sha256": "012d1eca8643f0da0b3b7eeebe3f85120623fbaa474a4bd8cb90182a1e6fe98a"
+    },
+    "GPL8490_platform.soft": {
+      "bytes": 23479054,
+      "sha256": "3297aade14f3f02d7e07ba4b9d0bb0f5116da5cda7a24b9433c9b05b4a34b41d"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "metadata_minus_microbiome": {
+    "difference_mae": 0.8891599915601812,
+    "low": 0.4585469682641535,
+    "high": 1.3201359780703883,
+    "n_participants": 339
+  },
+  "participant_minus_random": {
+    "difference_mae": 0.31278202468332167,
+    "low": 0.14737728729759236,
+    "high": 0.47777904427973034,
+    "n_participants": 339
+  }
+}

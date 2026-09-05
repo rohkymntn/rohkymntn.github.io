@@ -1,0 +1,6 @@
+{
+  "seed": 20260905,
+  "analysis_date": "2026-09-05",
+  "runtime_seconds": 115.12328100204468,
+  "warning": "2026 reconstruction, not recovered 2023 results. No matched blood/skin samples or validated multimodal model. Bootstrap intervals condition on fitted out-of-fold predictions and do not include full retraining uncertainty."
+}

@@ -1,0 +1,14 @@
+validation,fold,test_rows,test_participant_overlap_fraction
+Random sample split,0,360,0.9333333333333333
+Random sample split,1,360,0.9194444444444444
+Random sample split,2,360,0.8805555555555555
+Random sample split,3,359,0.883008356545961
+Random sample split,4,359,0.9108635097493036
+Participant split,0,414,0.0
+Participant split,1,327,0.0
+Participant split,2,446,0.0
+Participant split,3,233,0.0
+Participant split,4,378,0.0
+Leave study out,0,440,0.0
+Leave study out,1,1293,0.0
+Leave study out,2,65,0.0

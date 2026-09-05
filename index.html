@@ -522,7 +522,7 @@ footer{padding:22px 0;margin-top:36px}
 /* ---------- DATA (swap these out / pull from Substack RSS) ---------- */
 let essays=[];
 
-const projects=[];
+const projects=[{"order": 3, "slug": "age-prediction", "tag": "computational biology · model evaluation", "title": "Blood and skin age prediction: what survives a new cohort?", "date": "Sep 2026", "desc": "Reconstructed a 2023 age-clock concept using 634 blood methylation samples and 1,798 skin microbiome samples. Nested validation, independent-cohort testing, repeated-participant audits, assay-quality diagnostics and reproducible figures. Blood plate-held-out MAE 4.21 years; skin study transfer exposes a large generalization gap.", "tech": ["DNA methylation", "microbiome", "nested CV", "scikit-learn", "reproducibility"], "hero": "projects/age-prediction/figures/fig2_prediction_and_generalization.png", "heroCaption": "Held-out age predictions, independent-cohort failures and skin study-transfer error", "url": "/projects/age-prediction/"}];
 
 const pubs=[];
 
@@ -545,7 +545,7 @@ $('projGrid').innerHTML=projects.length?projects.map((p,i)=>`
     <div class="proj-tag">${p.tag}</div>
     <h3>${p.title}</h3><p>${p.desc}</p>
     <div class="proj-foot">${p.tech.map(t=>`<span class="t">${t}</span>`).join('')}</div>
-    ${p.body?'<div class="proj-read">read report &rarr;</div>':''}
+    ${p.url?`<a class="proj-read" href="${p.url}">read report &rarr;</a>`:(p.body?'<div class="proj-read">read report &rarr;</div>':'')}
   </div>`).join(''):'<p style="color:var(--muted)">coming soon</p>';
 
 $('pubList').innerHTML=pubs.length?pubs.map(p=>`

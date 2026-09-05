@@ -1,0 +1,33 @@
+{
+  "analysis_date": "2026-09-05",
+  "microbiome_commit": "08066bf1ed4ace150e2c2c0feecc382020f0dabb",
+  "sources": [
+    {
+      "file": "skin_abundance.tsv",
+      "url": "https://raw.githubusercontent.com/shihuang047/age-prediction/08066bf1ed4ace150e2c2c0feecc382020f0dabb/Input/skin_data/skin_1975.norm.filtered_prev0.005.tsv",
+      "citation": "Huang et al. Human Skin, Oral, and Gut Microbiomes Predict Chronological Age. mSystems 2020. doi:10.1128/mSystems.00630-19"
+    },
+    {
+      "file": "skin_metadata.tsv",
+      "url": "https://raw.githubusercontent.com/shihuang047/age-prediction/08066bf1ed4ace150e2c2c0feecc382020f0dabb/Input/skin_data/skin_1975_map.txt"
+    },
+    {
+      "file": "skin_taxonomy.tsv",
+      "url": "https://raw.githubusercontent.com/shihuang047/age-prediction/08066bf1ed4ace150e2c2c0feecc382020f0dabb/Input/skin_data/skin_taxonomy.txt"
+    },
+    {
+      "file": "GSE41037_series_matrix.txt.gz",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE41nnn/GSE41037/matrix/GSE41037_series_matrix.txt.gz",
+      "citation": "GSE41037: Aging effects on DNA methylation modules in blood tissue. Healthy, source-QC-passing adults only."
+    },
+    {
+      "file": "GSE19711_series_matrix.txt.gz",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE19nnn/GSE19711/matrix/GSE19711_series_matrix.txt.gz",
+      "citation": "GSE19711: UK Ovarian Cancer Population Study. Control women only; age at recruitment."
+    },
+    {
+      "file": "GPL8490_platform.soft",
+      "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GPL8490&targ=self&form=text&view=full"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+validation,weighting,mae
+Leave study out,Equal samples,17.926855053935636
+Leave study out,Equal participants,18.349668775073205
+Participant split,Equal samples,6.439705263455988
+Participant split,Equal participants,9.240065669689667
+Random sample split,Equal samples,6.007771942678976
+Random sample split,Equal participants,8.927283645006344

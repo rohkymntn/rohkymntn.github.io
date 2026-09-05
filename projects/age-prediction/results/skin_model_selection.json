@@ -1,0 +1,22 @@
+[
+  {
+    "fold": 0,
+    "rf__min_samples_leaf": 1
+  },
+  {
+    "fold": 1,
+    "rf__min_samples_leaf": 1
+  },
+  {
+    "fold": 2,
+    "rf__min_samples_leaf": 1
+  },
+  {
+    "fold": 3,
+    "rf__min_samples_leaf": 1
+  },
+  {
+    "fold": 4,
+    "rf__min_samples_leaf": 1
+  }
+]
