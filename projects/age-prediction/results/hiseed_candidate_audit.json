@@ -1,0 +1,51 @@
+{
+  "metadata_rows": 123,
+  "unique_ids": 123,
+  "exact_genus_id_match": true,
+  "exact_species_id_match": true,
+  "age_range": [
+    17.0,
+    82.0
+  ],
+  "missing_counts": {
+    "Sample_ID": 0,
+    "Age": 0,
+    "Sex": 0,
+    "HbA1c": 0,
+    "HbA1c_Group": 0,
+    "BMI": 0,
+    "BMI_Group": 0,
+    "Horvath": 0,
+    "AgeAccelHorvath": 0,
+    "Levine": 0,
+    "AgeAccelLevine": 0,
+    "GrimAge2": 0,
+    "AgeAccelGrimAge2": 0,
+    "DunedinPACE": 0
+  },
+  "clock_ranges": {
+    "Horvath": [
+      10.84483733,
+      75.5714627
+    ],
+    "Levine": [
+      -7.476736121,
+      79.55065173
+    ],
+    "GrimAge2": [
+      -23.94044312,
+      20.31573592
+    ],
+    "DunedinPACE": [
+      0.655654782,
+      1.681773084
+    ]
+  },
+  "proposed_exclusion_from_age_features": [
+    "Age",
+    "AgeAccelHorvath",
+    "AgeAccelLevine",
+    "AgeAccelGrimAge2"
+  ],
+  "unresolved": "GrimAge2 includes negative values; verify scale with source documentation before use. Raw CpG to microbiome specimen linkage not yet verified."
+}

@@ -1,0 +1,13 @@
+{
+  "written_before_execution_utc": "2026-09-05T23:14:06.582918+00:00",
+  "code_sha256": "9b7f6d447564f2f347ad2b823fd7e17c01f42aa726d2f6c96ac2672cb55d97cc",
+  "seeds": [
+    20260911,
+    20260912,
+    20260913
+  ],
+  "design": "Three repeats of five-fold participant CV; three-fold inner MAE selection for microbiome and combined ridge alpha 0.1,1,10,100,1000. Genus Hellinger transformation is sample-local; standardization fitted within folds. Horvath comparator is training-calibrated linear regression. No AgeAccel columns, GrimAge2 or clinical outcomes are used as age-prediction inputs.",
+  "primary": "Paired mean absolute error reduction: calibrated Horvath minus combined; secondary microbiome minus combined.",
+  "uncertainty": "10,000 paired participant bootstrap resamples of participant losses averaged across repeats; conditional on fitted predictions.",
+  "status": "Exploratory public pilot; no external cohort; prior clock-training overlap unverified; complete results reported regardless of sign."
+}

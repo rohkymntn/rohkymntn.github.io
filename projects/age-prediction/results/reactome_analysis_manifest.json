@@ -1,0 +1,12 @@
+{
+  "measured_probes": 27578,
+  "mapped_genes": 14475,
+  "selected_probes": 500,
+  "selected_unique_genes": 472,
+  "tested_pathways": 1333,
+  "random_sets": 10000,
+  "q_below_005": 0,
+  "library": "Reactome_2022, Enrichr distribution",
+  "limitations": "Exploratory annotation enrichment; random CpG sets approximate probe-coverage bias but do not preserve CpG correlation or reproduce supervised selection. Not a mechanistic discovery.",
+  "library_sha256": "cfe1adc75aa3137ba74c1b35a3098e88ea1708b204e5edfd788092b7ef5c08f8"
+}

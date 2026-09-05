@@ -1,0 +1,34 @@
+{
+  "clock": {
+    "mean": 4.8695900936696095,
+    "low": 3.9523011929096312,
+    "high": 5.993769011787959
+  },
+  "microbiome": {
+    "mean": 12.593026429693921,
+    "low": 10.982924998777005,
+    "high": 14.298563474296664
+  },
+  "combined": {
+    "mean": 9.52923467524165,
+    "low": 8.106930347041834,
+    "high": 11.108613537626754
+  },
+  "median": {
+    "mean": 12.169376693766937,
+    "low": 9.780420054200542,
+    "high": 14.681707317073169
+  },
+  "clock_minus_combined": {
+    "mean": -4.6596445815720395,
+    "low": -6.025467314016031,
+    "high": -3.3456504555270747
+  },
+  "microbiome_minus_combined": {
+    "mean": 3.0637917544522746,
+    "low": 2.1017007155616967,
+    "high": 4.070446810813082
+  },
+  "n_participants": 123,
+  "interpretation": "Exploratory paired Horvath-clock-score and gut-genus comparison; conditional bootstrap intervals; no external validation or raw methylome/skin/proteomic fusion."
+}

@@ -87,3 +87,7 @@ predictions = model.predict_paired(blood_frame, skin_frame,
 ```
 
 Only load a serialized model from a trusted source. The downloadable archive contains source code; the fitted model is a separate download. No synthetic pairs or biological fusion accuracy are reported.
+
+## Paired-cohort research expansion
+
+See RESEARCH_PLAN.md for the three-aim protocol and verified access requirements. `src/download_expansion.py` retrieves the public HI-SEED tables and Reactome library. Run `src/pathway_analysis.py`, `src/figure_biology.py`, and `src/figure_architecture.py` after preparing the original data. The pathway analysis is exploratory and found no FDR-significant pathways. HI-SEED audit results do not represent fitted multimodal models. Architecture styling adapts ChenLiu-1996/figures4papers conventions (commit 565e6b97a9609e14ac07bee83dcb94589034fe27); diagram code is original.

@@ -3,7 +3,7 @@ from pathlib import Path
 import json,shutil,zipfile
 ROOT=Path(__file__).resolve().parents[1]
 with zipfile.ZipFile(ROOT/'age-prediction-reproducibility.zip','w',compression=zipfile.ZIP_DEFLATED) as z:
-    for name in ['index.html','README.md','PLAN.md','requirements.txt','meta.json','report.html']:
+    for name in ['RESEARCH_PLAN.md','index.html','README.md','PLAN.md','requirements.txt','meta.json','report.html']:
         z.write(ROOT/name,f'age-prediction/{name}')
     for folder in ['src','figures','results']:
         for f in sorted((ROOT/folder).glob('*')):

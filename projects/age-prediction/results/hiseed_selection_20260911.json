@@ -1,0 +1,97 @@
+[
+  {
+    "fold": 0,
+    "model": "clock",
+    "params": {}
+  },
+  {
+    "fold": 0,
+    "model": "microbiome",
+    "params": {
+      "ridge__alpha": 1000
+    }
+  },
+  {
+    "fold": 0,
+    "model": "combined",
+    "params": {
+      "ridge__alpha": 10
+    }
+  },
+  {
+    "fold": 1,
+    "model": "clock",
+    "params": {}
+  },
+  {
+    "fold": 1,
+    "model": "microbiome",
+    "params": {
+      "ridge__alpha": 100
+    }
+  },
+  {
+    "fold": 1,
+    "model": "combined",
+    "params": {
+      "ridge__alpha": 100
+    }
+  },
+  {
+    "fold": 2,
+    "model": "clock",
+    "params": {}
+  },
+  {
+    "fold": 2,
+    "model": "microbiome",
+    "params": {
+      "ridge__alpha": 100
+    }
+  },
+  {
+    "fold": 2,
+    "model": "combined",
+    "params": {
+      "ridge__alpha": 100
+    }
+  },
+  {
+    "fold": 3,
+    "model": "clock",
+    "params": {}
+  },
+  {
+    "fold": 3,
+    "model": "microbiome",
+    "params": {
+      "ridge__alpha": 100
+    }
+  },
+  {
+    "fold": 3,
+    "model": "combined",
+    "params": {
+      "ridge__alpha": 10
+    }
+  },
+  {
+    "fold": 4,
+    "model": "clock",
+    "params": {}
+  },
+  {
+    "fold": 4,
+    "model": "microbiome",
+    "params": {
+      "ridge__alpha": 1000
+    }
+  },
+  {
+    "fold": 4,
+    "model": "combined",
+    "params": {
+      "ridge__alpha": 100
+    }
+  }
+]

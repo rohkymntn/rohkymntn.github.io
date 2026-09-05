@@ -1,0 +1,22 @@
+[
+  {
+    "path": "data/reactome/Reactome_2022.gmt",
+    "url": "https://maayanlab.cloud/Enrichr/geneSetLibrary?mode=text&libraryName=Reactome_2022",
+    "sha256": "cfe1adc75aa3137ba74c1b35a3098e88ea1708b204e5edfd788092b7ef5c08f8"
+  },
+  {
+    "path": "data/candidates/Kunihiro2026_GenusOtu.csv",
+    "url": "https://ndownloader.figshare.com/files/64073650",
+    "sha256": "1a80f187be60a85eb71c4168f938af7516a1fb655010392588c5a823d854e4e6"
+  },
+  {
+    "path": "data/candidates/Kunihiro2026_Metadata.csv",
+    "url": "https://ndownloader.figshare.com/files/64073653",
+    "sha256": "809f3e35f3fd1449375f57962ec4a29c63d52aa856169f4ec4836ac1bdd0e9e6"
+  },
+  {
+    "path": "data/candidates/Kunihiro2026_SpeciesOtu.Csv",
+    "url": "https://ndownloader.figshare.com/files/64073656",
+    "sha256": "b74cbff54ac5d7baf81f3d12df427ae0cd978680a1ac97879313532a3714071c"
+  }
+]
