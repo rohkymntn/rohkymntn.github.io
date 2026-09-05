@@ -1,10 +1,10 @@
 {
   "order": 3,
   "slug": "age-prediction",
-  "tag": "computational biology \u00b7 model evaluation",
+  "tag": "computational biology · model evaluation",
   "title": "Blood and skin age prediction: what survives a new cohort?",
   "date": "Sep 2026",
-  "desc": "Reconstructed a 2023 age-clock concept using 634 blood methylation samples and 1,798 skin microbiome samples. Nested validation, independent-cohort testing, repeated-participant audits, assay-quality diagnostics and reproducible figures. Blood plate-held-out MAE 4.21 years; skin study transfer exposes a large generalization gap.",
+  "desc": "Built and stress-tested age-prediction models from public blood methylation and skin microbiome data. Follow the analysis from cohort curation and leakage checks to held-out predictions, missing-data failures, and the limits of combining unpaired biological measurements.",
   "tech": [
     "DNA methylation",
     "microbiome",
@@ -14,5 +14,5 @@
   ],
   "hero": "projects/age-prediction/figures/fig2_prediction_and_generalization.png",
   "heroCaption": "Held-out age predictions, independent-cohort failures and skin study-transfer error",
-  "url": "/projects/age-prediction/"
+  "url": "/#age-prediction"
 }

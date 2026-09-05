@@ -1,0 +1,10 @@
+{
+  "order": 1,
+  "tag": "computational electromagnetics",
+  "title": "A full-wave Method-of-Moments solver for an agentic antenna-design pipeline",
+  "date": "Sep 2026",
+  "desc": "Wrote an RWG/EFIE boundary-element solver from scratch (NumPy + Gmsh), validated it against the Mie series and the half-wave dipole, debugged three failures that masqueraded as physics, and wrapped it into an optimize → verify → calibrate loop so an LLM-driven antenna designer has to answer to Maxwell's equations.",
+  "tech": ["method of moments", "RWG / EFIE", "gmsh", "numpy", "antenna design", "implants"],
+  "hero": "projects/mom-fullwave/fig_mesh_current_mifa.png",
+  "heroCaption": "meandered inverted-F antenna: conforming surface mesh (left) and surface current density near resonance (right)"
+}

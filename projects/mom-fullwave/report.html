@@ -1,0 +1,263 @@
+<p class="kv">status: working, 20 tests · stack: python, numpy, scipy, gmsh · ~3,000 lines · code on <a href="https://github.com/rohkymntn/agentic-RF" target="_blank" rel="noopener">github</a></p>
+
+<p>I had an antenna-design pipeline that could optimize, but could not check its own answers. This is the story of giving it a full-wave electromagnetic solver written from scratch, validating that solver against closed-form physics, finding three bugs that each looked like physics until they were isolated, and then wrapping the solver into a loop that forces every optimizer result to answer to Maxwell's equations before an engineer sees it.</p>
+
+<h3>1. The problem</h3>
+
+<p>The pipeline (an LLM agent plus a Python library) designs small antennas for implants and wearables: meandered inverted-F antennas, PIFAs, loops, patches. It has parametric templates for each family, a CMA-ES / Bayesian optimizer, matching-network synthesis, SAR checks, and a Streamlit front end. What it did not have was physics. Every template carried a closed-form estimate of its resonance and input impedance (a quarter-wave length with an effective permittivity, a radiation resistance that scales with height squared, a parallel-RLC shape around resonance), and the optimizer ran thousands of evaluations against those formulas. The full-wave solver entries in the UI, OpenEMS and NEC2, were never wired in; selecting them printed a warning and fell back to the formulas.</p>
+
+<p>The templates' own docstrings put their accuracy at ±20–30 % on resonance. For an RF engineer that is a starting point, not a deliverable. I wanted a solver that runs in seconds on a laptop, needs no external EM package, speaks the geometry the pipeline already produces, and is honest about what it does not model.</p>
+
+<h3>2. Choosing the method</h3>
+
+<p>The structures are thin conductors: copper traces on a plane, plates, vertical feed and shorting pins. A surface integral-equation method is the natural fit. Instead of discretizing a volume around the antenna (FDTD, FEM) you discretize only the metal, the radiation condition is built into the Green's function, and a few hundred unknowns describe a complete antenna. The price is a dense matrix, but for a few thousand unknowns a dense LU factorization is a fraction of a second.</p>
+
+<p>The formulation is the electric-field integral equation (EFIE) with Rao–Wilton–Glisson (RWG) basis functions on a triangular mesh. On a perfect conductor the tangential electric field vanishes, so the scattered field produced by the unknown surface current \(\mathbf J\) must cancel the tangential impressed field:</p>
+
+<div class="eq">\[ \hat n \times \Big[\, j\omega\mu_0 \!\int_S \mathbf J(\mathbf r')\,G\,dS' \;-\; \frac{1}{j\omega\varepsilon_0}\nabla\!\int_S \nabla'\!\cdot\mathbf J(\mathbf r')\,G\,dS' \Big] = \hat n \times \mathbf E^{\,i}(\mathbf r), \qquad G=\frac{e^{-jkR}}{4\pi R}. \]</div>
+
+<p>Expanding \(\mathbf J=\sum_n I_n \mathbf f_n\) in RWG functions (each lives on a pair of triangles sharing an edge and carries unit current across that edge) and testing with the same functions gives the dense linear system \(\mathbf Z\mathbf I=\mathbf V\) with</p>
+
+<div class="eq">\[ Z_{mn}= jk\eta\left[\iint \mathbf f_m\!\cdot\!\mathbf f_n\,G\,dS'dS \;-\; \frac{1}{k^2}\iint (\nabla\!\cdot\!\mathbf f_m)(\nabla'\!\cdot\!\mathbf f_n)\,G\,dS'dS\right]. \]</div>
+
+<p>Everything difficult about the method is in evaluating those double integrals: the kernel is singular when the two triangles coincide, nearly singular when they touch, and smooth but oscillatory when they are far apart. Get that wrong and you do not get slightly wrong answers; you get spurious resonances that look exactly like real ones.</p>
+
+<h3>3. Architecture</h3>
+
+<figure class="diagram">
+<svg viewBox="0 0 760 250" xmlns="http://www.w3.org/2000/svg" font-family="ui-monospace, SF Mono, Menlo, monospace" font-size="11" fill="#161616">
+  <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7a7a72"/></marker></defs>
+  <g stroke="#161616" stroke-width="1" fill="none">
+    <rect x="10" y="30" width="118" height="44"/><rect x="146" y="30" width="118" height="44"/><rect x="282" y="30" width="118" height="44"/>
+    <rect x="418" y="30" width="118" height="44"/><rect x="554" y="30" width="118" height="44"/>
+    <rect x="10" y="150" width="150" height="44"/><rect x="198" y="150" width="150" height="44"/><rect x="386" y="150" width="150" height="44"/><rect x="574" y="150" width="150" height="44"/>
+  </g>
+  <g fill="#161616">
+    <text x="18" y="48" font-weight="700">layout</text><text x="18" y="63" fill="#7a7a72">geometry → panels</text>
+    <text x="154" y="48" font-weight="700">gmsh mesh</text><text x="154" y="63" fill="#7a7a72">conforming, graded</text>
+    <text x="290" y="48" font-weight="700">RWG basis</text><text x="290" y="63" fill="#7a7a72">junction rule k−1</text>
+    <text x="426" y="48" font-weight="700">EFIE fill</text><text x="426" y="63" fill="#7a7a72">static once, e^-jkR per f</text>
+    <text x="562" y="48" font-weight="700">solve + post</text><text x="562" y="63" fill="#7a7a72">Zin, S, J, far field</text>
+    <text x="18" y="168" font-weight="700">closed-form model</text><text x="18" y="183" fill="#7a7a72">milliseconds</text>
+    <text x="206" y="168" font-weight="700">optimizer</text><text x="206" y="183" fill="#7a7a72">CMA-ES / Bayesian</text>
+    <text x="394" y="168" font-weight="700">full-wave verify</text><text x="394" y="183" fill="#7a7a72">seconds · above</text>
+    <text x="582" y="168" font-weight="700">calibrate model</text><text x="582" y="183" fill="#7a7a72">f×, R× → repeat</text>
+  </g>
+  <g stroke="#7a7a72" stroke-width="1" fill="none" marker-end="url(#ar)">
+    <path d="M128,52 L144,52"/><path d="M264,52 L280,52"/><path d="M400,52 L416,52"/><path d="M536,52 L552,52"/>
+    <path d="M160,172 L196,172"/><path d="M348,172 L384,172"/><path d="M536,172 L572,172"/>
+    <path d="M461,150 L461,76"/>
+  </g>
+  <path d="M649,150 C649,120 85,120 85,148" stroke="#1f3fd0" stroke-width="1" fill="none" stroke-dasharray="4 3" marker-end="url(#ar)"/>
+  <text x="300" y="128" fill="#1f3fd0">calibrated surrogate feeds the next optimization round</text>
+  <text x="10" y="18" fill="#7a7a72">full-wave path (agentic_rf/solver/mom)</text>
+  <text x="10" y="222" fill="#7a7a72">fidelity ladder (agentic_rf/verification)</text>
+</svg>
+<figcaption>Top: the solver, geometry to far field. Bottom: how it sits around the existing optimizer rather than inside it. Full-wave cost is seconds to minutes per sweep, too slow for 5,000 evaluations, so it verifies and calibrates instead.</figcaption>
+</figure>
+
+<p>Seven modules, about 1,200 lines for the solver:</p>
+
+<table>
+<tr><th>module</th><th>job</th><th>the non-obvious part</th></tr>
+<tr><td>layout.py</td><td>AntennaGeometry → flat conductor panels + delta-gap lines</td><td>chains planar trace segments into mitred ribbon polygons; turns thin conductor boxes into one plate on the face that looks at the rest of the structure; vertical pins become ribbons whose width direction follows the trace they land on; a port becomes a gap line, with a bridging ribbon when the port spans free space. All coordinates are snapped so 35 µm copper thickness never becomes a sliver face.</td></tr>
+<tr><td>gmsh_mesher.py</td><td>conforming triangulation</td><td>OpenCASCADE fragment of every panel and line together, per-panel size fields with distance-based grading, structured (transfinite) meshes on ribbons, a triangle-quality gate with multi-algorithm retry.</td></tr>
+<tr><td>mesh.py</td><td>SurfaceMesh, RWG connectivity</td><td>an edge shared by k ≥ 3 triangles (a pin meeting a plate) gets k−1 basis functions paired with the first triangle, which preserves Kirchhoff continuity at the junction without special junction bases.</td></tr>
+<tr><td>quadrature.py · analytic.py</td><td>Dunavant rules; closed-form \(\int_T dS'/R\) and \(\int_T \mathbf r' dS'/R\)</td><td>the singular integrals are done exactly as sums over the three edges of the source triangle.</td></tr>
+<tr><td>efie.py</td><td>matrix fill</td><td>sparse basis matrices around a dense kernel; static part computed once per mesh, only the smooth remainder refilled per frequency.</td></tr>
+<tr><td>excitation.py · postprocess.py</td><td>ports, plane waves, far field, RCS, conductor loss</td><td>strip delta gap: \(V_m = V_0 l_m\) on every RWG edge crossing the gap line, \(Z_{in}=V_0/\sum I_m l_m\).</td></tr>
+<tr><td>solver.py</td><td>MoMSolver, same interface as the existing analytical solver</td><td>frequency sweep, Y→S conversion for multi-port structures, diagnostics (power balance, mesh size in wavelengths, what was not modelled).</td></tr>
+</table>
+
+<h3>4. Building the numerics, bottom up</h3>
+
+<h4>4.1 Quadrature and the singular integrals</h4>
+
+<p>Integration over triangles uses symmetric Gauss (Dunavant) rules in barycentric coordinates: 1, 3, 6 and 7 points, exact to polynomial degree 1, 2, 4 and 5. The first test I wrote checks every rule against \(\int_T \lambda_1^a\lambda_2^b\,dA = a!\,b!\,2A/(a+b+2)!\) for all monomials up to its degree; they pass to 10⁻¹⁵.</p>
+
+<p>Sampling \(1/R\) with any such rule fails when the observation point is on or near the source triangle. So the kernel is split, \(G = \frac{1}{4\pi R} + \frac{e^{-jkR}-1}{4\pi R}\): the second term is smooth everywhere (its limit at \(R\to0\) is \(-jk/4\pi\)) and can be sampled; the first is integrated in closed form. For an observation point \(\mathbf r\) at signed height \(d\) above the plane of triangle \(T\), with \(P^0_i\) the signed distance from the projection of \(\mathbf r\) to edge \(i\), \(l^\pm_i\) the signed positions of the edge endpoints along the edge, and \(R^\pm_i\) the distances to them,</p>
+
+<div class="eq">\[ \int_T \frac{dS'}{R} = \sum_{i=1}^{3}\left[ P^0_i \ln\frac{R^+_i+l^+_i}{R^-_i+l^-_i} \;-\; |d|\left(\tan^{-1}\frac{P^0_i l^+_i}{(R^0_i)^2+|d|R^+_i} - \tan^{-1}\frac{P^0_i l^-_i}{(R^0_i)^2+|d|R^-_i}\right)\right], \]</div>
+
+<p>with a companion formula for the vector integral \(\int_T (\mathbf r'-\boldsymbol\rho)/R\,dS'\). The logarithm has two algebraically equal forms, \(\ln\frac{R^++l^+}{R^-+l^-}\) and \(\ln\frac{R^--l^-}{R^+-l^+}\), and only one of them is numerically stable depending on which side of the edge the point projects to; picking the wrong one gives 0/0 for points on the edge's extension. I tested the implementation against adaptive double integration at five observation points (inside, above, outside in-plane, off-plane) to eight digits, and it stays finite where the numerical integral diverges.</p>
+
+<figure class="fig">
+<img src="projects/mom-fullwave/fig_singular_integral.png" alt="closed-form versus sampled static potential of a unit triangle">
+<figcaption>The static potential of a unit source triangle, evaluated at every point of the plane. Left: the closed-form edge sum. Right: a 6-point Gauss rule. The sampled version is fine two triangle-widths away and garbage inside; those inside entries are exactly the diagonal blocks that dominate the impedance matrix.</figcaption>
+</figure>
+
+<h4>4.2 Assembling Z without loops</h4>
+
+<p>Written naively, the fill is a quadruple loop over test and source triangles and their quadrature points. I wrote it instead as sparse matrices around one dense kernel. If \(F_c\) is the sparse matrix whose entry \([(t,i),n]\) holds \(W_{ti}\,f_n(\mathbf r_{ti})_c\) (quadrature weight times the c-component of basis n at point i of triangle t) and \(D\) holds \(W_{ti}\,\nabla\!\cdot\!\mathbf f_n\), then</p>
+
+<div class="eq">\[ \mathbf A=\sum_{c\in\{x,y,z\}} F_c^{\mathsf T}\,\mathbb G\,F_c,\qquad \boldsymbol\Phi = D^{\mathsf T}\,\mathbb G\, D,\qquad \mathbf Z = jk\eta\left(\mathbf A - \boldsymbol\Phi/k^2\right), \]</div>
+
+<p>where \(\mathbb G\) is the kernel sampled between all pairs of quadrature points. That matrix is computed in row blocks and never stored whole. The near pairs (centroid distance under three element sizes) have their \(1/R\) part zeroed in \(\mathbb G\) and replaced by the closed-form integrals at the basis level; when the test triangle is much larger than the source triangle, the test triangle is subdivided into 4, 16 or 64 sub-triangles for that outer integral because the inner potential is sharply peaked there. Everything frequency-independent (the static kernel, the analytic near terms, the Gram matrix for conductor loss) is computed once per mesh; per frequency only the smooth remainder is sampled, with a cheaper 3-point rule. A 21-point sweep on an 800-unknown antenna takes about two seconds.</p>
+
+<p>Conductor loss enters as a Leontovich surface impedance \(Z_s=(1+j)\sqrt{\omega\mu_0/2\sigma}\), halved because a sheet carries current on both faces, added to the diagonal blocks through the same Gram matrix. Because \(k\) and \(\eta\) are complex throughout, a lossy homogeneous background medium (muscle at 400 MHz: ε<sub>r</sub> 57, σ 0.8 S/m) costs nothing extra.</p>
+
+<h4>4.3 Ports and post-processing</h4>
+
+<p>Feeds are strip delta gaps: a line across a conductor where a 1 V source is impressed. Every RWG edge lying on that line gets \(V_m=\pm V_0 l_m\), with the sign chosen so all of them push current in the port direction, and the terminal current is \(\sum \pm I_m l_m\). For multi-port structures each port is driven in turn with the others shorted, which gives the Y matrix directly, then Z and S. The far field comes from the radiation vector \(\mathbf N(\hat r)=\sum_i W_i\mathbf J_i e^{jk\hat r\cdot\mathbf r_i}\) on a 37 × 73 sphere grid; integrating the radiation intensity gives \(P_{rad}\), and comparing it with \(\tfrac12\mathrm{Re}(V_0 I^*)\) gives a power-balance number that every run reports. For a lossless conductor it must be 1.000, and the solver prints it precisely so that a user never has to trust a number they cannot check.</p>
+
+<h3>5. Validation against things with known answers</h3>
+
+<p>Before touching a single antenna template I ran the solver on structures with analytical references. A solver that has not been validated this way is a random-number generator with a colorbar.</p>
+
+<h4>5.1 The half-wave strip dipole</h4>
+
+<figure class="fig">
+<img src="projects/mom-fullwave/fig_dipole_validation.png" alt="strip dipole input resistance, reactance and return loss versus frequency">
+<figcaption>A 150 mm × 10 mm strip on a hand-built structured mesh (30 × 2 quads, 148 unknowns). The reactance crosses zero at 0.465 λ with R = 73 Ω. Textbook values for a thick half-wave dipole: resonance at 0.46–0.48 λ, resistance 67–75 Ω.</figcaption>
+</figure>
+
+<figure class="fig">
+<img src="projects/mom-fullwave/fig_dipole_pattern.png" alt="dipole directivity pattern and current distribution">
+<figcaption>Left: E-plane directivity at resonance against the ideal λ/2 pattern; peak 2.14 dBi versus 2.15 dBi. Right: the current along the strip, sinusoidal with the expected small peak at the delta gap. Radiated power equals input power to 0.1 %.</figcaption>
+</figure>
+
+<h4>5.2 Scattering from a sphere, against the Mie series</h4>
+
+<p>The dipole exercises the feed model as much as the matrix. To test the matrix alone I meshed a PEC sphere with Gmsh, illuminated it with a plane wave (the excitation vector is then just \(F^{\mathsf T}\) applied to the incident field samples) and compared the backscatter cross-section with the exact Mie series, which I implemented from spherical Bessel functions in a dozen lines. The two agree within 0.35 dB across ka from 0.6 to 3 on a λ/10 mesh (1,068 unknowns), including through the resonance-region oscillations.</p>
+
+<figure class="fig">
+<img src="projects/mom-fullwave/fig_sphere_mie.png" alt="monostatic RCS of a PEC sphere from MoM versus the Mie series">
+<figcaption>Monostatic RCS of a 10 cm PEC sphere, 0.3–1.4 GHz. Left: the Mie series (line) and the solver (points). Right: the error in dB, never above 0.35 dB. The sphere is a closed surface, so this also confirms that the RWG connectivity produces zero boundary edges on a closed mesh.</figcaption>
+</figure>
+
+<h4>5.3 Small loops against the textbook inductance</h4>
+
+<figure class="fig half">
+<img src="projects/mom-fullwave/fig_loop_inductance.png" alt="single-turn loop inductance from MoM versus closed form">
+<figcaption>Single-turn loops of 1 mm strip, radius 5–20 mm, driven at 100 MHz where they are pure inductors. The closed form \(\mu_0 R[\ln(8R/a)-2]\) with the equivalent wire radius \(a=w/4\) sits within 3 % of the solver at every radius (19.9 vs 19.3 nH at 5 mm, 115 vs 112 nH at 20 mm).</figcaption>
+</figure>
+
+<h4>5.4 Reciprocity and energy</h4>
+
+<p>Two more tests run on every commit: a two-port pair of dipoles at λ/6 spacing must give \(S_{21}=S_{12}\) to 10⁻³, and a copper dipole must satisfy \((P_{rad}+P_{loss})/P_{in}=1\) to 1 % while radiating less than 100 % of its input. These are cheap, and they are exactly the invariants that break first when a sign or a factor of two goes wrong in the fill.</p>
+
+<h3>6. From templates to meshes</h3>
+
+<p>The pipeline's templates emit traces (start, end, width), boxes (ground planes, patches, substrates) and ports. Turning that into a mesh a boundary-element solver can use is where most of the engineering went.</p>
+
+<figure class="fig">
+<img src="projects/mom-fullwave/fig_mesh_current_mifa.png" alt="MIFA mesh and surface current">
+<figcaption>The meandered inverted-F template: a 40 × 30 mm ground plate meshed at 5 mm and graded to 0.5 mm at the pins, a 0.5 mm meander at one element across, two vertical pins whose ends are imprinted into the plate and the trace. Right: surface current magnitude near the structure's first resonance, showing the current concentrating on the short pin and the inner meander arm.</figcaption>
+</figure>
+
+<figure class="fig">
+<img src="projects/mom-fullwave/fig_mesh_current_pifa.png" alt="PIFA mesh and surface current">
+<figcaption>The PIFA: a 30 × 20 mm patch 5 mm above a 60 × 40 mm ground, a 5 mm shorting wall along the edge, a 1 mm feed pin. The wall joins the plates along their boundary edges (a fold), the pin joins them through their interiors (a three-way junction). Both cases must produce RWG functions or the pin is electrically floating.</figcaption>
+</figure>
+
+<figure class="fig">
+<img src="projects/mom-fullwave/fig_mesh_current_patch.png" alt="probe and inset-fed patch mesh and surface current">
+<figcaption>An inset-fed patch with its microstrip line and a vertical port ribbon between the ground and the line's end. The current at the fundamental mode shows the classic half-sine across the resonant dimension.</figcaption>
+</figure>
+
+<p>Meshing rules that came out of the design/test cycles: one element across a strip narrower than λ/40, two across wider ones; plates at λ/10 but never coarser than twice the spacing to the nearest parallel conductor (a patch 5 mm above ground meshed at 10 mm gave nonsense); grading fields from every fine panel into its coarse neighbours so element sizes never jump by more than about 2×; and the k−1 rule for junction edges so a pin can meet a plate anywhere on its surface.</p>
+
+<h3>7. Three bugs that looked like physics</h3>
+
+<p>The validation cases passed on the first try. The templates did not: the MIFA showed a comb of narrow resonances at 525, 540, 570 and 640 MHz, far below its first physical resonance, and the PIFA's impedance jumped between 11 Ω and 219 Ω from one 50 MHz step to the next. Each of the three causes took a controlled experiment to find.</p>
+
+<h4>7.1 The symmetric solve</h4>
+
+<p>The Galerkin EFIE matrix is symmetric in exact arithmetic (reciprocity), so I had used SciPy's symmetric LDLᵀ path. But the numerical matrix is only symmetric to about 10⁻³, because near-pair integrals are evaluated with the test integral on one triangle and the analytic integral on the other, and the two orderings do not produce identical numbers. An LDLᵀ solver reads only one triangle of the matrix and silently assumes the other. On a well-conditioned mesh the 10⁻³ inconsistency is harmless; on a graded mesh with condition number 10⁷ it is amplified into spurious near-null vectors, which show up as resonances.</p>
+
+<p>The experiment that found it: identical matrix, two solvers. Then I confirmed that a 6-point and a 7-point static quadrature rule, which differ only in their asymmetry error, gave impedances differing by 700 Ω with LDLᵀ and by 0.004 Ω with LU. The fix is two lines: symmetrize \(\mathbf Z\leftarrow(\mathbf Z+\mathbf Z^{\mathsf T})/2\), which is legitimate because the true operator is reciprocal, then a full LU.</p>
+
+<figure class="fig">
+<img src="projects/mom-fullwave/fig_debug_ldl.png" alt="PIFA impedance with LDL solve versus symmetrised LU solve">
+<figcaption>The air PIFA, same impedance matrix at every frequency. Grey: LDLᵀ on the raw matrix. Rust: symmetrized LU. The grey curve is not noise from a coarse mesh, it is a solver reading a matrix that is not quite what it assumes.</figcaption>
+</figure>
+
+<h4>7.2 The end caps</h4>
+
+<p>When the layout code turned a trace into a ribbon polygon, it added square caps of half a width at each end so that touching chains would overlap and fuse. On a 0.5 mm MIFA trace that is 0.25 mm and invisible. On the 10 mm-wide validation dipole it is 5 mm at each end, 7 % more length, and the Gmsh-meshed dipole resonated at 0.433 λ instead of 0.465 λ. I spent an afternoon suspecting the unstructured mesh. The fix was to make ribbons flush and let pins share the ribbon's end edge instead.</p>
+
+<figure class="fig half">
+<img src="projects/mom-fullwave/fig_debug_caps.png" alt="dipole reactance with and without ribbon end caps">
+<figcaption>Same trace definition, two ribbon polygons. The 7 % shift is a geometry bug, not a solver bug, which is a reminder to validate the whole path from geometry to number and not just the matrix.</figcaption>
+</figure>
+
+<h4>7.3 The CAD kernel does not imprint touching faces</h4>
+
+<p>A vertical pin meeting a plate must share mesh edges with it or current cannot flow. I relied on OpenCASCADE's boolean fragment to imprint the pin's edge into the plate face. It does so for lines, and for faces that cross, but not reliably for a face that merely touches another along an edge inside it. The pin looked connected in a 3D view and was electrically floating.</p>
+
+<p>The first fix, explicitly embedding the pin's boundary curves into the host face, connected the pin but created a new failure at finer mesh sizes: the mesher, given the same constraint twice (a fragmented line and an embedded curve at the same location, plus a 1D node that happened to land on the pin's corner), produced cascades of zero-area triangles that halved in size at each step. The final fix fragments the pin's end edges as explicit lines and inserts their endpoints as vertices of the host polygon, removes the embed step entirely, meshes ribbons with structured transfinite grids, merges nodes closer than 10⁻³ of an element, and rejects any mesh whose minimum triangle quality \(4\sqrt3 A/\sum l^2\) falls under 0.08 before retrying with another algorithm. All seven templates now mesh cleanly from refinement 1.0 down to 0.5.</p>
+
+<figure class="fig">
+<img src="projects/mom-fullwave/fig_debug_degenerate.png" alt="degenerate mesh cascade before and after the fix">
+<figcaption>Top view of the MIFA's meander trace between its two pins at 0.6× refinement, colored by triangle quality (1 = equilateral). Left: the over-constrained geometry, with slivers of quality 0.003 fanning out from the pin corners where a boundary node landed on a doubly-constrained point. Right: the same region after the fix, minimum quality 0.56. A quality gate now makes the left case impossible to solve on by accident.</figcaption>
+</figure>
+
+<h4>7.4 Proof the fixes worked: convergence</h4>
+
+<figure class="fig">
+<img src="projects/mom-fullwave/fig_convergence.png" alt="input impedance versus frequency at three mesh refinements for PIFA and MIFA">
+<figcaption>After the fixes, refining the mesh by 2× in each direction moves the PIFA impedance by under 5 % and the MIFA's by under 2 %, at 3–4× the unknown count. Before the fixes, refinement changed the answer completely, which is the single most reliable sign that a boundary-element result is wrong.</figcaption>
+</figure>
+
+<h3>8. What it costs</h3>
+
+<figure class="fig half">
+<img src="projects/mom-fullwave/fig_performance.png" alt="fill and solve time versus number of unknowns">
+<figcaption>Wall time on a laptop CPU. The static part is paid once per mesh; the per-frequency fill scales as N² and the LU solve as N³, so the sweep is fill-bound below a few thousand unknowns and solve-bound above. Practical ceiling with dense storage is about 8,000 unknowns (1 GB).</figcaption>
+</figure>
+
+<h3>9. Closing the loop: the fidelity ladder</h3>
+
+<p>With a solver I could trust, the question became how to use it. It is too slow to sit inside the optimizer's thousands of evaluations, so I put it around the optimizer instead.</p>
+
+<ol>
+<li><strong>Verify.</strong> <code>verify_design</code> runs the closed-form model and the full-wave solver on the same geometry and produces a report: full-wave resonances, S11 and impedance at target, bandwidth, efficiency, gain, mesh size in wavelengths, power balance, a graded agreement, and a list of what was <em>not</em> modelled. The comparison is like-for-like: if the design has a substrate, the closed-form model is re-evaluated with ε<sub>r</sub> = 1 so the discrepancy measures model error rather than the missing dielectric.</li>
+<li><strong>Converge.</strong> A second solve on a 0.7× mesh reports how far the resonance and |Z| moved.</li>
+<li><strong>Calibrate.</strong> The template is wrapped so its closed-form resonance and resistance are scaled to the full-wave values. Geometry, parameter bounds and optimizers are untouched; only the fast surrogate changes.</li>
+<li><strong>Repeat.</strong> Optimize on the calibrated surrogate, verify, recalibrate. A millisecond connectivity check (does every pin end land on a conductor, does the port cut one) runs inside the optimizer as a penalty, because the first ladder run caught the optimizer placing the PIFA's feed pin outside the patch, a design the closed-form model was happy with and the full-wave solver correctly saw as an open circuit.</li>
+</ol>
+
+<figure class="fig">
+<img src="projects/mom-fullwave/fig_fidelity_s11.png" alt="closed-form versus full-wave return loss for PIFA and patch">
+<figcaption>What the report shows an engineer. Air-substrate PIFA and patch, closed-form model dashed, full-wave solid. The patch formula is decent; the PIFA formula is 31 % low on resonance. That number was invisible before this solver existed, and the optimizer had been trusting it.</figcaption>
+</figure>
+
+<p>The ladder surfaced something more useful than a scale factor. Running it five times on an air PIFA at 2.45 GHz, the closed-form model's error swung from −44 % to +17 % between candidate designs. The error is not a constant, so no global calibration can remove it, and the ladder now says so in its output and reports the best <em>verified</em> round instead of the last one. The honest conclusion is that the final refinement of a design belongs to the full-wave solver, which is the first item on the roadmap below.</p>
+
+<h3>10. Implants: what happens in tissue</h3>
+
+<figure class="fig">
+<img src="projects/mom-fullwave/fig_implant_medium.png" alt="dipole impedance in free space versus muscle tissue">
+<figcaption>A 30 mm × 2 mm dipole in free space (left) and immersed in a homogeneous muscle medium (right), same conductor, same mesh. In free space it is a capacitor below its 4.6 GHz half-wave resonance. In tissue the wavelength shrinks by √ε<sub>r</sub> ≈ 7.5 and the conductivity damps everything: the dipole is near-resonant at 0.70 GHz (X = −0.3 Ω, R = 24 Ω) with a resonance so broad that the reactance never exceeds ±25 Ω across the whole band. This is the first-order answer to where a resonance goes when a device is implanted, computed in three seconds.</figcaption>
+</figure>
+
+<p>Far field and efficiency are deliberately not reported in a lossy medium: radiated power is not defined without a boundary to integrate over, and printing a number there would be a lie.</p>
+
+<h3>11. Where it lives</h3>
+
+<p>The solver implements the same interface as the pipeline's analytical solver, so it drops into the optimizer's objective unchanged. It is exposed three ways: as agent tools (<code>simulate_fullwave</code>, <code>verify_fullwave</code>, <code>fidelity_ladder</code>, with the system prompt now making verification a mandatory phase), as a CLI (<code>python app.py verify -t pifa -f 2000</code>), and in the Streamlit UI, where selecting the full-wave solver shows the S11 overlay against the closed-form model, the graded agreement, the diagnostics, the surface-current map on the mesh, and the full-wave 3D gain pattern. Gmsh installs its own signal handlers, which fail inside a Streamlit worker thread; that was a one-argument fix once found.</p>
+
+<h3>12. Limits, stated plainly</h3>
+
+<div class="callout"><strong>No dielectrics.</strong> The solver models conductors in a homogeneous medium. A substrate-loaded design resonates lower in reality by roughly \(1-1/\sqrt{\varepsilon_{r,eff}}\), and every report prints that range. For a thin substrate under an antenna in air this is a mild error; for a patch on FR-4 it is not, and the tool should be read as air-substrate physics until layered-media Green's functions are implemented.</div>
+
+<ul>
+<li>Thin sheets only; thick blocks are meshed as closed shells, and closed shells carry EFIE interior resonances at discrete frequencies (a combined-field formulation would remove them).</li>
+<li>Oblique 3D wires (the helix template) are refused with a message; a wire-kernel solver is the right tool there.</li>
+<li>Dense O(N²) storage; about 8,000 unknowns is the practical ceiling on a laptop.</li>
+<li>In a lossy medium only the input impedance is produced.</li>
+</ul>
+
+<h3>13. What I would build next</h3>
+
+<ul>
+<li><strong>Layered-media Green's function</strong> (spectral-domain, discrete complex images) for substrates and skin/fat/muscle stacks. This removes the biggest caveat and is the difference between a verification tool and a design tool for implants.</li>
+<li><strong>Two-antenna links.</strong> The multi-port path already works; an implant and an external reader in one impedance matrix gives \(S_{21}\) directly, a physics-based link budget instead of Friis with assumed gains.</li>
+<li><strong>Full-wave in the loop</strong> on the optimizer's top candidates, now that the ladder has shown the surrogate's error is not a constant.</li>
+<li><strong>A compiled kernel</strong> (Numba or C++) for the fill, which is embarrassingly parallel and would push the ceiling past 20,000 unknowns.</li>
+<li><strong>Chaining into measurement.</strong> The pipeline already calibrates simulation against VNA data; the ladder should end at the bench, full-wave → measured S1P → corrected model.</li>
+</ul>
+
+<h3>14. What I took from it</h3>
+
+<p>The physics was the easy part; the classical formulation has been settled since the 1980s and it worked on the first validation case. The hard part, and the part I would not have believed without doing it, is that every one of the failures I hit produced output that looked like antenna physics: resonances at plausible frequencies, impedance curves with the right shape, efficiencies between 0 and 1. The only things that separated a bug from a result were invariants I could compute independently (power balance, reciprocity, Mie, refinement convergence) and experiments that changed one thing at a time. A solver without those is not a solver.</p>

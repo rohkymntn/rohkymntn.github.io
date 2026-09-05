@@ -392,7 +392,54 @@ footer{padding:22px 0;margin-top:36px}
 .post-foot .sh:hover{color:var(--clay)}
 .post-foot .sh.copied{color:var(--clay)}
 .post-foot .sh svg{width:16px;height:16px;display:block}
+/* ---------- project reports: figures, tables, code, math ---------- */
+.article figure.fig{margin:1.6em 0;border:1px solid var(--line);background:#fff;padding:12px}
+.article figure.fig img{display:block;width:100%;height:auto}
+.article figure.fig figcaption{font-family:inherit;font-size:12.5px;color:var(--muted);margin-top:10px;line-height:1.5}
+.article figure.fig.half{max-width:420px}
+.article table{border-collapse:collapse;width:100%;margin:1.2em 0 1.6em;font-family:inherit;font-size:13px}
+.article th,.article td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.article th{color:var(--muted);font-weight:400;text-transform:lowercase}
+.article pre{font-family:inherit;font-size:12.5px;line-height:1.5;background:rgba(0,0,0,.04);border:1px solid var(--line);padding:12px 14px;overflow-x:auto;margin:1.2em 0 1.5em}
+.article code{font-family:inherit;font-size:.92em;background:rgba(0,0,0,.05);padding:1px 4px}
+.article pre code{background:none;padding:0}
+.article h4{font-family:inherit;font-weight:700;font-size:.95rem;margin:1.4em 0 .4em}
+.article h4::before{content:"#### ";color:var(--muted);font-weight:400}
+.article .callout{border:1px dashed var(--line);padding:12px 14px;margin:1.3em 0;font-family:'Times New Roman',Times,serif;font-size:17px}
+.article .callout strong{font-family:inherit}
+.article .kv{font-family:inherit;font-size:13px;color:var(--muted);margin:-.6em 0 1.4em}
+.article ul li{margin-bottom:.5em}
+.article .eq{font-family:'Times New Roman',Times,serif;font-size:18px;margin:1em 0 1.3em}
+mjx-container{font-size:105% !important}
+.article .widget{border:1px solid var(--line);background:#fff;padding:14px 16px;margin:1.4em 0;font-family:inherit;font-size:13px}
+.article .widget h4{margin:0 0 8px}
+.article .widget input{font-family:inherit;font-size:13px;padding:4px 6px;border:1px solid var(--line);background:var(--bg);width:150px;margin-right:8px}
+.article .widget button{font-family:inherit;font-size:13px;padding:4px 10px;border:1px solid var(--ink);background:var(--ink);color:var(--bg);cursor:pointer;margin-right:6px}
+.article .widget button.ghost{background:none;color:var(--ink)}
+.article .widget .moves{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.article .widget .mv{border:1px solid var(--line);padding:4px 8px;cursor:pointer;background:var(--bg)}
+.article .widget .mv.alive{border-color:#4F7F5B;color:#2f5c3c}
+.article .widget .mv.dead{border-color:#BE5B3A;color:#8a3a1f;text-decoration:line-through}
+.article .widget .mv:hover{background:rgba(0,0,0,.06)}
+.article .widget .trail{margin-top:10px;color:var(--muted)}
+.article .widget .state{font-weight:700;margin-top:8px}
+.article .stat-row{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--line);margin:1.2em 0}
+.article .stat{flex:1 1 140px;padding:10px 12px;border-right:1px solid var(--line)}
+.article .stat:last-child{border-right:0}
+.article .stat .v{font-weight:700;font-size:1.3rem}
+.article .stat .k{font-size:12px;color:var(--muted)}
+
+/* Age-prediction walkthrough uses the existing project reader. */
+.article .age-project .table-scroll{overflow-x:auto}
+.article .age-project .note,.article .age-project figcaption{font-size:14px;line-height:1.6}
+.article .age-project .downloads{font-size:14px;line-height:1.9}
+.article .age-project .equation{overflow-wrap:anywhere;font-size:16px}
+.article .age-project .project-route{border-left:2px solid var(--clay);padding:4px 0 4px 18px;margin:1.5em 0}
+.article .age-project .project-route p{margin:.5em 0}
+.article .age-project .stat .k{font-size:14px}
 </style>
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
 
@@ -403,10 +450,10 @@ footer{padding:22px 0;margin-top:36px}
       <div class="brand-name">Kyle Roh</div>
     </button>
     <div class="nav-links" id="navlinks">
-      <button data-p="essays" onclick="go('essays')">essays</button>
       <button data-p="about" onclick="go('about')">about</button>
       <button data-p="projects" onclick="go('projects')">projects</button>
       <button data-p="pubs" onclick="go('pubs')">publications</button>
+      <button data-p="essays" onclick="go('essays')">essays</button>
     </div>
     <button class="menu-btn" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
   </div>
@@ -522,7 +569,7 @@ footer{padding:22px 0;margin-top:36px}
 /* ---------- DATA (swap these out / pull from Substack RSS) ---------- */
 let essays=[];
 
-const projects=[{"order": 3, "slug": "age-prediction", "tag": "computational biology · model evaluation", "title": "Blood and skin age prediction: what survives a new cohort?", "date": "Sep 2026", "desc": "Reconstructed a 2023 age-clock concept using 634 blood methylation samples and 1,798 skin microbiome samples. Nested validation, independent-cohort testing, repeated-participant audits, assay-quality diagnostics and reproducible figures. Blood plate-held-out MAE 4.21 years; skin study transfer exposes a large generalization gap.", "tech": ["DNA methylation", "microbiome", "nested CV", "scikit-learn", "reproducibility"], "hero": "projects/age-prediction/figures/fig2_prediction_and_generalization.png", "heroCaption": "Held-out age predictions, independent-cohort failures and skin study-transfer error", "url": "/projects/age-prediction/"}];
+const projects=[];
 
 const pubs=[];
 
@@ -540,13 +587,17 @@ function renderEssays(){
 }
 renderEssays();
 
-$('projGrid').innerHTML=projects.length?projects.map((p,i)=>`
+function renderProjects(){
+  $('projGrid').innerHTML=projects.length?projects.map((p,i)=>`
   <div class="proj${p.body?' has-report':''}"${p.body?` onclick="openProject(${i})"`:''}>
     <div class="proj-tag">${p.tag}</div>
     <h3>${p.title}</h3><p>${p.desc}</p>
+    ${p.hero?`<figure class="proj-fig"><img src="${p.hero}" alt="${p.title}" loading="lazy"><figcaption>${p.heroCaption||''}</figcaption></figure>`:''}
     <div class="proj-foot">${p.tech.map(t=>`<span class="t">${t}</span>`).join('')}</div>
-    ${p.url?`<a class="proj-read" href="${p.url}">read report &rarr;</a>`:(p.body?'<div class="proj-read">read report &rarr;</div>':'')}
+    ${p.body?`<a class="proj-read" href="#${p.slug||slugify(p.title)}" onclick="event.preventDefault();event.stopPropagation();openProject(${i})">read project &rarr;</a>`:''}
   </div>`).join(''):'<p style="color:var(--muted)">coming soon</p>';
+}
+renderProjects();
 
 $('pubList').innerHTML=pubs.length?pubs.map(p=>`
   <div class="pub">
@@ -563,7 +614,7 @@ $('pubList').innerHTML=pubs.length?pubs.map(p=>`
 const pages=['home','essays','about','projects','pubs'];
 function go(p){
   hideBoat(); hideSubstack(); hidePostFoot();
-  history.replaceState(null,'',location.pathname+location.search);
+  history.replaceState(null,'',location.pathname+location.search+(p==='home'?'':'#'+p));
   document.getElementById('reader').classList.remove('show');
   pages.forEach(x=>$(x).classList.toggle('show',x===p));
   document.querySelectorAll('.nav-links button').forEach(b=>b.classList.toggle('active',b.dataset.p===p));
@@ -589,13 +640,19 @@ function openEssay(i){
 function openProject(i){
   hideBoat(); hideSubstack(); hidePostFoot();
   const p=projects[i];
-  $('rMeta').textContent='project · '+p.tag;
+  $('rMeta').textContent='project · '+p.tag+(p.date?'  ·  '+p.date:'');
   $('rTitle').textContent=p.title;
   $('rBody').innerHTML=p.body;
+  // scripts inserted via innerHTML do not run: re-create them so interactive reports work
+  $('rBody').querySelectorAll('script').forEach(s=>{const n=document.createElement('script');n.textContent=s.textContent;s.replaceWith(n);});
   backTo='projects'; $('rBack').textContent='← back to projects';
   pages.forEach(x=>$(x).classList.remove('show'));
   document.getElementById('reader').classList.add('show');
   window.scrollTo({top:0,behavior:'instant'});
+  const slug=p.slug||slugify(p.title);
+  history.replaceState(null,'','#'+slug);
+  renderPostFoot(p,slug);
+  if(window.MathJax&&MathJax.typesetPromise)MathJax.typesetPromise([$('rBody')]).catch(()=>{});
 }
 
 /* ---------- sailing boat ---------- */
@@ -643,9 +700,18 @@ function hidePostFoot(){const f=$('postFoot');if(f)f.classList.remove('show');}
 function routeFromHash(){
   const h=decodeURIComponent(location.hash.replace(/^#/,''));
   if(!h)return;
+  if(pages.includes(h)){go(h);history.replaceState(null,'','#'+h);return;}
   const i=essays.findIndex(e=>(e.slug||slugify(e.title))===h);
-  if(i>=0)openEssay(i);
+  if(i>=0){openEssay(i);return;}
+  const j=projects.findIndex(p=>(p.slug||slugify(p.title))===h);
+  if(j>=0)openProject(j);
 }
+
+/* ---------- load projects from projects.json ---------- */
+fetch('projects.json',{cache:'no-store'})
+  .then(r=>r.json())
+  .then(data=>{projects.length=0;data.forEach(p=>projects.push(p));renderProjects();routeFromHash();})
+  .catch(()=>{});
 
 /* ---------- load posts from Substack-synced posts.json ---------- */
 fetch('posts.json',{cache:'no-store'})
