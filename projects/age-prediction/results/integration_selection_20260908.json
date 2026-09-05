@@ -1,0 +1,105 @@
+{
+  "selection": [
+    {
+      "seed": 20260908,
+      "fold": 0,
+      "metadata_kind": "forest",
+      "combined_leaf": 3,
+      "microbiome_leaf": 1,
+      "inner_mae": {
+        "metadata_ridge": 10.38901088922064,
+        "metadata_forest": 10.039743090538112,
+        "combined_leaf1": 9.064552382757675,
+        "microbiome_leaf1": 9.410274519672141,
+        "combined_leaf3": 9.021785303932674,
+        "microbiome_leaf3": 9.572756802673565,
+        "combined_leaf8": 9.263854464290906,
+        "microbiome_leaf8": 10.04746034888277
+      },
+      "train_participants": 271,
+      "test_participants": 68,
+      "participant_overlap": 0
+    },
+    {
+      "seed": 20260908,
+      "fold": 1,
+      "metadata_kind": "forest",
+      "combined_leaf": 1,
+      "microbiome_leaf": 1,
+      "inner_mae": {
+        "metadata_ridge": 10.106017375262613,
+        "metadata_forest": 9.6172572018746,
+        "combined_leaf1": 8.93214604256186,
+        "microbiome_leaf1": 9.517384718870305,
+        "combined_leaf3": 9.024664573744936,
+        "microbiome_leaf3": 9.66692176743445,
+        "combined_leaf8": 9.04478487861189,
+        "microbiome_leaf8": 10.073522122882585
+      },
+      "train_participants": 271,
+      "test_participants": 68,
+      "participant_overlap": 0
+    },
+    {
+      "seed": 20260908,
+      "fold": 2,
+      "metadata_kind": "forest",
+      "combined_leaf": 1,
+      "microbiome_leaf": 1,
+      "inner_mae": {
+        "metadata_ridge": 10.18676553851664,
+        "metadata_forest": 9.85384372926459,
+        "combined_leaf1": 8.80685104815071,
+        "microbiome_leaf1": 9.075536784219537,
+        "combined_leaf3": 8.857399765863656,
+        "microbiome_leaf3": 9.236927364500403,
+        "combined_leaf8": 9.05487094306025,
+        "microbiome_leaf8": 9.656434196266265
+      },
+      "train_participants": 271,
+      "test_participants": 68,
+      "participant_overlap": 0
+    },
+    {
+      "seed": 20260908,
+      "fold": 3,
+      "metadata_kind": "forest",
+      "combined_leaf": 1,
+      "microbiome_leaf": 3,
+      "inner_mae": {
+        "metadata_ridge": 10.422769199913086,
+        "metadata_forest": 9.974048703790698,
+        "combined_leaf1": 8.848503557833283,
+        "microbiome_leaf1": 9.772446141405949,
+        "combined_leaf3": 9.048282677180987,
+        "microbiome_leaf3": 9.7423314386751,
+        "combined_leaf8": 9.262094818050588,
+        "microbiome_leaf8": 10.20961212882127
+      },
+      "train_participants": 271,
+      "test_participants": 68,
+      "participant_overlap": 0
+    },
+    {
+      "seed": 20260908,
+      "fold": 4,
+      "metadata_kind": "forest",
+      "combined_leaf": 1,
+      "microbiome_leaf": 1,
+      "inner_mae": {
+        "metadata_ridge": 9.674816820126265,
+        "metadata_forest": 9.327314126116116,
+        "combined_leaf1": 8.936182265443051,
+        "microbiome_leaf1": 9.273830505889109,
+        "combined_leaf3": 8.940620838593832,
+        "microbiome_leaf3": 9.411699922010943,
+        "combined_leaf8": 8.988919394495653,
+        "microbiome_leaf8": 9.725600029835583
+      },
+      "train_participants": 272,
+      "test_participants": 67,
+      "participant_overlap": 0
+    }
+  ],
+  "runtime_seconds": 54.033841609954834
+}

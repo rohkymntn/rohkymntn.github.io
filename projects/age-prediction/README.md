@@ -4,7 +4,15 @@ Kun Hyung Roh · executed September 5, 2026
 
 This is a newly executed public-data reconstruction of the concept in the 2023 W3PHIAI abstract “Integration of Blood Methylome and Skin Microbiome Data in Machine Learning Algorithms for Accurate Age Prediction.” The original experiment's code and data were unavailable. These results must not be attributed to the 2023 experiment.
 
-## Results
+## Principal integration result
+
+An exploratory follow-up on the retained skin cohort evaluated metadata-adjusted microbial prediction under three repeated nested participant-held-out validations. The combined model reduced participant-weighted MAE from 9.71 to 8.74 years versus metadata alone (10.0%; paired reduction 0.97 years, conditional 95% bootstrap interval 0.66–1.28). Relative to microbiome alone, the reduction was 0.41 years (0.10–0.74). Both average differences were positive in all three repetitions.
+
+Metadata comprises study, body site, and sex. This result is **not blood–skin fusion accuracy**. Effects varied by study and the aggregate benefit versus metadata was driven by study 10317. The experiment was specified before running this follow-up, but uses previously analyzed data and is not independent confirmation. All repeats and negative subgroup effects are retained.
+
+The design, selected parameters, all held-out predictions, participant errors and study-stratified conditional bootstrap summaries are in `results/integration_*`. Run `modal run src/modal_integration.py`, `python src/summarize_integration.py`, and `python src/figure_integration.py` to reproduce. No further model search was performed after these results.
+
+## Component results
 
 | Evaluation | MAE (years) | R² |
 | --- | ---: | ---: |

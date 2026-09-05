@@ -1,0 +1,23 @@
+{
+  "defined_at_utc": "2026-09-05T22:51:44.095726+00:00",
+  "status": "Exploratory follow-up on previously analyzed public cohorts; not independent external confirmation",
+  "hypothesis": "Microbial features improve chronological-age prediction beyond study, body site and sex.",
+  "primary_comparison": "Metadata-adjusted microbial residual model versus inner-selected metadata-only ridge/random forest",
+  "secondary_comparison": "Combined model versus independently tuned microbial random forest",
+  "validation": "Three repetitions of 5-fold outer participant holdout; 3 inner participant folds; preprocessing refitted inside inner training",
+  "seeds": [
+    20260906,
+    20260907,
+    20260908
+  ],
+  "rf_trees": 160,
+  "rf_leaf_grid": [
+    1,
+    3,
+    8
+  ],
+  "primary_outcome": "Participant-weighted MAE reduction averaged across all three repetitions",
+  "uncertainty": "Paired bootstrap of participant-mean absolute errors, stratified by source study; conditional on recorded fitted predictions",
+  "reporting": "Retain all repeats, all comparisons and all selected hyperparameters, including null/negative results. No blood-skin fusion accuracy claim.",
+  "code_sha256": "d1d32f1c90b1c0a8d698e4df1728751d9f33e12ec54ca680310cf962793a3247"
+}

@@ -1,0 +1,31 @@
+{
+  "metadata_error": {
+    "mean": 9.705267220008055,
+    "low": 8.980646815071555,
+    "high": 10.466643193833509
+  },
+  "microbiome_error": {
+    "mean": 9.152364514104628,
+    "low": 8.46359222991996,
+    "high": 9.867980698231573
+  },
+  "combined_error": {
+    "mean": 8.737831190558639,
+    "low": 8.088961904757086,
+    "high": 9.41368114731843
+  },
+  "metadata_minus_combined": {
+    "mean": 0.9674360294494186,
+    "low": 0.6638035252566783,
+    "high": 1.279436613394686
+  },
+  "microbiome_minus_combined": {
+    "mean": 0.41453332354598993,
+    "low": 0.09914827927194027,
+    "high": 0.7406153468689469
+  },
+  "relative_mae_reduction_vs_metadata": 0.09968154482701772,
+  "interpretation_scope": "Exploratory follow-up on previously analyzed cohorts. Bootstrap conditions on fitted predictions and resamples participants within study. No independently paired blood/skin evaluation.",
+  "n_participants": 339,
+  "repeats": 3
+}

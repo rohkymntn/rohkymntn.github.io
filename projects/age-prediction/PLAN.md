@@ -14,3 +14,7 @@ Model grids (declared before results): methylation top 100/500 training-correlat
 ## 2026-09-05 architecture amendment
 
 After retrieval of the fuller author-provided abstract specifying late fusion, fitted a serializable blood-ridge and skin-random-forest model with a prespecified equal-weight prediction operator on Modal. Blood parameters use the previously recorded discovery-only final selection; skin refit uses the minimum leaf size selected in all previous outer folds. This amendment implements inference and does not add a joint accuracy estimate or retrospectively alter primary validation. No synthetic or age-matched pairs were created.
+
+## Exploratory microbiome–metadata integration follow-up
+
+The dated specification in `results/integration_design.json` was recorded before the follow-up execution. Three repeated nested participant-level evaluations compared a metadata-adjusted microbial forest with inner-selected metadata-only regression and a separately tuned microbial forest. All 15 outer folds, three repetitions, paired comparisons, and negative source-study effects are reported. The public cohorts had already been analyzed, so this is exploratory rather than independent external confirmation.
