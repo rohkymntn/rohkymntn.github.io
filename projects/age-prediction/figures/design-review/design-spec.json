@@ -1,0 +1,13 @@
+{
+  "width_mm": 183,
+  "height_mm": 105,
+  "font_pt": 7,
+  "line_pt": 0.6,
+  "palette_source": "ChenLiu-1996/figures4papers",
+  "status": "design proof; not published",
+  "inputs": [
+    "integration_summary.json",
+    "integration_by_repeat.csv",
+    "integration_by_study.csv"
+  ]
+}

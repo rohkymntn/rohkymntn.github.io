@@ -1,7 +1,7 @@
 {
   "index.html": {
-    "bytes": 21400,
-    "sha256": "a7a95af4025b1b1d824126c8822e6e1beb96c5151b643d180d61163b8c7072d8"
+    "bytes": 21174,
+    "sha256": "6b673029a0d664955279f388cd849c019ada27c31d055b48840a1f47127a0962"
   },
   "requirements.txt": {
     "bytes": 106,
@@ -16,8 +16,8 @@
     "sha256": "27825bd96dced16ed2ca7530e5d22450992c40e99fd83dcb291e6a477aa74e15"
   },
   "report.html": {
-    "bytes": 18854,
-    "sha256": "8823a3639f7b749d99bce715d32ee558487f8fa3a38679b60ebc1ed28386f6e0"
+    "bytes": 18628,
+    "sha256": "589110060b727fbe056b633f8edfcb0bab7d6cedc7b5f26b9a18fcf08186f1ff"
   },
   "meta.json": {
     "bytes": 721,
@@ -164,40 +164,40 @@
     "sha256": "0f71979ae051f9a1d7773a32e6fd82e4e58ecc89c056cf91906dbe5aacc2ab71"
   },
   "figures/figure2_external_performance.png": {
-    "bytes": 1140021,
-    "sha256": "b332ff293bcdf281210c546bfc641ecf64e77d472485b42804bd44b8f4432b83"
+    "bytes": 342298,
+    "sha256": "9769f54216081d045ecbdaaa91c6426c717f6d56ffdf54be6928b17e1ca28ef0"
   },
   "figures/figure1_cohorts_architecture.svg": {
-    "bytes": 52089,
-    "sha256": "340e75b47b77866d1ff78d6bf2ecfcf140c9ab5dcd6dd156eb0f1a0c9b3a34b9"
+    "bytes": 33954,
+    "sha256": "ba2c55e5737e8e826a211cf8a0950ade71a5bdb35374dbe75ee75ee18dd2c05e"
   },
   "figures/figure2_external_performance.pdf": {
-    "bytes": 47433,
-    "sha256": "066ab70e0d12e0a32388f3ee8d3d7698f60f34177a80630bfd8382ec720d62c0"
+    "bytes": 50316,
+    "sha256": "bb6ce58e42397ba49a940897161e06bbdd2c3b34d7437e2c7442560761f2c1b1"
   },
   "figures/figure3_robustness_ablation.svg": {
-    "bytes": 53892,
-    "sha256": "dd079c6787bb7f5a055a112c901c9a6a1fe74da161cab6d387003f15e0e59893"
+    "bytes": 37447,
+    "sha256": "ee71dcb5b5cd4de53a6a998103323e3304cc51eb4a290a8eba91a991a078d9b7"
   },
   "figures/figure3_robustness_ablation.png": {
-    "bytes": 911666,
-    "sha256": "b42d3dd2048a30bb3729d5367b5cd0af8db1d446458fadffb12d60ff4de71f9f"
+    "bytes": 256892,
+    "sha256": "c35bc374188d497ba1cd5a8168ef8376d52d34a49df12ffdda48655279a5f9c4"
   },
   "figures/figure3_robustness_ablation.pdf": {
-    "bytes": 38212,
-    "sha256": "1d420cc8fde6672bcffc8413209c310aaf2d406fcc7a39e74d4181e9c4015678"
+    "bytes": 47306,
+    "sha256": "754d41ce488e85f281e89ca9afad557bc2f6e5065abf5e66553518e501b18839"
   },
   "figures/figure1_cohorts_architecture.pdf": {
-    "bytes": 40787,
-    "sha256": "aa2b642d61241103ddd5fe506695ed2cc2544cabf63080c1a764382a86339bab"
+    "bytes": 58873,
+    "sha256": "8e1028944a4d1350b24b9e5c53bd02c9ac9de19df9b645b2ceac982697c153f5"
   },
   "figures/figure1_cohorts_architecture.png": {
-    "bytes": 570351,
-    "sha256": "e1d79950c6e4491ab0e505d5f3469cdd90c1686cbcdcfc31850345fff482f303"
+    "bytes": 347125,
+    "sha256": "06a99f497743d4d308acc8aa3fa001d76d2e3bd3ac8b09600dbbd1c5d0ae2a57"
   },
   "figures/figure2_external_performance.svg": {
-    "bytes": 163290,
-    "sha256": "b4ba6647084513663d93f00367327933a399c9a6e3f3027a6ceee862921f37d7"
+    "bytes": 56745,
+    "sha256": "c970478271ee0b671640d4f99f51a60bff974426ddbbe4618793232efd233d39"
   },
   "data/GSE37008.npz": {
     "bytes": 307420,
@@ -235,6 +235,10 @@
     "bytes": 4297,
     "sha256": "b1177bd039f2c6185c7a5f6b969f7a2b26864b96249b6aededf750f8d61aa558"
   },
+  "src/figures_previous.py": {
+    "bytes": 9442,
+    "sha256": "1b59006a91ed6b7343ebd39cee74a0ffa26b82db8177fd46478d6ec49d5d77f8"
+  },
   "src/summarize.py": {
     "bytes": 3217,
     "sha256": "e6f21f590e2c9c5697d540304faeaa18cb625b16ddeac8065651f630b7e2ebbe"
@@ -248,8 +252,8 @@
     "sha256": "f3be4190aea797096cb7197341eedec7254b56f3004ec2388c76e7d611860f6d"
   },
   "src/figures.py": {
-    "bytes": 9442,
-    "sha256": "1b59006a91ed6b7343ebd39cee74a0ffa26b82db8177fd46478d6ec49d5d77f8"
+    "bytes": 9000,
+    "sha256": "cf6f0ade6adda91f6fdf6e474a6d8731f874f51efe9bd936ed89cd4d0db0d1d9"
   },
   "src/test_kernel.py": {
     "bytes": 1510,
@@ -268,7 +272,19 @@
     "sha256": "d61d4337e05305a67ffcb527fcc1894d88b3c75310494f6b7391f1e951bfcdd3"
   },
   "src/report.py": {
-    "bytes": 17272,
-    "sha256": "478b4b078e9a5f3cd2287419a687e283f71f6348b26f7eed43ed9214923b2ecd"
+    "bytes": 17345,
+    "sha256": "200d24a3b222fb85e229b1aed1a1e0d63cc262edce35686e8657d27b061bde97"
+  },
+  "figures/previous/figure2_external_performance.pdf": {
+    "bytes": 47433,
+    "sha256": "066ab70e0d12e0a32388f3ee8d3d7698f60f34177a80630bfd8382ec720d62c0"
+  },
+  "figures/previous/figure3_robustness_ablation.pdf": {
+    "bytes": 38212,
+    "sha256": "1d420cc8fde6672bcffc8413209c310aaf2d406fcc7a39e74d4181e9c4015678"
+  },
+  "figures/previous/figure1_cohorts_architecture.pdf": {
+    "bytes": 40787,
+    "sha256": "aa2b642d61241103ddd5fe506695ed2cc2544cabf63080c1a764382a86339bab"
   }
 }
