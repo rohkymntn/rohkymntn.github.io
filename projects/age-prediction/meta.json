@@ -2,7 +2,7 @@
   "order": 3,
   "slug": "age-prediction",
   "tag": "computational biology",
-  "title": "Molecular age prediction: multimodal integration and few-shot learning",
+  "title": "Molecular age prediction through multimodal integration and few-shot learning",
   "date": "Sep 2026",
   "desc": "Evaluation of DNA-methylation and microbial age predictors, residual multimodal integration and few-shot adaptation across external cohorts.",
   "tech": [
