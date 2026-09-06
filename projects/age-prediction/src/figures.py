@@ -40,16 +40,14 @@ def fig1():
     a.set(yticks=range(5),yticklabels=[f'{label}  (n = {len(v)})' for label,v,c in cohorts],xlabel='Chronological age (years)',xlim=(15,95),ylim=(4.42,-.55),xticks=np.arange(20,100,10))
     a.tick_params(axis='y',length=0,pad=8);a.spines['left'].set_visible(False)
     a.xaxis.grid(True,color='#E4E6E8',lw=.5);a.set_axisbelow(True)
-    a.text(1,1.02,'Median / interquartile range / individual observations',ha='right',transform=a.transAxes,fontsize=6.5,color='#666666')
     lower=bottom.subplots(1,2,gridspec_kw={'wspace':.20})
     a=lower[0];panel(a,'b','Skin sampling structure')
     audit=pd.read_csv(R/'skin_study_audit.csv');ys=np.arange(len(audit))
     a.hlines(ys,audit.participants,audit.samples,color='#C4C9CA',lw=1.8)
     a.scatter(audit.samples,ys,color=GRAY,s=23,label='Samples',zorder=3)
     a.scatter(audit.participants,ys,color=TEAL,s=23,label='Participant IDs',zorder=4)
-    a.set(yticks=ys,yticklabels=[str(x)+(' *' if x==11052 else '') for x in audit.study],xscale='log',xlabel='Count (log scale)',ylabel='Qiita study',xlim=(.6,3000))
+    a.set(yticks=ys,yticklabels=[str(x) for x in audit.study],xscale='log',xlabel='Count (log scale)',ylabel='Qiita study',xlim=(.6,3000))
     a.invert_yaxis();a.legend(loc='upper left',bbox_to_anchor=(0,-.40),fontsize=6,ncol=2)
-    a.text(0,-.32,'* Study 11052 excluded: ambiguous participant identifiers.',transform=a.transAxes,fontsize=6.2,color='#666666')
     a=lower[1];panel(a,'c','Participant overlap')
     t=pd.read_csv(R/'skin_split_overlap.csv');labels=['Random sample split','Participant split','Leave study out'];vals=[]
     for l in labels:
@@ -103,7 +101,7 @@ def fig3():
     fig,ax=plt.subplots(2,2,figsize=(7.2,5.7),layout='constrained')
     a=ax[0,0];panel(a,'a','External missingness')
     q=pd.read_csv(R/'external_quality_audit.csv');a.scatter(q.missing_fraction*100,q.error,s=13,color=ORANGE,alpha=.65,edgecolors='none');a.axhline(0,color=GRAY,ls='--',lw=.8);a.axvline(1,color=RED,ls=':',lw=.8)
-    a.set(xlabel='Missing CpGs (%)',ylabel='Prediction − age (years)');a.text(.97,.06,'All 274 controls retained in primary analysis.\nDotted line: exploratory 1% missingness flag.',ha='right',transform=a.transAxes,fontsize=6.5)
+    a.set(xlabel='Missing CpGs (%)',ylabel='Prediction − age (years)')
     a=ax[0,1];panel(a,'b','Selected methylation markers')
     co=pd.read_csv(R/'blood_coefficients.csv').merge(annotations(),on='feature',how='left');co.to_csv(R/'blood_coefficients_annotated.csv',index=False);z=co.head(8).iloc[::-1]
     a.barh(range(len(z)),z.coefficient_per_training_sd,color=[BLUE if v>0 else ORANGE for v in z.coefficient_per_training_sd]);a.set(yticks=range(len(z)),yticklabels=[f'{g if isinstance(g,str) and g else "unannotated"} / {c}' for g,c in zip(z.gene,z.feature)],xlabel='Ridge coefficient (years per training SD)');a.axvline(0,color=GRAY,lw=.6);a.tick_params(axis='y',labelsize=6)

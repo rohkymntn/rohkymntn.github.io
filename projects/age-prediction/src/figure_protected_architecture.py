@@ -14,7 +14,6 @@ def box(x,y,w,title,sub,c):
 def arrow(x,y,u,v,col='#0F4D92'):
  a.add_patch(FancyArrowPatch((x,y),(u,v),arrowstyle='-|>',mutation_scale=15,lw=1.6,color=col,shrinkA=3,shrinkB=4))
 a.text(.1,4.62,'Clock-preserving microbial residual fusion',fontsize=14,weight='normal')
-a.text(.1,4.2,'Calibration and correction strength selected by inner validation; accuracy assessed in outer participant folds.',fontsize=11,color='#666666')
 box(.15,2.75,2.1,'Methylation clock','Released Horvath score','#EAF0F8')
 box(3.0,2.75,3.2,'Clock calibration','OLS / Huber / median regression','#EAF0F8');arrow(2.25,3.17,3.,3.17)
 box(.15,1.1,2.1,'Gut genera','Hellinger representation','#EDF6F7')
@@ -23,5 +22,4 @@ box(6.9,1.1,3.0,'Residual kernel ridge','Linear / RBF / α / strength s','#DDF3D
 a.add_patch(Circle((10.6,3.17),.23,fc='#0F4D92'));a.text(10.6,3.17,'+',color='white',fontsize=20,ha='center',va='center');arrow(6.2,3.17,10.37,3.17);arrow(9.9,1.52,10.5,2.92,'#42949E')
 box(11.2,2.75,2.55,'Predicted age',r'$\hat y=f(c)+s\,g(H_{\perp})$','#EAF0F8');arrow(10.83,3.17,11.2,3.17)
 a.text(8.1,2.54,r'Training target: $y-f(c)$',ha='center',fontsize=11,color='#42949E')
-a.text(7,.40,'Clock-only fallback: s = 0  /  All fitted transformations remain inside training folds.',ha='center',fontsize=11,color='#666666')
 for ext in ['png','svg','pdf']:f.savefig(R/f'figures/protected_fusion_architecture.{ext}',dpi=300,bbox_inches='tight')

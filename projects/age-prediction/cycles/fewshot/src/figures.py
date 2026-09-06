@@ -31,7 +31,7 @@ for i,(c,n,col) in enumerate(zip(C,N,cols)):
  d=np.load(R/f'data/{c}.npz');ns=int(d['support'].sum());nq=int((~d['support']).sum());p=ns/(ns+nq)
  a.barh(i,p,color=L,height=.40);a.barh(i,1-p,left=p,color=col,height=.40)
  a.text(p/2,i,str(ns),ha='center',va='center',fontsize=10);a.text((1+p)/2,i,str(nq),color='white',ha='center',va='center');a.text(0,i-.30,f'{n} / {c}',fontsize=10)
-a.set(xlim=(0,1),ylim=(1.55,-.75));a.axis('off');a.text(0,-.02,'Support pool',transform=a.transAxes,color=G);a.text(.48,-.02,'Fixed query set',transform=a.transAxes,color=B);a.text(0,-.17,'8 / 16 / 32 labels per draw / 20 draws',transform=a.transAxes,fontsize=9)
+a.set(xlim=(0,1),ylim=(1.55,-.75));a.axis('off');a.text(0,-.02,'Support pool',transform=a.transAxes,color=G);a.text(.48,-.02,'Fixed query set',transform=a.transAxes,color=B)
 a=f.add_subplot(gs[1,:]);label(a,'c','Episodic residual adaptation');a.set(xlim=(0,10),ylim=(0,3.7));a.axis('off')
 def node(x,y,w,h,title,sub,color=L):
  a.add_patch(Rectangle((x,y),w,h,facecolor=color,edgecolor='none'));a.text(x+w/2,y+h*.65,title,ha='center',va='center',weight='bold',fontsize=10);a.text(x+w/2,y+h*.28,sub,ha='center',va='center',fontsize=9,color='#59636B')
@@ -43,7 +43,6 @@ a.text(0,1.64,'EXTERNAL ADAPTATION',fontsize=8,weight='bold',color=G)
 node(0,.4,2,.85,'Target samples','Source preprocessing');node(2.65,.4,2.1,.85,'Frozen encoder','No query-label access','#E4EEF6');node(5.4,.4,2.05,.85,'Support-only fit','8, 16 or 32 labelled ages','#E1F0ED');node(8.1,.4,1.9,.85,'Predicted age','Source clock + residual')
 for x,u in [(2,2.65),(4.75,5.4),(7.45,8.1)]:ar(x,.825,u,.825)
 ar(3.7,2.15,3.7,1.27)
-a.text(5,0,'Checkpoint selection uses source validation; external query participants remain held out.',ha='center',fontsize=9)
 save(f,'figure1_cohorts_architecture')
 # Shared-label comparator plate: a single central model key avoids repeated long labels.
 f=plt.figure(figsize=(11,9));gs=f.add_gridspec(2,3,height_ratios=[1,1.3],width_ratios=[1,.88,1],hspace=.52,wspace=.10,left=.09,right=.97,top=.92,bottom=.08)
@@ -55,7 +54,6 @@ for j,(c,n) in enumerate(zip(C,N)):
 a=f.add_subplot(gs[0,1]);a.axis('off')
 for i,(t,col,ls) in enumerate([('Neural adapter',B,'-'),('Selected baseline',T,'-'),('Frozen source',G,'--'),('Affine calibration','#B17B69',':')]):
  a.plot([.12,.28],[.72-i*.14]*2,ls,color=col,lw=2,transform=a.transAxes);a.text(.34,.72-i*.14,t,transform=a.transAxes,va='center',fontsize=9)
-a.text(.12,.06,'16 labels: primary endpoint\nIntervals shown below',transform=a.transAxes,fontsize=9,color=G)
 models=['source','median','affine','target_ridge','residual_linear','residual_rbf','selected_baseline','meta_no_augmentation','meta_augmented'];names=['Frozen source ridge','Support median','Affine calibration','Target-only ridge','Linear residual kernel','RBF residual kernel','CV-selected baseline','Neural, no augmentation','Neural adapter']
 for j,c in enumerate(C):
  a=f.add_subplot(gs[1,0 if j==0 else 2]);label(a,'cd'[j],N[j]+' / 16 labels')

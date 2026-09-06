@@ -21,6 +21,5 @@ a=fig.add_subplot(g[0,1]);a.barh(range(len(s)),s.mean_training_impurity_importan
 p=pd.read_csv(R/'results/reactome_probe_aware_enrichment.csv').head(6).iloc[::-1]
 a=fig.add_subplot(g[1,:]);labels=[re.sub(r' R-HSA-\d+','',v) for v in p.pathway];a.scatter(p.fold_enrichment,range(len(p)),s=65,color='#0F4D92');a.set_yticks(range(len(p)),labels);a.axvline(1,color='#CFCECE',lw=1);a.set_xlim(0,max(p.fold_enrichment)+1.8);a.set_xlabel('Observed / expected genes under random probe sampling');a.set_title('c  Reactome annotation enrichment',loc='left',fontweight='bold',pad=25)
 for y,r in enumerate(p.itertuples()):a.text(r.fold_enrichment+.14,y,f'p = {r.empirical_p:.3f}; q = {r.bh_q:.2f}',va='center',fontsize=9)
-a.text(0,1.035,'1,333 pathways tested / 10,000 probe-matched null sets / no pathway at FDR < 0.05',transform=a.transAxes,color='#555555',fontsize=10)
 for a in fig.axes:a.tick_params(axis='y',length=0)
 for ext in ['png','pdf','svg']:fig.savefig(R/f'figures/fig3_biological_interpretation.{ext}',dpi=300,bbox_inches='tight')

@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-09-05T17:56:41.629218</dc:date>
+    <dc:date>2026-09-05T22:52:28.660365</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -35,7 +35,7 @@ L 92.493354 58.982791
 L 92.493354 34.283928 
 L 10.547231 34.283928 
 z
-" clip-path="url(#p29c91204c1)" style="fill: #f4f4f4; stroke: #cfcece; stroke-width: 0.7; stroke-linejoin: miter"/>
+" clip-path="url(#pb8fa14a70e)" style="fill: #f4f4f4; stroke: #cfcece; stroke-width: 0.7; stroke-linejoin: miter"/>
    </g>
    <g id="patch_3">
     <path d="M 10.547231 99.016662 
@@ -43,7 +43,7 @@ L 92.493354 99.016662
 L 92.493354 70.246558 
 L 10.547231 70.246558 
 z
-" clip-path="url(#p29c91204c1)" style="fill: #edf6f7; stroke: #42949e; stroke-width: 0.7; stroke-linejoin: miter"/>
+" clip-path="url(#pb8fa14a70e)" style="fill: #edf6f7; stroke: #42949e; stroke-width: 0.7; stroke-linejoin: miter"/>
    </g>
    <g id="patch_4">
     <path d="M 110.867872 58.982791 
@@ -51,7 +51,7 @@ L 206.894085 58.982791
 L 206.894085 34.283928 
 L 110.867872 34.283928 
 z
-" clip-path="url(#p29c91204c1)" style="fill: #f4f4f4; stroke: #cfcece; stroke-width: 0.7; stroke-linejoin: miter"/>
+" clip-path="url(#pb8fa14a70e)" style="fill: #f4f4f4; stroke: #cfcece; stroke-width: 0.7; stroke-linejoin: miter"/>
    </g>
    <g id="patch_5">
     <path d="M 110.867872 99.016662 
@@ -59,7 +59,7 @@ L 206.894085 99.016662
 L 206.894085 70.246558 
 L 110.867872 70.246558 
 z
-" clip-path="url(#p29c91204c1)" style="fill: #edf6f7; stroke: #42949e; stroke-width: 0.7; stroke-linejoin: miter"/>
+" clip-path="url(#pb8fa14a70e)" style="fill: #edf6f7; stroke: #42949e; stroke-width: 0.7; stroke-linejoin: miter"/>
    </g>
    <g id="patch_6">
     <path d="M 227.028614 99.016662 
@@ -67,57 +67,57 @@ L 323.054828 99.016662
 L 323.054828 70.246558 
 L 227.028614 70.246558 
 z
-" clip-path="url(#p29c91204c1)" style="fill: #ddf3de; stroke: #42949e; stroke-width: 0.7; stroke-linejoin: miter"/>
+" clip-path="url(#pb8fa14a70e)" style="fill: #ddf3de; stroke: #42949e; stroke-width: 0.7; stroke-linejoin: miter"/>
    </g>
    <g id="patch_7">
     <path d="M 93.9999 46.63336 
 Q 101.181988 46.63336 107.581453 46.63336 
-" clip-path="url(#p29c91204c1)" style="fill: none; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#pb8fa14a70e)" style="fill: none; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
     <path d="M 104.579484 45.132375 
 L 107.581453 46.63336 
 L 104.579484 48.134344 
 z
-" clip-path="url(#p29c91204c1)" style="fill: #0f4d92; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#pb8fa14a70e)" style="fill: #0f4d92; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
    </g>
    <g id="patch_8">
     <path d="M 93.9999 84.63161 
 Q 101.181988 84.63161 107.581453 84.63161 
-" clip-path="url(#p29c91204c1)" style="fill: none; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#pb8fa14a70e)" style="fill: none; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
     <path d="M 104.579484 83.130626 
 L 107.581453 84.63161 
 L 104.579484 86.132594 
 z
-" clip-path="url(#p29c91204c1)" style="fill: #42949e; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#pb8fa14a70e)" style="fill: #42949e; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
    </g>
    <g id="patch_9">
     <path d="M 208.399342 84.63161 
 Q 216.459465 84.63161 223.736964 84.63161 
-" clip-path="url(#p29c91204c1)" style="fill: none; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#pb8fa14a70e)" style="fill: none; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
     <path d="M 220.734995 83.130626 
 L 223.736964 84.63161 
 L 220.734995 86.132594 
 z
-" clip-path="url(#p29c91204c1)" style="fill: #42949e; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#pb8fa14a70e)" style="fill: #42949e; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
    </g>
    <g id="patch_10">
     <path d="M 208.399342 46.63336 
 Q 276.299126 46.63336 343.416287 46.63336 
-" clip-path="url(#p29c91204c1)" style="fill: none; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#pb8fa14a70e)" style="fill: none; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
     <path d="M 340.414318 45.132375 
 L 343.416287 46.63336 
 L 340.414318 48.134344 
 z
-" clip-path="url(#p29c91204c1)" style="fill: #0f4d92; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#pb8fa14a70e)" style="fill: #0f4d92; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
    </g>
    <g id="patch_11">
     <path d="M 323.852385 83.103652 
 Q 334.559601 70.424882 344.761864 58.344044 
-" clip-path="url(#p29c91204c1)" style="fill: none; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#pb8fa14a70e)" style="fill: none; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
     <path d="M 341.678212 59.669132 
 L 344.761864 58.344044 
 L 343.971743 61.606018 
 z
-" clip-path="url(#p29c91204c1)" style="fill: #42949e; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#pb8fa14a70e)" style="fill: #42949e; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
    </g>
    <g id="patch_12">
     <path d="M 357.76225 60.204163 
@@ -130,17 +130,17 @@ C 349.259597 46.284367 348.258189 48.614533 348.258189 51.043871
 C 348.258189 53.473209 349.259597 55.803374 351.041864 57.521176 
 C 352.824131 59.238977 355.241743 60.204163 357.76225 60.204163 
 z
-" clip-path="url(#p29c91204c1)" style="fill: #0f4d92; stroke: #ffffff; stroke-width: 0.7; stroke-linejoin: miter"/>
+" clip-path="url(#pb8fa14a70e)" style="fill: #0f4d92; stroke: #ffffff; stroke-width: 0.7; stroke-linejoin: miter"/>
    </g>
    <g id="patch_13">
     <path d="M 369.266948 51.043871 
 Q 375.21459 51.043871 380.379608 51.043871 
-" clip-path="url(#p29c91204c1)" style="fill: none; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#pb8fa14a70e)" style="fill: none; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
     <path d="M 377.37764 49.542887 
 L 380.379608 51.043871 
 L 377.37764 52.544855 
 z
-" clip-path="url(#p29c91204c1)" style="fill: #0f4d92; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#pb8fa14a70e)" style="fill: #0f4d92; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
    </g>
    <g id="patch_14">
     <path d="M 385.429627 67.125273 
@@ -148,7 +148,7 @@ L 486.735874 67.125273
 L 486.735874 34.283928 
 L 385.429627 34.283928 
 z
-" clip-path="url(#p29c91204c1)" style="fill: #eaf0f8; stroke: #0f4d92; stroke-width: 0.7; stroke-linejoin: miter"/>
+" clip-path="url(#pb8fa14a70e)" style="fill: #eaf0f8; stroke: #0f4d92; stroke-width: 0.7; stroke-linejoin: miter"/>
    </g>
    <g id="text_1">
     <text style="font-weight: 700; font-size: 7px; font-family: 'Helvetica'; text-anchor: start; fill: #272727" x="5.76" y="12.02781" transform="rotate(-0 5.76 12.02781)">a</text>
@@ -157,39 +157,36 @@ z
     <text style="font-size: 7px; font-family: 'Helvetica'; text-anchor: start; fill: #272727" x="21.600101" y="11.01" transform="rotate(-0 21.600101 11.01)">Metadata-adjusted microbial age prediction</text>
    </g>
    <g id="text_3">
-    <text style="font-size: 6.003937px; font-family: 'Helvetica'; text-anchor: start; fill: #767676" x="21.600101" y="21.188103" transform="rotate(-0 21.600101 21.188103)">Evaluated using three repeated nested participant-held-out validations</text>
-   </g>
-   <g id="text_4">
     <text style="font-weight: 700; font-size: 7px; font-family: 'Helvetica'; text-anchor: middle; fill: #272727" x="51.520292" y="44.467452" transform="rotate(-0 51.520292 44.467452)">Study / site / sex</text>
    </g>
-   <g id="text_5">
+   <g id="text_4">
     <text style="font-size: 5.753773px; font-family: 'Helvetica'; text-anchor: middle; fill: #767676" x="51.520292" y="53.140885" transform="rotate(-0 51.520292 53.140885)">Same skin participants</text>
    </g>
-   <g id="text_6">
+   <g id="text_5">
     <text style="font-weight: 700; font-size: 7px; font-family: 'Helvetica'; text-anchor: middle; fill: #272727" x="51.520292" y="81.932458" transform="rotate(-0 51.520292 81.932458)">Skin microbiome</text>
    </g>
-   <g id="text_7">
+   <g id="text_6">
     <text style="font-size: 5.753773px; font-family: 'Helvetica'; text-anchor: middle; fill: #767676" x="51.520292" y="91.937906" transform="rotate(-0 51.520292 91.937906)">1,798 samples / 339 IDs</text>
    </g>
-   <g id="text_8">
+   <g id="text_7">
     <text style="font-weight: 700; font-size: 7px; font-family: 'Helvetica'; text-anchor: middle; fill: #272727" x="158.880979" y="44.458702" transform="rotate(-0 158.880979 44.458702)">Metadata regression</text>
    </g>
-   <g id="text_9">
+   <g id="text_8">
     <text style="font-size: 5.753773px; font-family: 'Helvetica'; text-anchor: middle; fill: #767676" x="158.880979" y="53.104025" transform="rotate(-0 158.880979 53.104025)">One-hot encoding  /  ridge</text>
    </g>
-   <g id="text_10">
+   <g id="text_9">
     <text style="font-weight: 700; font-size: 7px; font-family: 'Helvetica'; text-anchor: middle; fill: #272727" x="158.880979" y="81.764841" transform="rotate(-0 158.880979 81.764841)">Microbial preprocessing</text>
    </g>
-   <g id="text_11">
+   <g id="text_10">
     <text style="font-size: 5.753773px; font-family: 'Helvetica'; text-anchor: middle; fill: #767676" x="158.880979" y="91.930265" transform="rotate(-0 158.880979 91.930265)">Hellinger + prevalence filter</text>
    </g>
-   <g id="text_12">
+   <g id="text_11">
     <text style="font-weight: 700; font-size: 7px; font-family: 'Helvetica'; text-anchor: middle; fill: #272727" x="275.041721" y="81.764841" transform="rotate(-0 275.041721 81.764841)">Residual regression</text>
    </g>
-   <g id="text_13">
+   <g id="text_12">
     <text style="font-size: 5.753773px; font-family: 'Helvetica'; text-anchor: middle; fill: #767676" x="275.041721" y="92.509238" transform="rotate(-0 275.041721 92.509238)">Random forest / 160 trees</text>
    </g>
-   <g id="text_14">
+   <g id="text_13">
     <!-- $r_{train}=y_{train}-\hat{y}_{metadata,train}$ -->
     <g style="fill: #0f4d92" transform="translate(236.28671 54.436572)">
      <text>
@@ -226,13 +223,13 @@ z
      </text>
     </g>
    </g>
-   <g id="text_15">
+   <g id="text_14">
     <text style="font-size: 7px; font-family: 'Helvetica'; text-anchor: middle; fill: #ffffff" x="357.76225" y="53.074144" transform="rotate(-0 357.76225 53.074144)">+</text>
    </g>
-   <g id="text_16">
+   <g id="text_15">
     <text style="font-weight: 700; font-size: 7px; font-family: 'Helvetica'; text-anchor: middle; fill: #272727" x="436.08275" y="47.145721" transform="rotate(-0 436.08275 47.145721)">Combined age estimate</text>
    </g>
-   <g id="text_17">
+   <g id="text_16">
     <!-- $\hat{y}=\hat{y}_{metadata}+\hat{r}_{microbiome}$ -->
     <g style="fill: #767676" transform="translate(407.9468 58.638853)">
      <text>
@@ -265,9 +262,6 @@ z
      </text>
     </g>
    </g>
-   <g id="text_18">
-    <text style="font-size: 5.503609px; font-family: 'Helvetica'; text-anchor: middle; fill: #767676" x="248.641552" y="111.433947" transform="rotate(-0 248.641552 111.433947)">All transformations, residuals and hyperparameters are fitted within training partitions.</text>
-   </g>
   </g>
   <g id="axes_2">
    <g id="patch_15">
@@ -276,7 +270,7 @@ L 92.493354 202.188696
 L 92.493354 177.489834 
 L 10.547231 177.489834 
 z
-" clip-path="url(#p36406675ff)" style="fill: #eaf0f8; stroke: #0f4d92; stroke-width: 0.7; stroke-linejoin: miter"/>
+" clip-path="url(#pcc0b66af07)" style="fill: #eaf0f8; stroke: #0f4d92; stroke-width: 0.7; stroke-linejoin: miter"/>
    </g>
    <g id="patch_16">
     <path d="M 10.547231 242.222567 
@@ -284,7 +278,7 @@ L 92.493354 242.222567
 L 92.493354 213.452463 
 L 10.547231 213.452463 
 z
-" clip-path="url(#p36406675ff)" style="fill: #edf6f7; stroke: #42949e; stroke-width: 0.7; stroke-linejoin: miter"/>
+" clip-path="url(#pcc0b66af07)" style="fill: #edf6f7; stroke: #42949e; stroke-width: 0.7; stroke-linejoin: miter"/>
    </g>
    <g id="patch_17">
     <path d="M 110.867872 202.188696 
@@ -292,7 +286,7 @@ L 206.894085 202.188696
 L 206.894085 177.489834 
 L 110.867872 177.489834 
 z
-" clip-path="url(#p36406675ff)" style="fill: #eaf0f8; stroke: #0f4d92; stroke-width: 0.7; stroke-linejoin: miter"/>
+" clip-path="url(#pcc0b66af07)" style="fill: #eaf0f8; stroke: #0f4d92; stroke-width: 0.7; stroke-linejoin: miter"/>
    </g>
    <g id="patch_18">
     <path d="M 110.867872 242.222567 
@@ -300,7 +294,7 @@ L 206.894085 242.222567
 L 206.894085 213.452463 
 L 110.867872 213.452463 
 z
-" clip-path="url(#p36406675ff)" style="fill: #edf6f7; stroke: #42949e; stroke-width: 0.7; stroke-linejoin: miter"/>
+" clip-path="url(#pcc0b66af07)" style="fill: #edf6f7; stroke: #42949e; stroke-width: 0.7; stroke-linejoin: miter"/>
    </g>
    <g id="patch_19">
     <path d="M 227.028614 202.188696 
@@ -308,7 +302,7 @@ L 323.054828 202.188696
 L 323.054828 177.489834 
 L 227.028614 177.489834 
 z
-" clip-path="url(#p36406675ff)" style="fill: #eaf0f8; stroke: #0f4d92; stroke-width: 0.7; stroke-linejoin: miter"/>
+" clip-path="url(#pcc0b66af07)" style="fill: #eaf0f8; stroke: #0f4d92; stroke-width: 0.7; stroke-linejoin: miter"/>
    </g>
    <g id="patch_20">
     <path d="M 227.028614 242.222567 
@@ -316,67 +310,67 @@ L 323.054828 242.222567
 L 323.054828 213.452463 
 L 227.028614 213.452463 
 z
-" clip-path="url(#p36406675ff)" style="fill: #edf6f7; stroke: #42949e; stroke-width: 0.7; stroke-linejoin: miter"/>
+" clip-path="url(#pcc0b66af07)" style="fill: #edf6f7; stroke: #42949e; stroke-width: 0.7; stroke-linejoin: miter"/>
    </g>
    <g id="patch_21">
     <path d="M 93.9999 189.839265 
 Q 101.181988 189.839265 107.581453 189.839265 
-" clip-path="url(#p36406675ff)" style="fill: none; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#pcc0b66af07)" style="fill: none; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
     <path d="M 104.579484 188.338281 
 L 107.581453 189.839265 
 L 104.579484 191.340249 
 z
-" clip-path="url(#p36406675ff)" style="fill: #0f4d92; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#pcc0b66af07)" style="fill: #0f4d92; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
    </g>
    <g id="patch_22">
     <path d="M 208.399342 189.839265 
 Q 216.459465 189.839265 223.736964 189.839265 
-" clip-path="url(#p36406675ff)" style="fill: none; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#pcc0b66af07)" style="fill: none; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
     <path d="M 220.734995 188.338281 
 L 223.736964 189.839265 
 L 220.734995 191.340249 
 z
-" clip-path="url(#p36406675ff)" style="fill: #0f4d92; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#pcc0b66af07)" style="fill: #0f4d92; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
    </g>
    <g id="patch_23">
     <path d="M 324.447935 190.501426 
 Q 346.729149 198.324566 368.271932 205.888436 
-" clip-path="url(#p36406675ff)" style="fill: none; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#pcc0b66af07)" style="fill: none; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
     <path d="M 365.93673 203.47771 
 L 368.271932 205.888436 
 L 364.94223 206.310162 
 z
-" clip-path="url(#p36406675ff)" style="fill: #0f4d92; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#pcc0b66af07)" style="fill: #0f4d92; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
    </g>
    <g id="patch_24">
     <path d="M 93.9999 227.837515 
 Q 101.181988 227.837515 107.581453 227.837515 
-" clip-path="url(#p36406675ff)" style="fill: none; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#pcc0b66af07)" style="fill: none; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
     <path d="M 104.579484 226.336531 
 L 107.581453 227.837515 
 L 104.579484 229.3385 
 z
-" clip-path="url(#p36406675ff)" style="fill: #42949e; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#pcc0b66af07)" style="fill: #42949e; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
    </g>
    <g id="patch_25">
     <path d="M 208.399342 227.837515 
 Q 216.459465 227.837515 223.736964 227.837515 
-" clip-path="url(#p36406675ff)" style="fill: none; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#pcc0b66af07)" style="fill: none; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
     <path d="M 220.734995 226.336531 
 L 223.736964 227.837515 
 L 220.734995 229.3385 
 z
-" clip-path="url(#p36406675ff)" style="fill: #42949e; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#pcc0b66af07)" style="fill: #42949e; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
    </g>
    <g id="patch_26">
     <path d="M 324.405826 227.063203 
 Q 346.741579 217.68321 368.355756 208.606245 
-" clip-path="url(#p36406675ff)" style="fill: none; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#pcc0b66af07)" style="fill: none; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
     <path d="M 365.006774 208.384694 
 L 368.355756 208.606245 
 L 366.169126 211.1525 
 z
-" clip-path="url(#p36406675ff)" style="fill: #42949e; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#pcc0b66af07)" style="fill: #42949e; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
    </g>
    <g id="patch_27">
     <path d="M 373.109548 223.562712 
@@ -384,57 +378,54 @@ L 486.735874 223.562712
 L 486.735874 190.382097 
 L 373.109548 190.382097 
 z
-" clip-path="url(#p36406675ff)" style="fill: #ddf3de; stroke: #0f4d92; stroke-width: 0.7; stroke-linejoin: miter"/>
+" clip-path="url(#pcc0b66af07)" style="fill: #ddf3de; stroke: #0f4d92; stroke-width: 0.7; stroke-linejoin: miter"/>
    </g>
-   <g id="text_19">
+   <g id="text_17">
     <text style="font-weight: 700; font-size: 7px; font-family: 'Helvetica'; text-anchor: start; fill: #272727" x="5.76" y="155.233716" transform="rotate(-0 5.76 155.233716)">b</text>
    </g>
-   <g id="text_20">
+   <g id="text_18">
     <text style="font-size: 7px; font-family: 'Helvetica'; text-anchor: start; fill: #272727" x="21.600101" y="154.215906" transform="rotate(-0 21.600101 154.215906)">Blood–skin prediction-level fusion</text>
    </g>
-   <g id="text_21">
-    <text style="font-size: 6.003937px; font-family: 'Helvetica'; text-anchor: start; fill: #767676" x="21.600101" y="164.394008" transform="rotate(-0 21.600101 164.394008)">Fitted component models; joint accuracy requires paired test specimens</text>
-   </g>
-   <g id="text_22">
+   <g id="text_19">
     <text style="font-weight: 700; font-size: 7px; font-family: 'Helvetica'; text-anchor: middle; fill: #272727" x="51.520292" y="187.673357" transform="rotate(-0 51.520292 187.673357)">Blood methylation</text>
    </g>
-   <g id="text_23">
+   <g id="text_20">
     <text style="font-size: 5.753773px; font-family: 'Helvetica'; text-anchor: middle; fill: #767676" x="51.520292" y="196.34679" transform="rotate(-0 51.520292 196.34679)">27,578 measured CpGs</text>
    </g>
-   <g id="text_24">
+   <g id="text_21">
     <text style="font-weight: 700; font-size: 7px; font-family: 'Helvetica'; text-anchor: middle; fill: #272727" x="51.520292" y="225.138364" transform="rotate(-0 51.520292 225.138364)">Skin microbiome</text>
    </g>
-   <g id="text_25">
+   <g id="text_22">
     <text style="font-size: 5.753773px; font-family: 'Helvetica'; text-anchor: middle; fill: #767676" x="51.520292" y="235.200001" transform="rotate(-0 51.520292 235.200001)">7,311 input ASVs</text>
    </g>
-   <g id="text_26">
+   <g id="text_23">
     <text style="font-weight: 700; font-size: 7px; font-family: 'Helvetica'; text-anchor: middle; fill: #272727" x="158.880979" y="187.664607" transform="rotate(-0 158.880979 187.664607)">CpG preprocessing</text>
    </g>
-   <g id="text_27">
+   <g id="text_24">
     <text style="font-size: 5.753773px; font-family: 'Helvetica'; text-anchor: middle; fill: #767676" x="158.880979" y="196.290601" transform="rotate(-0 158.880979 196.290601)">Impute  /  select  /  scale</text>
    </g>
-   <g id="text_28">
+   <g id="text_25">
     <text style="font-weight: 700; font-size: 7px; font-family: 'Helvetica'; text-anchor: middle; fill: #272727" x="158.880979" y="224.970746" transform="rotate(-0 158.880979 224.970746)">Microbial preprocessing</text>
    </g>
-   <g id="text_29">
+   <g id="text_26">
     <text style="font-size: 5.753773px; font-family: 'Helvetica'; text-anchor: middle; fill: #767676" x="158.880979" y="235.13617" transform="rotate(-0 158.880979 235.13617)">Hellinger + prevalence filter</text>
    </g>
-   <g id="text_30">
+   <g id="text_27">
     <text style="font-weight: 700; font-size: 7px; font-family: 'Helvetica'; text-anchor: middle; fill: #272727" x="275.041721" y="187.664607" transform="rotate(-0 275.041721 187.664607)">Blood age predictor</text>
    </g>
-   <g id="text_31">
+   <g id="text_28">
     <text style="font-size: 5.753773px; font-family: 'Helvetica'; text-anchor: middle; fill: #767676" x="275.041721" y="196.30993" transform="rotate(-0 275.041721 196.30993)">Ridge / 500 CpGs / α = 100</text>
    </g>
-   <g id="text_32">
+   <g id="text_29">
     <text style="font-weight: 700; font-size: 7px; font-family: 'Helvetica'; text-anchor: middle; fill: #272727" x="275.041721" y="224.970746" transform="rotate(-0 275.041721 224.970746)">Skin age predictor</text>
    </g>
-   <g id="text_33">
+   <g id="text_30">
     <text style="font-size: 5.753773px; font-family: 'Helvetica'; text-anchor: middle; fill: #767676" x="275.041721" y="235.715143" transform="rotate(-0 275.041721 235.715143)">Random forest / 160 trees</text>
    </g>
-   <g id="text_34">
+   <g id="text_31">
     <text style="font-weight: 700; font-size: 7px; font-family: 'Helvetica'; text-anchor: middle; fill: #272727" x="429.922711" y="203.523466" transform="rotate(-0 429.922711 203.523466)">Late-fusion estimate</text>
    </g>
-   <g id="text_35">
+   <g id="text_32">
     <!-- $\hat{y}=0.5\hat{y}_{blood}+0.5\hat{y}_{skin}$ -->
     <g style="fill: #767676" transform="translate(403.5992 214.920366)">
      <text>
@@ -464,16 +455,13 @@ z
      </text>
     </g>
    </g>
-   <g id="text_36">
-    <text style="font-size: 5.503609px; font-family: 'Helvetica'; text-anchor: middle; fill: #767676" x="248.641552" y="254.639853" transform="rotate(-0 248.641552 254.639853)">Verified shared participant / visit IDs required at inference / equal weights specified without paired calibration.</text>
-   </g>
   </g>
  </g>
  <defs>
-  <clipPath id="p29c91204c1">
+  <clipPath id="pb8fa14a70e">
    <rect x="5.76" y="6.938759" width="492.80315" height="106.870079"/>
   </clipPath>
-  <clipPath id="p36406675ff">
+  <clipPath id="pcc0b66af07">
    <rect x="5.76" y="150.144664" width="492.80315" height="106.870079"/>
   </clipPath>
  </defs>

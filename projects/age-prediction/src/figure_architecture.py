@@ -24,7 +24,6 @@ def label(a,letter,title,subtitle):
  a.set(xlim=(0,14),ylim=(0,3.15));a.axis('off')
  a.text(0,3.0,letter,fontweight='bold',fontsize=22,color=P['ink'])
  a.text(.45,3.03,title,fontweight='normal',fontsize=14,color=P['ink'])
- a.text(.45,2.73,subtitle,fontsize=12,color=P['muted'])
 def matrix(a,x,y,c):
  for i in range(4):
   for j in range(5):
@@ -42,7 +41,6 @@ arrow(a,(5.7,1.98),(9.7,1.98));arrow(a,(9,.86),(9.7,1.72),P['teal'])
 a.add_patch(Circle((10,1.85),.27,facecolor=P['blue'],edgecolor='white',lw=1.5));a.text(10,1.85,'+',color='white',fontsize=22,ha='center',va='center')
 arrow(a,(10.27,1.85),(10.75,1.85))
 box(a,10.8,1.39,2.85,.94,'Combined age estimate',r'$\hat{y}=\hat{y}_{metadata}+\hat{r}_{microbiome}$',fill='#EAF0F8',edge=P['blue'])
-a.text(6.9,.07,'All transformations, residuals and hyperparameters are fitted within training partitions.',ha='center',fontsize=11,color=P['muted'])
 a=axes[1];label(a,'b','Blood–skin prediction-level fusion','Fitted component models; joint accuracy requires paired test specimens')
 box(a,.15,1.63,2.3,.70,'Blood methylation','27,578 measured CpGs',fill='#EAF0F8',edge=P['blue'])
 box(a,.15,.45,2.3,.82,'Skin microbiome','7,311 input ASVs',fill='#EDF6F7',edge=P['teal'])
@@ -53,6 +51,5 @@ box(a,6.3,.45,2.7,.82,'Skin age predictor','Random forest / 160 trees',fill='#ED
 for y,c in [(1.98,P['blue']),(.86,P['teal'])]:
  arrow(a,(2.45,y),(3,y),c);arrow(a,(5.7,y),(6.3,y),c);arrow(a,(9,y),(10.40,1.47),c)
 box(a,10.45,1.0,3.2,.95,'Late-fusion estimate',r'$\hat{y}=0.5\hat{y}_{blood}+0.5\hat{y}_{skin}$',fill=P['green'],edge=P['blue'])
-a.text(6.9,.07,'Verified shared participant / visit IDs required at inference / equal weights specified without paired calibration.',ha='center',fontsize=11,color=P['muted'])
 for fmt in ['png','pdf','svg']:fig.savefig(ROOT/f'figures/architecture.{fmt}',dpi=400,bbox_inches='tight',pad_inches=.08)
 plt.close(fig)

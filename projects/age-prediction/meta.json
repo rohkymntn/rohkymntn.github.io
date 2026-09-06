@@ -4,7 +4,7 @@
   "tag": "computational biology",
   "title": "Molecular age prediction: multimodal integration and few-shot learning",
   "date": "Sep 2026",
-  "desc": "Two research iterations: blood methylation and microbial age prediction, followed by few-shot neural adaptation across external cohorts. Complete experiments, biological interpretation, model comparisons and reproducible analyses.",
+  "desc": "Evaluation of DNA-methylation and microbial age predictors, residual multimodal integration and few-shot adaptation across external cohorts.",
   "tech": [
     "DNA methylation",
     "microbiome",
@@ -12,6 +12,6 @@
     "PyTorch"
   ],
   "hero": "projects/age-prediction/figures/design-review/iteration1_integration.svg",
-  "heroCaption": "Iteration 1: microbial integration, repeated validation and source-study effects. Iteration 2 extends the project to few-shot epigenetic age prediction.",
+  "heroCaption": "Participant-held-out evaluation of microbial integration, repeated-validation stability and source-study heterogeneity.",
   "url": "/#age-prediction"
 }

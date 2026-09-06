@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-09-05T17:56:42.509117</dc:date>
+    <dc:date>2026-09-05T22:52:29.919003</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -35,7 +35,7 @@ L 72.672418 72.250016
 L 72.672418 46.287071 
 L 10.645917 46.287071 
 z
-" clip-path="url(#p8a0ce293b4)" style="fill: #eaf0f8; stroke: #cfcece; stroke-width: 0.617548; stroke-linejoin: miter"/>
+" clip-path="url(#p9a19c07e4a)" style="fill: #eaf0f8; stroke: #cfcece; stroke-width: 0.617548; stroke-linejoin: miter"/>
    </g>
    <g id="patch_3">
     <path d="M 92.48644 72.250016 
@@ -43,17 +43,17 @@ L 186.100512 72.250016
 L 186.100512 46.287071 
 L 92.48644 46.287071 
 z
-" clip-path="url(#p8a0ce293b4)" style="fill: #eaf0f8; stroke: #cfcece; stroke-width: 0.617548; stroke-linejoin: miter"/>
+" clip-path="url(#p9a19c07e4a)" style="fill: #eaf0f8; stroke: #cfcece; stroke-width: 0.617548; stroke-linejoin: miter"/>
    </g>
    <g id="patch_4">
     <path d="M 74.810658 59.411197 
 Q 82.081192 59.411197 88.569103 59.411197 
-" clip-path="url(#p8a0ce293b4)" style="fill: none; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#p9a19c07e4a)" style="fill: none; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
     <path d="M 85.481364 57.867327 
 L 88.569103 59.411197 
 L 85.481364 60.955066 
 z
-" clip-path="url(#p8a0ce293b4)" style="fill: #0f4d92; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#p9a19c07e4a)" style="fill: #0f4d92; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
    </g>
    <g id="patch_5">
     <path d="M 10.645917 119.325685 
@@ -61,7 +61,7 @@ L 72.672418 119.325685
 L 72.672418 93.36274 
 L 10.645917 93.36274 
 z
-" clip-path="url(#p8a0ce293b4)" style="fill: #edf6f7; stroke: #cfcece; stroke-width: 0.617548; stroke-linejoin: miter"/>
+" clip-path="url(#p9a19c07e4a)" style="fill: #edf6f7; stroke: #cfcece; stroke-width: 0.617548; stroke-linejoin: miter"/>
    </g>
    <g id="patch_6">
     <path d="M 92.48644 119.325685 
@@ -69,17 +69,17 @@ L 186.100512 119.325685
 L 186.100512 93.36274 
 L 92.48644 93.36274 
 z
-" clip-path="url(#p8a0ce293b4)" style="fill: #edf6f7; stroke: #cfcece; stroke-width: 0.617548; stroke-linejoin: miter"/>
+" clip-path="url(#p9a19c07e4a)" style="fill: #edf6f7; stroke: #cfcece; stroke-width: 0.617548; stroke-linejoin: miter"/>
    </g>
    <g id="patch_7">
     <path d="M 74.810658 106.486866 
 Q 82.081192 106.486866 88.569103 106.486866 
-" clip-path="url(#p8a0ce293b4)" style="fill: none; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#p9a19c07e4a)" style="fill: none; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
     <path d="M 85.481364 104.942997 
 L 88.569103 106.486866 
 L 85.481364 108.030736 
 z
-" clip-path="url(#p8a0ce293b4)" style="fill: #42949e; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#p9a19c07e4a)" style="fill: #42949e; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
    </g>
    <g id="patch_8">
     <path d="M 204.478735 119.325685 
@@ -87,17 +87,17 @@ L 292.349612 119.325685
 L 292.349612 93.36274 
 L 204.478735 93.36274 
 z
-" clip-path="url(#p8a0ce293b4)" style="fill: #ddf3de; stroke: #cfcece; stroke-width: 0.617548; stroke-linejoin: miter"/>
+" clip-path="url(#p9a19c07e4a)" style="fill: #ddf3de; stroke: #cfcece; stroke-width: 0.617548; stroke-linejoin: miter"/>
    </g>
    <g id="patch_9">
     <path d="M 188.237524 106.486866 
 Q 194.790911 106.486866 200.561673 106.486866 
-" clip-path="url(#p8a0ce293b4)" style="fill: none; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#p9a19c07e4a)" style="fill: none; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
     <path d="M 197.473934 104.942997 
 L 200.561673 106.486866 
 L 197.473934 108.030736 
 z
-" clip-path="url(#p8a0ce293b4)" style="fill: #42949e; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#p9a19c07e4a)" style="fill: #42949e; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
    </g>
    <g id="patch_10">
     <path d="M 311.589314 65.97326 
@@ -110,27 +110,27 @@ C 305.68055 56.001681 304.98464 57.670917 304.98464 59.411197
 C 304.98464 61.151476 305.68055 62.820713 306.919104 64.051276 
 C 308.157658 65.281839 309.837734 65.97326 311.589314 65.97326 
 z
-" clip-path="url(#p8a0ce293b4)" style="fill: #0f4d92"/>
+" clip-path="url(#p9a19c07e4a)" style="fill: #0f4d92"/>
    </g>
    <g id="patch_11">
     <path d="M 188.239251 59.411197 
 Q 244.611441 59.411197 300.201007 59.411197 
-" clip-path="url(#p8a0ce293b4)" style="fill: none; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#p9a19c07e4a)" style="fill: none; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
     <path d="M 297.113268 57.867327 
 L 300.201007 59.411197 
 L 297.113268 60.955066 
 z
-" clip-path="url(#p8a0ce293b4)" style="fill: #0f4d92; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#p9a19c07e4a)" style="fill: #0f4d92; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
    </g>
    <g id="patch_12">
     <path d="M 292.675401 103.734447 
 Q 299.90443 86.975536 306.82348 70.935243 
-" clip-path="url(#p8a0ce293b4)" style="fill: none; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#p9a19c07e4a)" style="fill: none; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
     <path d="M 304.18289 73.158967 
 L 306.82348 70.935243 
 L 307.018105 74.38195 
 z
-" clip-path="url(#p8a0ce293b4)" style="fill: #42949e; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#p9a19c07e4a)" style="fill: #42949e; stroke: #42949e; stroke-width: 0.7; stroke-linecap: round"/>
    </g>
    <g id="patch_13">
     <path d="M 327.957418 72.250016 
@@ -138,46 +138,43 @@ L 402.906108 72.250016
 L 402.906108 46.287071 
 L 327.957418 46.287071 
 z
-" clip-path="url(#p8a0ce293b4)" style="fill: #eaf0f8; stroke: #cfcece; stroke-width: 0.617548; stroke-linejoin: miter"/>
+" clip-path="url(#p9a19c07e4a)" style="fill: #eaf0f8; stroke: #cfcece; stroke-width: 0.617548; stroke-linejoin: miter"/>
    </g>
    <g id="patch_14">
     <path d="M 321.195213 59.411197 
 Q 323.006211 59.411197 324.034584 59.411197 
-" clip-path="url(#p8a0ce293b4)" style="fill: none; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#p9a19c07e4a)" style="fill: none; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
     <path d="M 320.946845 57.867327 
 L 324.034584 59.411197 
 L 320.946845 60.955066 
 z
-" clip-path="url(#p8a0ce293b4)" style="fill: #0f4d92; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
+" clip-path="url(#p9a19c07e4a)" style="fill: #0f4d92; stroke: #0f4d92; stroke-width: 0.7; stroke-linecap: round"/>
    </g>
    <g id="text_1">
     <text style="font-size: 7px; font-family: 'Helvetica'; text-anchor: start" x="10.071597" y="18.041669" transform="rotate(-0 10.071597 18.041669)">Clock-preserving microbial residual fusion</text>
    </g>
    <g id="text_2">
-    <text style="font-size: 5.660855px; font-family: 'Helvetica'; text-anchor: start; fill: #666666" x="10.071597" y="30.024567" transform="rotate(-0 10.071597 30.024567)">Calibration and correction strength selected by inner validation; accuracy assessed in outer participant folds.</text>
-   </g>
-   <g id="text_3">
     <text style="font-weight: 700; font-size: 5.660855px; font-family: 'Helvetica'; text-anchor: middle" x="41.659168" y="56.074371" transform="rotate(-0 41.659168 56.074371)">Methylation clock</text>
    </g>
-   <g id="text_4">
+   <g id="text_3">
     <text style="font-size: 5.5px; font-family: 'Helvetica'; text-anchor: middle; fill: #666666" x="41.659168" y="66.427246" transform="rotate(-0 41.659168 66.427246)">Released Horvath score</text>
    </g>
-   <g id="text_5">
+   <g id="text_4">
     <text style="font-weight: 700; font-size: 5.660855px; font-family: 'Helvetica'; text-anchor: middle" x="139.293476" y="56.202845" transform="rotate(-0 139.293476 56.202845)">Clock calibration</text>
    </g>
-   <g id="text_6">
+   <g id="text_5">
     <text style="font-size: 5.5px; font-family: 'Helvetica'; text-anchor: middle; fill: #666666" x="139.293476" y="66.286094" transform="rotate(-0 139.293476 66.286094)">OLS / Huber / median regression</text>
    </g>
-   <g id="text_7">
+   <g id="text_6">
     <text style="font-weight: 700; font-size: 5.660855px; font-family: 'Helvetica'; text-anchor: middle" x="41.659168" y="103.142964" transform="rotate(-0 41.659168 103.142964)">Gut genera</text>
    </g>
-   <g id="text_8">
+   <g id="text_7">
     <text style="font-size: 5.5px; font-family: 'Helvetica'; text-anchor: middle; fill: #666666" x="41.659168" y="113.361763" transform="rotate(-0 41.659168 113.361763)">Hellinger representation</text>
    </g>
-   <g id="text_9">
+   <g id="text_8">
     <text style="font-weight: 700; font-size: 5.660855px; font-family: 'Helvetica'; text-anchor: middle" x="139.293476" y="103.142964" transform="rotate(-0 139.293476 103.142964)">Clock orthogonalization</text>
    </g>
-   <g id="text_10">
+   <g id="text_9">
     <!-- $H_{\perp}=H-\widehat{E}_{linear}[H\mid c]$ -->
     <g style="fill: #666666" transform="translate(115.010976 113.915201)">
      <text>
@@ -202,19 +199,19 @@ z
      </text>
     </g>
    </g>
-   <g id="text_11">
+   <g id="text_10">
     <text style="font-weight: 700; font-size: 5.660855px; font-family: 'Helvetica'; text-anchor: middle" x="248.414173" y="103.142964" transform="rotate(-0 248.414173 103.142964)">Residual kernel ridge</text>
    </g>
-   <g id="text_12">
+   <g id="text_11">
     <text style="font-size: 5.5px; font-family: 'Helvetica'; text-anchor: middle; fill: #666666" x="248.414173" y="113.361763" transform="rotate(-0 248.414173 113.361763)">Linear / RBF / α / strength s</text>
    </g>
-   <g id="text_13">
+   <g id="text_12">
     <text style="font-size: 7px; font-family: 'Helvetica'; text-anchor: middle; fill: #ffffff" x="311.589314" y="61.44147" transform="rotate(-0 311.589314 61.44147)">+</text>
    </g>
-   <g id="text_14">
+   <g id="text_13">
     <text style="font-weight: 700; font-size: 5.660855px; font-family: 'Helvetica'; text-anchor: middle" x="365.431763" y="56.067294" transform="rotate(-0 365.431763 56.067294)">Predicted age</text>
    </g>
-   <g id="text_15">
+   <g id="text_14">
     <!-- $\hat y=f(c)+s\,g(H_{\perp})$ -->
     <g style="fill: #666666" transform="translate(345.631763 66.372031)">
      <text>
@@ -235,7 +232,7 @@ z
      </text>
     </g>
    </g>
-   <g id="text_16">
+   <g id="text_15">
     <!-- Training target: $y-f(c)$ -->
     <g style="fill: #42949e" transform="translate(211.863062 77.385543)">
      <text>
@@ -265,13 +262,10 @@ z
      </text>
     </g>
    </g>
-   <g id="text_17">
-    <text style="font-size: 5.660855px; font-family: 'Helvetica'; text-anchor: middle; fill: #666666" x="208.211811" y="138.44126" transform="rotate(-0 208.211811 138.44126)">Clock-only fallback: s = 0  /  All fitted transformations remain inside training folds.</text>
-   </g>
   </g>
  </g>
  <defs>
-  <clipPath id="p8a0ce293b4">
+  <clipPath id="p9a19c07e4a">
    <rect x="7.2" y="7.2" width="402.023622" height="142.653543"/>
   </clipPath>
  </defs>
