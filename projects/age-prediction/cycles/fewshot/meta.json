@@ -1,0 +1,17 @@
+{
+  "order": 3,
+  "slug": "age-prediction",
+  "tag": "computational biology",
+  "title": "Few-shot adaptation of epigenetic age across cohorts",
+  "date": "Sep 2026",
+  "desc": "Episodic neural adaptation evaluated on 588 external query participants with 8\u201332 labelled examples. Includes classical baselines, paired uncertainty, assay-shift diagnostics and complete ablations.",
+  "tech": [
+    "meta-learning",
+    "DNA methylation",
+    "PyTorch",
+    "few-shot adaptation"
+  ],
+  "hero": "projects/age-prediction/cycles/fewshot/figures/figure1_cohorts_architecture.png",
+  "heroCaption": "Independent source training, small labelled support sets, and locked external query cohorts.",
+  "url": "/#age-prediction"
+}

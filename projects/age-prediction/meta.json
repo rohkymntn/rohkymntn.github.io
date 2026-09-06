@@ -2,17 +2,16 @@
   "order": 3,
   "slug": "age-prediction",
   "tag": "computational biology",
-  "title": "Integration of blood methylation and skin microbiome data for age prediction",
+  "title": "Few-shot adaptation of epigenetic age across cohorts",
   "date": "Sep 2026",
-  "desc": "Microbiome–metadata integration reduced age-prediction MAE by 10.0% versus metadata alone across three repeated nested validations. Includes paired uncertainty estimates, study-specific effects, and a separately implemented blood–skin late-fusion architecture.",
+  "desc": "Episodic neural adaptation evaluated on 588 external query participants with 8\u201332 labelled examples. Includes classical baselines, paired uncertainty, assay-shift diagnostics and complete ablations.",
   "tech": [
+    "meta-learning",
     "DNA methylation",
-    "skin microbiome",
-    "late fusion",
-    "scikit-learn",
-    "Modal"
+    "PyTorch",
+    "few-shot adaptation"
   ],
-  "hero": "projects/age-prediction/figures/fig4_metadata_microbiome_integration.png",
-  "heroCaption": "Repeated nested validation: 9.71-year metadata MAE versus 8.74 years for microbiome–metadata integration; conditional intervals and source-study effects.",
+  "hero": "projects/age-prediction/cycles/fewshot/figures/figure1_cohorts_architecture.png",
+  "heroCaption": "Independent source training, small labelled support sets, and locked external query cohorts.",
   "url": "/#age-prediction"
 }

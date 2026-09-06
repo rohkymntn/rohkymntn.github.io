@@ -1,0 +1,18 @@
+{
+  "cohort": "GSE40279",
+  "deposited_samples": 656,
+  "retained_samples": 656,
+  "unique_participants": 656,
+  "technical_replicates_collapsed": 0,
+  "source_selected_features": 1024,
+  "observed_selected_features": 834,
+  "structurally_absent_features": 190,
+  "support_pool": 128,
+  "query_participants": 528,
+  "age_range": [
+    19.0,
+    101.0
+  ],
+  "raw_sha256": "1f6ef8b5ce08f9a5f1c09b047b36d1f3342757b6e8e19dce0398581bb76807eb",
+  "eligibility": "Adult with numeric age and <=1% missingness among observed selected probes; structural platform absence is source-median imputed. Fixed random split does not stratify on age."
+}

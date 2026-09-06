@@ -1,0 +1,22 @@
+{
+  "blood": {
+    "raw_min": 0.0027406089939177036,
+    "raw_max": 0.9940497279167175,
+    "scale": "beta"
+  },
+  "external": {
+    "raw_min": 0.0,
+    "raw_max": 0.9897487163543701,
+    "scale": "beta"
+  },
+  "GSE40279": {
+    "standardized_clip_fraction": 0.0031589415015243903,
+    "post_conversion_scale": "beta",
+    "note": "original beta values"
+  },
+  "GSE37008": {
+    "standardized_clip_fraction": 0.000626273777173913,
+    "post_conversion_scale": "beta",
+    "note": "PBMC conversion corrected before the replacement evaluation"
+  }
+}

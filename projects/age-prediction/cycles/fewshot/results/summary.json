@@ -1,0 +1,28 @@
+{
+  "primary_endpoint": "16-shot conditional MAE reduction, selected classical baseline minus augmented neural meta-adapter",
+  "primary_results": [
+    {
+      "cohort": "GSE37008",
+      "baseline": "selected_baseline",
+      "mae_reduction": 0.3835108189530525,
+      "low": 0.21111385622935783,
+      "high": 0.5733112295601027,
+      "conditional_p": 9.999000099990002e-05,
+      "primary": true,
+      "holm_p": 0.00019998000199980003
+    },
+    {
+      "cohort": "GSE40279",
+      "baseline": "selected_baseline",
+      "mae_reduction": 0.3261905507335028,
+      "low": 0.1849997867884791,
+      "high": 0.47188327108613515,
+      "conditional_p": 9.999000099990002e-05,
+      "primary": true,
+      "holm_p": 0.00019998000199980003
+    }
+  ],
+  "replication_criterion_met": true,
+  "total_locked_query_participants": 588,
+  "limitations": "Conditional participant-level bootstrap and sign-flip tests average errors across 20 overlapping support draws. They do not capture retraining uncertainty, uncertainty from choosing the support pool, or independent-cohort population inference. The 32-shot PBMC experiments reuse the entire 32-person pool; only CV partition assignment varies. Source datasets were previously studied, but external query cohorts were not used for model design or tuning."
+}

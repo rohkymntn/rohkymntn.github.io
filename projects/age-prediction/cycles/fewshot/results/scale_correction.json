@@ -1,0 +1,9 @@
+{
+  "timestamp_utc": "2026-09-05T23:59:15.574224+00:00",
+  "reason": "GSE37008 processed values are M-values, not beta values. Direct use led to 71.1% clipping. Inverse-logit2 conversion now occurs before source scaling.",
+  "reference": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM908383",
+  "conversion": "beta=1/(1+2**(-M)); standard lumi m2beta transformation; intensity-offset conventions may introduce residual assay differences.",
+  "unchanged": "Neural weights, source preprocessing, support/query IDs, baseline family, hyperparameter grids, statistical contrasts.",
+  "invalidated": "All previous GSE37008 metrics and two-cohort inference are withdrawn. Whole-blood primary metrics are unchanged.",
+  "prepare_targets_sha256": "f3be4190aea797096cb7197341eedec7254b56f3004ec2388c76e7d611860f6d"
+}

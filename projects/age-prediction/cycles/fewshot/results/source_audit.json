@@ -1,0 +1,15 @@
+{
+  "total_source": 634,
+  "source_training": 542,
+  "source_validation": 92,
+  "validation_domain": "discovery:PLATE H",
+  "features": 1024,
+  "alpha": 10.0,
+  "development_cv_mae": {
+    "10.0": 5.25737615353067,
+    "100.0": 5.272274186250469,
+    "1000.0": 6.604531787858238
+  },
+  "note": "Feature selection/scaling use source training only. Alpha CV occurs within these source-selected features; external evaluation remains independent, but these development CV numbers are not unbiased performance estimates.",
+  "source_features_sha256": "e18925213534a98a11655fd808b42cbb37a50b84bdfede5fa4b6ca8519ed3191"
+}

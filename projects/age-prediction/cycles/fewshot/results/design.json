@@ -1,0 +1,37 @@
+{
+  "recorded_utc": "2026-09-05T23:33:49.024826+00:00",
+  "objective": "Evaluate few-shot domain adaptation against strong support-tuned baselines in two new external cohorts.",
+  "external_cohorts": [
+    "GSE40279",
+    "GSE37008"
+  ],
+  "source_cohorts": [
+    "GSE41037",
+    "GSE19711"
+  ],
+  "support_sizes": [
+    8,
+    16,
+    32
+  ],
+  "support_draws": 20,
+  "primary": "16-shot augmented meta-adapter minus support-CV-selected classical baseline MAE, separately in each external cohort; require positive improvement in both for replication.",
+  "split": "Fixed random support pool: 128 participants in GSE40279, 32 in GSE37008. All remaining eligible participants are fixed query sets. Query labels never enter fitting, tuning, checkpoint choice or support sampling. Collapse technical replicates by source title; no age-based exclusions beyond adults.",
+  "baselines": [
+    "source ridge unchanged",
+    "support median",
+    "support affine source calibration",
+    "support-only ridge",
+    "linear source residual ridge",
+    "RBF source residual kernel"
+  ],
+  "baseline_tuning": "4-fold CV exclusively within each support set; choose strongest classical method there, not by query performance.",
+  "model": "1024 source-age-selected CpGs; MLP 1024-128-32 with LayerNorm/GELU; differentiable ridge on source-clock residuals, learned regularization and clock-coordinate scaling. 2000 source-domain episodes, three seeds, with/without task-level feature shifts/scales/dropout. Best checkpoint chosen by 12 fixed 16-shot episodes in source-validation plate.",
+  "inference": "Participant bootstrap over query losses averaged across support draws; support-draw sensitivity reported separately. Holm adjustment across two primary external-cohort contrasts. Conditional inference, not proof of population-wide effect or independent support draws.",
+  "code_sha256": {
+    "meta_model.py": "c6b80716b7dd4fdbec2136addaa94e76afe3a3bfb34fc1595a4ec8c2ecaf72ce",
+    "prepare_source.py": "7e0e16411d4bcbd8ea911549bf5be094452aee622be5fe92bf305de596cb90ab",
+    "modal_train.py": "9640bcdb8e807aa240596b2555f6fa8e658e6804c9e78508bec815c40a80f159"
+  },
+  "novelty": "Differentiable ridge meta-learning and epigenetic transfer learning have prior art; this is a candidate adaptation experiment, not an established novel method."
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "seed": 41,
+    "augmentation": 0,
+    "max_cached_inference_difference": 3.7503388341519894e-06
+  },
+  {
+    "seed": 42,
+    "augmentation": 0,
+    "max_cached_inference_difference": 2.5560656524703518e-06
+  },
+  {
+    "seed": 43,
+    "augmentation": 0,
+    "max_cached_inference_difference": 2.171848635157403e-06
+  },
+  {
+    "seed": 41,
+    "augmentation": 1,
+    "max_cached_inference_difference": 3.6906950384718584e-06
+  },
+  {
+    "seed": 42,
+    "augmentation": 1,
+    "max_cached_inference_difference": 3.390469970554477e-06
+  },
+  {
+    "seed": 43,
+    "augmentation": 1,
+    "max_cached_inference_difference": 2.5321889580709467e-06
+  }
+]

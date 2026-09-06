@@ -1,0 +1,635 @@
+sample_id,age,group,partition
+GSM1007141,47.0,discovery:PLATE A,source_train
+GSM1007142,23.0,discovery:PLATE A,source_train
+GSM1007144,31.0,discovery:PLATE A,source_train
+GSM1007145,28.0,discovery:PLATE A,source_train
+GSM1007146,39.0,discovery:PLATE A,source_train
+GSM1007148,22.0,discovery:PLATE A,source_train
+GSM1007149,23.0,discovery:PLATE A,source_train
+GSM1007150,21.0,discovery:PLATE A,source_train
+GSM1007151,41.0,discovery:PLATE A,source_train
+GSM1007152,35.0,discovery:PLATE A,source_train
+GSM1007153,34.0,discovery:PLATE A,source_train
+GSM1007154,49.0,discovery:PLATE A,source_train
+GSM1007155,22.0,discovery:PLATE A,source_train
+GSM1007156,43.0,discovery:PLATE A,source_train
+GSM1007157,24.0,discovery:PLATE A,source_train
+GSM1007159,18.0,discovery:PLATE A,source_train
+GSM1007160,44.0,discovery:PLATE A,source_train
+GSM1007161,46.0,discovery:PLATE A,source_train
+GSM1007162,30.0,discovery:PLATE A,source_train
+GSM1007163,25.0,discovery:PLATE A,source_train
+GSM1007165,21.0,discovery:PLATE A,source_train
+GSM1007166,33.0,discovery:PLATE A,source_train
+GSM1007167,47.0,discovery:PLATE A,source_train
+GSM1007168,34.0,discovery:PLATE A,source_train
+GSM1007169,34.0,discovery:PLATE A,source_train
+GSM1007170,25.0,discovery:PLATE A,source_train
+GSM1007172,25.0,discovery:PLATE A,source_train
+GSM1007174,27.0,discovery:PLATE A,source_train
+GSM1007176,21.0,discovery:PLATE A,source_train
+GSM1007189,22.0,discovery:PLATE B,source_train
+GSM1007190,21.0,discovery:PLATE B,source_train
+GSM1007191,43.0,discovery:PLATE B,source_train
+GSM1007192,27.0,discovery:PLATE B,source_train
+GSM1007193,20.0,discovery:PLATE B,source_train
+GSM1007194,24.0,discovery:PLATE B,source_train
+GSM1007195,39.0,discovery:PLATE B,source_train
+GSM1007196,25.0,discovery:PLATE B,source_train
+GSM1007197,19.0,discovery:PLATE B,source_train
+GSM1007198,22.0,discovery:PLATE B,source_train
+GSM1007199,19.0,discovery:PLATE B,source_train
+GSM1007200,23.0,discovery:PLATE B,source_train
+GSM1007201,20.0,discovery:PLATE C,source_train
+GSM1007202,34.0,discovery:PLATE C,source_train
+GSM1007203,18.0,discovery:PLATE C,source_train
+GSM1007204,22.0,discovery:PLATE C,source_train
+GSM1007205,32.0,discovery:PLATE C,source_train
+GSM1007206,19.0,discovery:PLATE C,source_train
+GSM1007207,25.0,discovery:PLATE C,source_train
+GSM1007208,40.0,discovery:PLATE C,source_train
+GSM1007209,33.0,discovery:PLATE C,source_train
+GSM1007210,37.0,discovery:PLATE C,source_train
+GSM1007211,20.0,discovery:PLATE C,source_train
+GSM1007212,29.0,discovery:PLATE C,source_train
+GSM1007261,45.0,discovery:PLATE B,source_train
+GSM1007262,26.0,discovery:PLATE B,source_train
+GSM1007263,20.0,discovery:PLATE B,source_train
+GSM1007265,46.0,discovery:PLATE B,source_train
+GSM1007266,27.0,discovery:PLATE B,source_train
+GSM1007267,43.0,discovery:PLATE B,source_train
+GSM1007268,49.0,discovery:PLATE B,source_train
+GSM1007269,25.0,discovery:PLATE B,source_train
+GSM1007271,19.0,discovery:PLATE B,source_train
+GSM1007272,24.0,discovery:PLATE B,source_train
+GSM1007285,19.0,discovery:PLATE C,source_train
+GSM1007286,34.0,discovery:PLATE C,source_train
+GSM1007287,47.0,discovery:PLATE C,source_train
+GSM1007288,23.0,discovery:PLATE C,source_train
+GSM1007289,20.0,discovery:PLATE C,source_train
+GSM1007290,19.0,discovery:PLATE C,source_train
+GSM1007291,35.0,discovery:PLATE C,source_train
+GSM1007292,50.0,discovery:PLATE C,source_train
+GSM1007293,22.0,discovery:PLATE C,source_train
+GSM1007294,21.0,discovery:PLATE C,source_train
+GSM1007295,45.0,discovery:PLATE C,source_train
+GSM1007296,20.0,discovery:PLATE C,source_train
+GSM1007321,18.0,discovery:PLATE C,source_train
+GSM1007322,35.0,discovery:PLATE C,source_train
+GSM1007323,19.0,discovery:PLATE C,source_train
+GSM1007324,30.0,discovery:PLATE C,source_train
+GSM1007325,45.0,discovery:PLATE C,source_train
+GSM1007326,22.0,discovery:PLATE C,source_train
+GSM1007328,39.0,discovery:PLATE C,source_train
+GSM1007329,44.0,discovery:PLATE C,source_train
+GSM1007330,44.0,discovery:PLATE C,source_train
+GSM1007331,24.0,discovery:PLATE C,source_train
+GSM1007332,45.0,discovery:PLATE C,source_train
+GSM1007333,24.0,discovery:PLATE A,source_train
+GSM1007334,36.0,discovery:PLATE A,source_train
+GSM1007335,44.0,discovery:PLATE A,source_train
+GSM1007337,23.0,discovery:PLATE A,source_train
+GSM1007338,48.0,discovery:PLATE A,source_train
+GSM1007339,23.0,discovery:PLATE A,source_train
+GSM1007340,20.0,discovery:PLATE A,source_train
+GSM1007341,27.0,discovery:PLATE A,source_train
+GSM1007342,32.0,discovery:PLATE A,source_train
+GSM1007343,31.0,discovery:PLATE A,source_train
+GSM1007344,26.0,discovery:PLATE A,source_train
+GSM1007374,45.0,discovery:PLATE B,source_train
+GSM1007381,28.0,discovery:PLATE C,source_train
+GSM1007382,31.0,discovery:PLATE C,source_train
+GSM1007383,18.0,discovery:PLATE C,source_train
+GSM1007384,37.0,discovery:PLATE C,source_train
+GSM1007385,32.0,discovery:PLATE C,source_train
+GSM1007386,22.0,discovery:PLATE C,source_train
+GSM1007387,23.0,discovery:PLATE C,source_train
+GSM1007388,32.0,discovery:PLATE C,source_train
+GSM1007389,23.0,discovery:PLATE C,source_train
+GSM1007390,27.0,discovery:PLATE C,source_train
+GSM1007391,43.0,discovery:PLATE C,source_train
+GSM1007392,34.0,discovery:PLATE C,source_train
+GSM1007405,25.0,discovery:PLATE C,source_train
+GSM1007406,20.0,discovery:PLATE C,source_train
+GSM1007407,19.0,discovery:PLATE C,source_train
+GSM1007409,22.0,discovery:PLATE C,source_train
+GSM1007410,56.0,discovery:PLATE C,source_train
+GSM1007412,25.0,discovery:PLATE C,source_train
+GSM1007414,19.0,discovery:PLATE C,source_train
+GSM1007415,19.0,discovery:PLATE C,source_train
+GSM1007416,19.0,discovery:PLATE C,source_train
+GSM1007417,22.0,discovery:PLATE C,source_train
+GSM1007418,28.0,discovery:PLATE C,source_train
+GSM1007420,26.0,discovery:PLATE C,source_train
+GSM1007421,24.0,discovery:PLATE C,source_train
+GSM1007422,41.0,discovery:PLATE C,source_train
+GSM1007423,29.0,discovery:PLATE C,source_train
+GSM1007424,39.0,discovery:PLATE C,source_train
+GSM1007426,29.0,discovery:PLATE C,source_train
+GSM1007427,21.0,discovery:PLATE C,source_train
+GSM1007428,19.0,discovery:PLATE C,source_train
+GSM1007429,40.0,discovery:PLATE B,source_train
+GSM1007430,23.0,discovery:PLATE B,source_train
+GSM1007431,50.0,discovery:PLATE B,source_train
+GSM1007432,20.0,discovery:PLATE B,source_train
+GSM1007433,39.0,discovery:PLATE B,source_train
+GSM1007436,25.0,discovery:PLATE B,source_train
+GSM1007438,23.0,discovery:PLATE B,source_train
+GSM1007439,18.0,discovery:PLATE B,source_train
+GSM1007440,37.0,discovery:PLATE B,source_train
+GSM1007441,34.0,discovery:PLATE C,source_train
+GSM1007442,19.0,discovery:PLATE C,source_train
+GSM1007443,37.0,discovery:PLATE C,source_train
+GSM1007444,27.0,discovery:PLATE C,source_train
+GSM1007445,28.0,discovery:PLATE C,source_train
+GSM1007446,43.0,discovery:PLATE C,source_train
+GSM1007447,46.0,discovery:PLATE C,source_train
+GSM1007448,29.0,discovery:PLATE C,source_train
+GSM1007449,18.0,discovery:PLATE C,source_train
+GSM1007450,36.0,discovery:PLATE C,source_train
+GSM1007451,46.0,discovery:PLATE C,source_train
+GSM1007452,27.0,discovery:PLATE C,source_train
+GSM1007466,43.0,discovery:PLATE C,source_train
+GSM1007469,44.0,discovery:PLATE C,source_train
+GSM1007470,27.0,discovery:PLATE C,source_train
+GSM1007471,21.0,discovery:PLATE C,source_train
+GSM1007472,20.0,discovery:PLATE C,source_train
+GSM1007473,26.0,discovery:PLATE C,source_train
+GSM1007474,35.0,discovery:PLATE C,source_train
+GSM1007475,35.0,discovery:PLATE C,source_train
+GSM1007476,37.0,discovery:PLATE C,source_train
+GSM1007477,42.0,discovery:PLATE B,source_train
+GSM1007478,45.0,discovery:PLATE B,source_train
+GSM1007479,29.0,discovery:PLATE B,source_train
+GSM1007480,25.0,discovery:PLATE B,source_train
+GSM1007481,50.0,discovery:PLATE B,source_train
+GSM1007482,37.0,discovery:PLATE B,source_train
+GSM1007483,24.0,discovery:PLATE B,source_train
+GSM1007484,23.0,discovery:PLATE B,source_train
+GSM1007485,21.0,discovery:PLATE B,source_train
+GSM1007486,28.0,discovery:PLATE B,source_train
+GSM1007487,33.0,discovery:PLATE B,source_train
+GSM1007488,49.0,discovery:PLATE B,source_train
+GSM1007508,26.0,discovery:PLATE D,source_train
+GSM1007513,23.0,discovery:PLATE F,source_train
+GSM1007514,33.0,discovery:PLATE F,source_train
+GSM1007515,62.0,discovery:PLATE F,source_train
+GSM1007516,61.0,discovery:PLATE F,source_train
+GSM1007517,60.0,discovery:PLATE F,source_train
+GSM1007518,21.0,discovery:PLATE F,source_train
+GSM1007519,37.0,discovery:PLATE F,source_train
+GSM1007520,26.0,discovery:PLATE F,source_train
+GSM1007522,54.0,discovery:PLATE F,source_train
+GSM1007523,61.0,discovery:PLATE F,source_train
+GSM1007524,23.0,discovery:PLATE F,source_train
+GSM1007585,29.0,discovery:PLATE F,source_train
+GSM1007586,40.0,discovery:PLATE F,source_train
+GSM1007587,26.0,discovery:PLATE F,source_train
+GSM1007588,30.0,discovery:PLATE F,source_train
+GSM1007589,21.0,discovery:PLATE F,source_train
+GSM1007590,29.0,discovery:PLATE F,source_train
+GSM1007591,63.0,discovery:PLATE F,source_train
+GSM1007593,36.0,discovery:PLATE F,source_train
+GSM1007594,21.0,discovery:PLATE F,source_train
+GSM1007595,62.0,discovery:PLATE F,source_train
+GSM1007611,29.0,discovery:PLATE G,source_train
+GSM1007613,28.0,discovery:PLATE G,source_train
+GSM1007621,30.0,discovery:PLATE F,source_train
+GSM1007622,52.0,discovery:PLATE F,source_train
+GSM1007623,30.0,discovery:PLATE F,source_train
+GSM1007624,32.0,discovery:PLATE F,source_train
+GSM1007625,22.0,discovery:PLATE F,source_train
+GSM1007626,21.0,discovery:PLATE F,source_train
+GSM1007627,32.0,discovery:PLATE F,source_train
+GSM1007628,36.0,discovery:PLATE F,source_train
+GSM1007629,26.0,discovery:PLATE F,source_train
+GSM1007630,44.0,discovery:PLATE F,source_train
+GSM1007631,21.0,discovery:PLATE F,source_train
+GSM1007632,54.0,discovery:PLATE F,source_train
+GSM1007633,29.0,discovery:PLATE F,source_train
+GSM1007634,47.0,discovery:PLATE F,source_train
+GSM1007635,20.0,discovery:PLATE F,source_train
+GSM1007636,21.0,discovery:PLATE F,source_train
+GSM1007637,50.0,discovery:PLATE F,source_train
+GSM1007639,65.0,discovery:PLATE F,source_train
+GSM1007640,23.0,discovery:PLATE F,source_train
+GSM1007641,23.0,discovery:PLATE F,source_train
+GSM1007642,49.0,discovery:PLATE F,source_train
+GSM1007643,43.0,discovery:PLATE F,source_train
+GSM1007644,33.0,discovery:PLATE F,source_train
+GSM1007648,63.0,discovery:PLATE G,source_train
+GSM1007652,43.0,discovery:PLATE G,source_train
+GSM1007654,43.0,discovery:PLATE G,source_train
+GSM1007656,50.0,discovery:PLATE G,source_train
+GSM1007657,27.0,discovery:PLATE F,source_train
+GSM1007658,55.0,discovery:PLATE F,source_train
+GSM1007659,47.0,discovery:PLATE F,source_train
+GSM1007660,38.0,discovery:PLATE F,source_train
+GSM1007661,50.0,discovery:PLATE F,source_train
+GSM1007662,34.0,discovery:PLATE F,source_train
+GSM1007663,44.0,discovery:PLATE F,source_train
+GSM1007664,63.0,discovery:PLATE F,source_train
+GSM1007665,26.0,discovery:PLATE F,source_train
+GSM1007666,25.0,discovery:PLATE F,source_train
+GSM1007667,36.0,discovery:PLATE F,source_train
+GSM1007681,50.0,discovery:PLATE F,source_train
+GSM1007682,65.0,discovery:PLATE F,source_train
+GSM1007683,34.0,discovery:PLATE F,source_train
+GSM1007684,59.0,discovery:PLATE F,source_train
+GSM1007685,38.0,discovery:PLATE F,source_train
+GSM1007686,38.0,discovery:PLATE F,source_train
+GSM1007687,51.0,discovery:PLATE F,source_train
+GSM1007688,49.0,discovery:PLATE F,source_train
+GSM1007689,32.0,discovery:PLATE F,source_train
+GSM1007690,50.0,discovery:PLATE F,source_train
+GSM1007691,42.0,discovery:PLATE F,source_train
+GSM1007692,19.0,discovery:PLATE F,source_train
+GSM1007693,22.0,discovery:PLATE F,source_train
+GSM1007694,23.0,discovery:PLATE F,source_train
+GSM1007695,51.0,discovery:PLATE F,source_train
+GSM1007696,34.0,discovery:PLATE F,source_train
+GSM1007697,39.0,discovery:PLATE F,source_train
+GSM1007698,19.0,discovery:PLATE F,source_train
+GSM1007699,29.0,discovery:PLATE F,source_train
+GSM1007700,24.0,discovery:PLATE F,source_train
+GSM1007701,28.0,discovery:PLATE F,source_train
+GSM1007702,65.0,discovery:PLATE F,source_train
+GSM1007703,24.0,discovery:PLATE F,source_train
+GSM1007741,27.0,discovery:PLATE F,source_train
+GSM1007742,54.0,discovery:PLATE F,source_train
+GSM1007743,55.0,discovery:PLATE F,source_train
+GSM1007744,51.0,discovery:PLATE F,source_train
+GSM1007745,63.0,discovery:PLATE F,source_train
+GSM1007746,36.0,discovery:PLATE F,source_train
+GSM1007747,61.0,discovery:PLATE F,source_train
+GSM1007748,43.0,discovery:PLATE F,source_train
+GSM1007749,25.0,discovery:PLATE F,source_train
+GSM1007750,64.0,discovery:PLATE F,source_train
+GSM1007751,25.0,discovery:PLATE F,source_train
+GSM1007752,64.0,discovery:PLATE F,source_train
+GSM1007753,59.0,discovery:PLATE H,source_validation
+GSM1007754,59.0,discovery:PLATE H,source_validation
+GSM1007755,68.0,discovery:PLATE H,source_validation
+GSM1007756,66.0,discovery:PLATE H,source_validation
+GSM1007757,53.0,discovery:PLATE H,source_validation
+GSM1007758,73.0,discovery:PLATE H,source_validation
+GSM1007759,69.0,discovery:PLATE H,source_validation
+GSM1007760,75.0,discovery:PLATE H,source_validation
+GSM1007761,63.0,discovery:PLATE H,source_validation
+GSM1007762,50.0,discovery:PLATE H,source_validation
+GSM1007763,72.0,discovery:PLATE H,source_validation
+GSM1007764,62.0,discovery:PLATE H,source_validation
+GSM1007765,72.0,discovery:PLATE H,source_validation
+GSM1007766,68.0,discovery:PLATE H,source_validation
+GSM1007767,64.0,discovery:PLATE H,source_validation
+GSM1007768,68.0,discovery:PLATE H,source_validation
+GSM1007769,55.0,discovery:PLATE H,source_validation
+GSM1007770,69.0,discovery:PLATE H,source_validation
+GSM1007771,59.0,discovery:PLATE H,source_validation
+GSM1007772,56.0,discovery:PLATE H,source_validation
+GSM1007773,54.0,discovery:PLATE H,source_validation
+GSM1007774,61.0,discovery:PLATE H,source_validation
+GSM1007775,67.0,discovery:PLATE H,source_validation
+GSM1007776,66.0,discovery:PLATE H,source_validation
+GSM1007777,80.0,discovery:PLATE H,source_validation
+GSM1007778,65.0,discovery:PLATE H,source_validation
+GSM1007779,62.0,discovery:PLATE H,source_validation
+GSM1007780,52.0,discovery:PLATE H,source_validation
+GSM1007781,67.0,discovery:PLATE H,source_validation
+GSM1007782,67.0,discovery:PLATE H,source_validation
+GSM1007783,63.0,discovery:PLATE H,source_validation
+GSM1007784,75.0,discovery:PLATE H,source_validation
+GSM1007785,42.0,discovery:PLATE H,source_validation
+GSM1007786,79.0,discovery:PLATE H,source_validation
+GSM1007787,62.0,discovery:PLATE H,source_validation
+GSM1007788,67.0,discovery:PLATE H,source_validation
+GSM1007789,62.0,discovery:PLATE H,source_validation
+GSM1007790,64.0,discovery:PLATE H,source_validation
+GSM1007791,81.0,discovery:PLATE H,source_validation
+GSM1007792,72.0,discovery:PLATE H,source_validation
+GSM1007794,56.0,discovery:PLATE H,source_validation
+GSM1007796,63.0,discovery:PLATE H,source_validation
+GSM1007799,56.0,discovery:PLATE H,source_validation
+GSM1007800,75.0,discovery:PLATE H,source_validation
+GSM1007801,68.0,discovery:PLATE H,source_validation
+GSM1007802,57.0,discovery:PLATE H,source_validation
+GSM1007803,73.0,discovery:PLATE H,source_validation
+GSM1007804,54.0,discovery:PLATE H,source_validation
+GSM1007805,58.0,discovery:PLATE H,source_validation
+GSM1007806,34.0,discovery:PLATE H,source_validation
+GSM1007807,66.0,discovery:PLATE H,source_validation
+GSM1007808,39.0,discovery:PLATE H,source_validation
+GSM1007809,62.0,discovery:PLATE H,source_validation
+GSM1007810,76.0,discovery:PLATE H,source_validation
+GSM1007811,74.0,discovery:PLATE H,source_validation
+GSM1007812,57.0,discovery:PLATE H,source_validation
+GSM1007813,52.0,discovery:PLATE H,source_validation
+GSM1007814,69.0,discovery:PLATE H,source_validation
+GSM1007815,54.0,discovery:PLATE H,source_validation
+GSM1007816,52.0,discovery:PLATE H,source_validation
+GSM1007817,60.0,discovery:PLATE H,source_validation
+GSM1007818,70.0,discovery:PLATE H,source_validation
+GSM1007819,56.0,discovery:PLATE H,source_validation
+GSM1007820,55.0,discovery:PLATE H,source_validation
+GSM1007821,65.0,discovery:PLATE H,source_validation
+GSM1007822,73.0,discovery:PLATE H,source_validation
+GSM1007823,56.0,discovery:PLATE H,source_validation
+GSM1007824,64.0,discovery:PLATE H,source_validation
+GSM1007825,77.0,discovery:PLATE H,source_validation
+GSM1007826,61.0,discovery:PLATE H,source_validation
+GSM1007827,64.0,discovery:PLATE H,source_validation
+GSM1007828,49.0,discovery:PLATE H,source_validation
+GSM1007829,56.0,discovery:PLATE H,source_validation
+GSM1007830,62.0,discovery:PLATE H,source_validation
+GSM1007831,69.0,discovery:PLATE H,source_validation
+GSM1007832,88.0,discovery:PLATE H,source_validation
+GSM1007833,55.0,discovery:PLATE H,source_validation
+GSM1007834,70.0,discovery:PLATE H,source_validation
+GSM1007835,63.0,discovery:PLATE H,source_validation
+GSM1007836,65.0,discovery:PLATE H,source_validation
+GSM1007837,79.0,discovery:PLATE H,source_validation
+GSM1007838,63.0,discovery:PLATE H,source_validation
+GSM1007839,54.0,discovery:PLATE H,source_validation
+GSM1007840,77.0,discovery:PLATE H,source_validation
+GSM1007841,59.0,discovery:PLATE H,source_validation
+GSM1007842,72.0,discovery:PLATE H,source_validation
+GSM1007843,76.0,discovery:PLATE H,source_validation
+GSM1007844,60.0,discovery:PLATE H,source_validation
+GSM1007845,68.0,discovery:PLATE H,source_validation
+GSM1007846,73.0,discovery:PLATE H,source_validation
+GSM1007847,73.0,discovery:PLATE H,source_validation
+GSM1007848,50.0,discovery:PLATE H,source_validation
+GSM491939,56.0,UK_control,source_train
+GSM491940,62.0,UK_control,source_train
+GSM491943,65.0,UK_control,source_train
+GSM491944,71.0,UK_control,source_train
+GSM491947,76.0,UK_control,source_train
+GSM491949,76.0,UK_control,source_train
+GSM491954,59.0,UK_control,source_train
+GSM491963,73.0,UK_control,source_train
+GSM491966,58.0,UK_control,source_train
+GSM491967,63.0,UK_control,source_train
+GSM491970,74.0,UK_control,source_train
+GSM491971,74.0,UK_control,source_train
+GSM491976,55.0,UK_control,source_train
+GSM491977,75.0,UK_control,source_train
+GSM491980,62.0,UK_control,source_train
+GSM491984,59.0,UK_control,source_train
+GSM491988,66.0,UK_control,source_train
+GSM491989,62.0,UK_control,source_train
+GSM491993,57.0,UK_control,source_train
+GSM491996,75.0,UK_control,source_train
+GSM491997,58.0,UK_control,source_train
+GSM492000,71.0,UK_control,source_train
+GSM492001,59.0,UK_control,source_train
+GSM492003,68.0,UK_control,source_train
+GSM492006,61.0,UK_control,source_train
+GSM492010,58.0,UK_control,source_train
+GSM492014,64.0,UK_control,source_train
+GSM492017,73.0,UK_control,source_train
+GSM492018,57.0,UK_control,source_train
+GSM492019,55.0,UK_control,source_train
+GSM492020,61.0,UK_control,source_train
+GSM492022,76.0,UK_control,source_train
+GSM492023,73.0,UK_control,source_train
+GSM492026,56.0,UK_control,source_train
+GSM492027,66.0,UK_control,source_train
+GSM492030,60.0,UK_control,source_train
+GSM492033,55.0,UK_control,source_train
+GSM492034,61.0,UK_control,source_train
+GSM492039,58.0,UK_control,source_train
+GSM492040,74.0,UK_control,source_train
+GSM492045,58.0,UK_control,source_train
+GSM492046,59.0,UK_control,source_train
+GSM492050,68.0,UK_control,source_train
+GSM492054,70.0,UK_control,source_train
+GSM492055,59.0,UK_control,source_train
+GSM492058,60.0,UK_control,source_train
+GSM492059,56.0,UK_control,source_train
+GSM492062,63.0,UK_control,source_train
+GSM492065,59.0,UK_control,source_train
+GSM492067,56.0,UK_control,source_train
+GSM492071,61.0,UK_control,source_train
+GSM492072,70.0,UK_control,source_train
+GSM492075,57.0,UK_control,source_train
+GSM492078,70.0,UK_control,source_train
+GSM492081,52.0,UK_control,source_train
+GSM492083,55.0,UK_control,source_train
+GSM492084,70.0,UK_control,source_train
+GSM492085,53.0,UK_control,source_train
+GSM492087,69.0,UK_control,source_train
+GSM492088,74.0,UK_control,source_train
+GSM492089,59.0,UK_control,source_train
+GSM492092,68.0,UK_control,source_train
+GSM492095,59.0,UK_control,source_train
+GSM492096,70.0,UK_control,source_train
+GSM492099,64.0,UK_control,source_train
+GSM492104,58.0,UK_control,source_train
+GSM492105,72.0,UK_control,source_train
+GSM492108,65.0,UK_control,source_train
+GSM492111,73.0,UK_control,source_train
+GSM492112,56.0,UK_control,source_train
+GSM492116,73.0,UK_control,source_train
+GSM492119,69.0,UK_control,source_train
+GSM492122,77.0,UK_control,source_train
+GSM492123,66.0,UK_control,source_train
+GSM492125,62.0,UK_control,source_train
+GSM492126,70.0,UK_control,source_train
+GSM492127,61.0,UK_control,source_train
+GSM492130,73.0,UK_control,source_train
+GSM492131,65.0,UK_control,source_train
+GSM492134,71.0,UK_control,source_train
+GSM492138,58.0,UK_control,source_train
+GSM492139,65.0,UK_control,source_train
+GSM492142,56.0,UK_control,source_train
+GSM492145,75.0,UK_control,source_train
+GSM492146,56.0,UK_control,source_train
+GSM492149,74.0,UK_control,source_train
+GSM492153,58.0,UK_control,source_train
+GSM492156,73.0,UK_control,source_train
+GSM492159,70.0,UK_control,source_train
+GSM492161,55.0,UK_control,source_train
+GSM492164,71.0,UK_control,source_train
+GSM492165,64.0,UK_control,source_train
+GSM492171,69.0,UK_control,source_train
+GSM492172,72.0,UK_control,source_train
+GSM492173,60.0,UK_control,source_train
+GSM492176,71.0,UK_control,source_train
+GSM492177,73.0,UK_control,source_train
+GSM492179,72.0,UK_control,source_train
+GSM492180,60.0,UK_control,source_train
+GSM492185,66.0,UK_control,source_train
+GSM492191,75.0,UK_control,source_train
+GSM492192,71.0,UK_control,source_train
+GSM492196,56.0,UK_control,source_train
+GSM492200,65.0,UK_control,source_train
+GSM492203,65.0,UK_control,source_train
+GSM492206,69.0,UK_control,source_train
+GSM492210,72.0,UK_control,source_train
+GSM492213,66.0,UK_control,source_train
+GSM492216,55.0,UK_control,source_train
+GSM492217,70.0,UK_control,source_train
+GSM492219,59.0,UK_control,source_train
+GSM492223,74.0,UK_control,source_train
+GSM492224,63.0,UK_control,source_train
+GSM492231,60.0,UK_control,source_train
+GSM492234,63.0,UK_control,source_train
+GSM492236,66.0,UK_control,source_train
+GSM492237,70.0,UK_control,source_train
+GSM492242,57.0,UK_control,source_train
+GSM492243,60.0,UK_control,source_train
+GSM492244,54.0,UK_control,source_train
+GSM492251,58.0,UK_control,source_train
+GSM492252,63.0,UK_control,source_train
+GSM492258,69.0,UK_control,source_train
+GSM492259,61.0,UK_control,source_train
+GSM492263,57.0,UK_control,source_train
+GSM492266,78.0,UK_control,source_train
+GSM492269,56.0,UK_control,source_train
+GSM492270,69.0,UK_control,source_train
+GSM492275,53.0,UK_control,source_train
+GSM492277,72.0,UK_control,source_train
+GSM492278,73.0,UK_control,source_train
+GSM492281,57.0,UK_control,source_train
+GSM492288,60.0,UK_control,source_train
+GSM492290,74.0,UK_control,source_train
+GSM492291,55.0,UK_control,source_train
+GSM492294,70.0,UK_control,source_train
+GSM492295,64.0,UK_control,source_train
+GSM492297,57.0,UK_control,source_train
+GSM492298,75.0,UK_control,source_train
+GSM492303,63.0,UK_control,source_train
+GSM492304,72.0,UK_control,source_train
+GSM492307,76.0,UK_control,source_train
+GSM492308,65.0,UK_control,source_train
+GSM492311,76.0,UK_control,source_train
+GSM492313,61.0,UK_control,source_train
+GSM492314,59.0,UK_control,source_train
+GSM492317,77.0,UK_control,source_train
+GSM492318,63.0,UK_control,source_train
+GSM492324,77.0,UK_control,source_train
+GSM492328,56.0,UK_control,source_train
+GSM492331,59.0,UK_control,source_train
+GSM492335,71.0,UK_control,source_train
+GSM492336,74.0,UK_control,source_train
+GSM492337,64.0,UK_control,source_train
+GSM492338,70.0,UK_control,source_train
+GSM492344,60.0,UK_control,source_train
+GSM492345,58.0,UK_control,source_train
+GSM492348,76.0,UK_control,source_train
+GSM492354,63.0,UK_control,source_train
+GSM492358,56.0,UK_control,source_train
+GSM492359,62.0,UK_control,source_train
+GSM492360,55.0,UK_control,source_train
+GSM492361,73.0,UK_control,source_train
+GSM492362,60.0,UK_control,source_train
+GSM492363,57.0,UK_control,source_train
+GSM492364,65.0,UK_control,source_train
+GSM492365,65.0,UK_control,source_train
+GSM492366,60.0,UK_control,source_train
+GSM492367,62.0,UK_control,source_train
+GSM492368,70.0,UK_control,source_train
+GSM492369,64.0,UK_control,source_train
+GSM492370,74.0,UK_control,source_train
+GSM492371,70.0,UK_control,source_train
+GSM492372,70.0,UK_control,source_train
+GSM492373,61.0,UK_control,source_train
+GSM492374,68.0,UK_control,source_train
+GSM492375,69.0,UK_control,source_train
+GSM492376,71.0,UK_control,source_train
+GSM492377,52.0,UK_control,source_train
+GSM492378,57.0,UK_control,source_train
+GSM492379,70.0,UK_control,source_train
+GSM492380,70.0,UK_control,source_train
+GSM492381,77.0,UK_control,source_train
+GSM492382,73.0,UK_control,source_train
+GSM492383,73.0,UK_control,source_train
+GSM492384,65.0,UK_control,source_train
+GSM492385,56.0,UK_control,source_train
+GSM492386,61.0,UK_control,source_train
+GSM492387,69.0,UK_control,source_train
+GSM492388,74.0,UK_control,source_train
+GSM492389,63.0,UK_control,source_train
+GSM492390,68.0,UK_control,source_train
+GSM492391,73.0,UK_control,source_train
+GSM492392,69.0,UK_control,source_train
+GSM492393,65.0,UK_control,source_train
+GSM492394,72.0,UK_control,source_train
+GSM492395,57.0,UK_control,source_train
+GSM492396,59.0,UK_control,source_train
+GSM492397,72.0,UK_control,source_train
+GSM492398,60.0,UK_control,source_train
+GSM492399,73.0,UK_control,source_train
+GSM492400,75.0,UK_control,source_train
+GSM492401,63.0,UK_control,source_train
+GSM492402,70.0,UK_control,source_train
+GSM492403,59.0,UK_control,source_train
+GSM492404,71.0,UK_control,source_train
+GSM492405,67.0,UK_control,source_train
+GSM492406,70.0,UK_control,source_train
+GSM492407,74.0,UK_control,source_train
+GSM492408,66.0,UK_control,source_train
+GSM492409,66.0,UK_control,source_train
+GSM492410,60.0,UK_control,source_train
+GSM492411,57.0,UK_control,source_train
+GSM492412,68.0,UK_control,source_train
+GSM492413,62.0,UK_control,source_train
+GSM492414,60.0,UK_control,source_train
+GSM492415,64.0,UK_control,source_train
+GSM492416,63.0,UK_control,source_train
+GSM492417,65.0,UK_control,source_train
+GSM492418,61.0,UK_control,source_train
+GSM492419,58.0,UK_control,source_train
+GSM492420,53.0,UK_control,source_train
+GSM492421,64.0,UK_control,source_train
+GSM492422,76.0,UK_control,source_train
+GSM492423,60.0,UK_control,source_train
+GSM492424,61.0,UK_control,source_train
+GSM492425,55.0,UK_control,source_train
+GSM492426,55.0,UK_control,source_train
+GSM492427,70.0,UK_control,source_train
+GSM492428,54.0,UK_control,source_train
+GSM492429,63.0,UK_control,source_train
+GSM492430,65.0,UK_control,source_train
+GSM492431,68.0,UK_control,source_train
+GSM492432,71.0,UK_control,source_train
+GSM492433,58.0,UK_control,source_train
+GSM492434,71.0,UK_control,source_train
+GSM492435,77.0,UK_control,source_train
+GSM492436,63.0,UK_control,source_train
+GSM492437,73.0,UK_control,source_train
+GSM492438,65.0,UK_control,source_train
+GSM492439,63.0,UK_control,source_train
+GSM492440,61.0,UK_control,source_train
+GSM492441,65.0,UK_control,source_train
+GSM492442,58.0,UK_control,source_train
+GSM492443,63.0,UK_control,source_train
+GSM492444,75.0,UK_control,source_train
+GSM492445,70.0,UK_control,source_train
+GSM492446,62.0,UK_control,source_train
+GSM492447,73.0,UK_control,source_train
+GSM492448,71.0,UK_control,source_train
+GSM492449,78.0,UK_control,source_train
+GSM492450,60.0,UK_control,source_train
+GSM492451,68.0,UK_control,source_train
+GSM492452,56.0,UK_control,source_train
+GSM492453,59.0,UK_control,source_train
+GSM492454,61.0,UK_control,source_train
+GSM492455,56.0,UK_control,source_train
+GSM492456,61.0,UK_control,source_train
+GSM492458,58.0,UK_control,source_train
+GSM492460,68.0,UK_control,source_train
+GSM492462,63.0,UK_control,source_train
+GSM492464,61.0,UK_control,source_train
+GSM492465,77.0,UK_control,source_train
+GSM492466,60.0,UK_control,source_train
+GSM492467,57.0,UK_control,source_train
+GSM492468,64.0,UK_control,source_train
+GSM492469,59.0,UK_control,source_train
+GSM492470,64.0,UK_control,source_train
+GSM492471,77.0,UK_control,source_train
+GSM492472,58.0,UK_control,source_train
+GSM492473,61.0,UK_control,source_train
+GSM492474,72.0,UK_control,source_train
+GSM492475,65.0,UK_control,source_train
+GSM492476,64.0,UK_control,source_train

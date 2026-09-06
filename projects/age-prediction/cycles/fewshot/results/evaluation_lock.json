@@ -1,0 +1,12 @@
+{
+  "recorded_before_external_evaluation_utc": "2026-09-05T23:39:32.823436+00:00",
+  "details": "All-empty rows in a released target matrix count as structurally unavailable probes, not per-sample missingness. Primary query partitions are unchanged. Classical ridge alpha grid .01,.1,1,10 on normalized kernels; affine calibration uses source prediction /20 coordinate. Source, median and four tuned adaptation families compete by four-fold support CV.",
+  "source_code_sha256": {
+    "meta_model.py": "c6b80716b7dd4fdbec2136addaa94e76afe3a3bfb34fc1595a4ec8c2ecaf72ce",
+    "prepare_source.py": "7e0e16411d4bcbd8ea911549bf5be094452aee622be5fe92bf305de596cb90ab",
+    "modal_train.py": "9640bcdb8e807aa240596b2555f6fa8e658e6804c9e78508bec815c40a80f159",
+    "prepare_targets.py": "7ce9184ba7c0dc0a0d23b306c7b7c6987fe3cb532708cfabb17dc6d6c5ae2c10",
+    "modal_evaluate.py": "ecdef51cc8d2b1168df0b47761668a37457cb81fcff58589fd9b0fa17f30ea88",
+    "evaluate.py": "d61d4337e05305a67ffcb527fcc1894d88b3c75310494f6b7391f1e951bfcdd3"
+  }
+}

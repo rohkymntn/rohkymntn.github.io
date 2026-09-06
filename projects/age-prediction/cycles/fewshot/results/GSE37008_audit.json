@@ -1,0 +1,25 @@
+{
+  "cohort": "GSE37008",
+  "deposited_samples": 99,
+  "retained_samples": 92,
+  "unique_participants": 92,
+  "technical_replicates_collapsed": 0,
+  "source_selected_features": 1024,
+  "observed_selected_features": 809,
+  "structurally_absent_features": 215,
+  "support_pool": 32,
+  "query_participants": 60,
+  "age_range": [
+    24.0,
+    45.0
+  ],
+  "input_scale": "M-value",
+  "raw_value_range": [
+    -7.237312316894531,
+    5.353826522827148
+  ],
+  "scale_conversion": "beta = 1/(1+2**(-M))",
+  "standardized_clip_fraction": 0.000626273777173913,
+  "raw_sha256": "c5d5d1bfafc1a1550ea407f473bcede62f3871d823f60ab2e8bcb7f7991ddcca",
+  "eligibility": "Adult with numeric age and <=1% missingness among observed selected probes; structural platform absence is source-median imputed. Fixed random split does not stratify on age."
+}
