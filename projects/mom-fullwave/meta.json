@@ -1,10 +1,17 @@
 {
   "order": 1,
   "tag": "computational electromagnetics",
-  "title": "A full-wave Method-of-Moments solver for an agentic antenna-design pipeline",
+  "title": "A full-wave method-of-moments solver for automated antenna design",
   "date": "Sep 2026",
-  "desc": "Wrote an RWG/EFIE boundary-element solver from scratch (NumPy + Gmsh), validated it against the Mie series and the half-wave dipole, debugged three failures that masqueraded as physics, and wrapped it into an optimize → verify → calibrate loop so an LLM-driven antenna designer has to answer to Maxwell's equations.",
-  "tech": ["method of moments", "RWG / EFIE", "gmsh", "numpy", "antenna design", "implants"],
+  "desc": "Implementation and analytical validation of an RWG and EFIE boundary-element solver integrated with iterative optimization, full-wave verification and surrogate calibration for implantable and wearable antennas.",
+  "tech": [
+    "method of moments",
+    "RWG / EFIE",
+    "gmsh",
+    "numpy",
+    "antenna design",
+    "implants"
+  ],
   "hero": "projects/mom-fullwave/fig_mesh_current_mifa.png",
-  "heroCaption": "meandered inverted-F antenna: conforming surface mesh (left) and surface current density near resonance (right)"
+  "heroCaption": "Conforming surface mesh and resonant surface-current distribution for a meandered inverted-F antenna."
 }

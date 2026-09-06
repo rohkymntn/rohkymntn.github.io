@@ -1,33 +1,33 @@
-<p class="kv">with Sandra Yang · Stanford · Qwen2.5-0.5B on Countdown · trained on a single H100 via Modal · checkpoint <a href="https://huggingface.co/rohkymntn/vpo-a-countdown-qwen-200step" target="_blank" rel="noopener">rohkymntn/vpo-a-countdown-qwen-200step</a></p>
+<p class="kv">Sandra Yang and Kun Hyung Roh / Stanford University / Qwen2.5-0.5B / Countdown / one NVIDIA H100 on Modal / <a href="https://huggingface.co/rohkymntn/vpo-a-countdown-qwen-200step" target="_blank" rel="noopener">model checkpoint</a></p>
 
-<p>Most reasoning failures I see in small language models are not illegal steps. They are perfectly legal steps that quietly delete the only remaining path to the answer. A terminal reward cannot tell the model which step did that. This project asks what happens when the reward is placed exactly at that step instead, and answers it with a proof, a training run, two ablations, and a failure mode.</p>
+<p>Sequential reasoning models frequently generate locally valid operations that irreversibly remove every path to a correct solution, while terminal rewards provide no direct evidence about the transition responsible for failure. We developed viability-guided policy optimization, which assigns step-level reward according to exact reachability of the target state, and evaluated its theoretical credit-assignment properties, training efficiency, predictive performance and characteristic failure modes on Countdown arithmetic.</p>
 
 <div class="stat-row">
-  <div class="stat"><div class="v">0.884</div><div class="k">Pass@1, VPO-R (RLOO: 0.618)</div></div>
+  <div class="stat"><div class="v">0.884</div><div class="k">Pass@1, VPO-R (RLOO, 0.618)</div></div>
   <div class="stat"><div class="v">33×</div><div class="k">fewer training tokens than RLOO</div></div>
-  <div class="stat"><div class="v">3</div><div class="k">theorems: sound, complete, exponential gap</div></div>
-  <div class="stat"><div class="v">80 %</div><div class="k">of legal Countdown moves are dead (my analysis, §7)</div></div>
+  <div class="stat"><div class="v">3</div><div class="k">theorems, sound, complete, exponential gap</div></div>
+  <div class="stat"><div class="v">80 %</div><div class="k">irreversible legal transitions with four values remaining</div></div>
 </div>
 
-<h3>1. The problem: legal is not the same as alive</h3>
+<h3>1. Failure localization in sequential arithmetic reasoning</h3>
 
-<p>Countdown gives a model a few numbers, say [3, 4, 6, 8], and a target, say 24. It must combine the numbers with +, −, ×, ÷, each number used once, until one value equals the target. Every step removes two numbers and adds their result, so the state is just the multiset of what is left. A step like 8 − 6 = 2 is arithmetically fine and looks like progress, and from [2, 3, 4] the target is still reachable (2 × 3 × 4). The step 8 + 6 = 14 is exactly as legal and looks exactly as reasonable, and from [3, 4, 14] no combination reaches 24 at all. Whether a step was good depends on a question the model is never asked: after taking it, does a solution still exist? One of those two moves ended the game two steps before the final answer was written down, and nothing in the trace says which.</p>
+<p>Countdown requires a model to combine a finite set of numbers with addition, subtraction, multiplication and division until the target value is obtained, using each number once. Because every operation replaces two values with their result, arithmetically valid transitions can be divided into viable moves that preserve at least one solution and irreversible moves that render the target unreachable, even when both appear locally plausible from the numerical distance to the target.</p>
 
-<p>Supervised fine-tuning imitates one demonstration and never sees the alternatives. DPO and IPO compare two complete responses. RLOO scores the final answer with a verifier. All three place the learning signal on the whole trace, so when a six-step trace fails because step two killed the search space, the gradient has to guess which step to blame. On a branching problem that guess is statistically expensive, and I could prove how expensive.</p>
+<p>Supervised fine-tuning observes one demonstrated trajectory, direct preference optimization and identity preference optimization compare complete responses and reinforcement learning with leave-one-out baselines assigns verifier reward to the terminal answer. Each approach therefore distributes learning signal across the full trace, leaving the optimization procedure to infer which earlier transition eliminated the remaining solution set.</p>
 
-<h3>2. The idea: reward the transition, not the trace</h3>
+<h3>2. Viability-guided policy optimization</h3>
 
-<p>The state graph of Countdown is finite and small. That makes a quantity computable that is usually only estimable: whether a state is still solvable. Define the residual horizon of a state \(s\) for target \(y\) by dynamic programming over multisets of rationals,</p>
+<p>The finite Countdown state graph permits exact computation of whether a target remains reachable from any intermediate state, allowing the residual solution horizon to be defined by dynamic programming over canonical multisets of rational numbers.</p>
 
 <div class="eq">\[ d_y(s)=\begin{cases}0 & s\ni y\\ 1+\min_{a\in\mathcal A(s)} d_y(T(s,a)) & |s|>1\\ \infty & |s|=1,\ s\not\ni y\end{cases}\qquad \mathrm{Alive}_y(s)=\mathbf 1[d_y(s)<\infty]. \]</div>
 
-<p>The viability label of an action is simply the aliveness of the state it leads to, \(z_y(s,a)=\mathrm{Alive}_y(T(s,a))\), and the per-step reward is 1 for an alive step, a small \(\rho=0.1\) for a legal-but-dead step, and 0 for anything unparseable or arithmetically wrong. Exact rational arithmetic makes division unambiguous, and memoization makes the oracle essentially free: a typical solvable 4-number instance has about twenty alive states in total.</p>
+<p>An action receives a viability label from the reachability of its successor state and a reward of 1 for a viable transition, 0.1 for a legal but irreversible transition and 0 for an unparsable or arithmetically invalid output. Exact rational arithmetic removes ambiguity from division, while memoization reduces the cost of oracle evaluation because a typical solvable four-number instance contains approximately twenty viable states.</p>
 
-<p>Training is self-play with a group-relative policy gradient. At each state the policy samples \(G=8\) candidate next steps, the oracle labels each, and the leave-one-out advantage \(A_i=r_i-\frac{1}{G-1}\sum_{j\ne i}r_j\) drives</p>
+<p>Training uses self-play with a group-relative policy gradient in which the policy samples eight candidate transitions at each state, the oracle assigns viability rewards and a leave-one-out advantage weights the log probability of each sampled action.</p>
 
 <div class="eq">\[ \mathcal L(\theta)=-\frac1G\sum_{i=1}^G A_i\log\pi_\theta(\hat a_i\mid p(s,h))+\lambda_{\mathrm{KL}}\widehat{\mathrm{KL}}(\pi_\theta\|\pi_{\mathrm{ref}})-\lambda_{\mathrm{ent}}\widehat H(\pi_\theta). \]</div>
 
-<p>The update is the same shape as RLOO. What changed is only what is being rewarded: a transition property instead of a terminal score. The rollout then advances along a sampled alive step (or, early in training when the policy cannot find one, an oracle-supplied alive step, never at test time) so that later states are visited from the start.</p>
+<p>The optimization objective retains the group-relative form of RLOO while replacing terminal verification with a transition-level reachability signal. Rollouts advance through a sampled viable action, with an oracle-supplied viable transition used during early training only when the policy produces none, thereby exposing the model to later reasoning states without using the oracle during policy-only evaluation.</p>
 
 <figure class="diagram">
 <svg viewBox="0 0 760 210" xmlns="http://www.w3.org/2000/svg" font-family="ui-monospace, SF Mono, Menlo, monospace" font-size="11" fill="#161616">
@@ -40,39 +40,39 @@
   <g stroke="#161616" fill="none"><rect x="10" y="118" width="96" height="30"/><rect x="128" y="118" width="96" height="30" stroke="#BE5B3A" stroke-width="1.6"/><rect x="246" y="118" width="96" height="30"/><rect x="364" y="118" width="96" height="30"/></g>
   <text x="18" y="137">alive · r=1</text><text x="136" y="137" fill="#BE5B3A" font-weight="700">dead · r=0.1</text><text x="254" y="137">alive · r=1</text><text x="372" y="137">alive · r=1</text>
   <g stroke="#7a7a72" fill="none" marker-end="url(#ar2)"><path d="M106,133 L126,133"/><path d="M224,133 L244,133"/><path d="M342,133 L362,133"/></g>
-  <text x="10" y="190" fill="#7a7a72">the oracle labels every candidate at every state, so the gradient lands on the step that destroyed the solution set</text>
+  <text x="10" y="190" fill="#7a7a72">candidate-level reachability localizes reward to the first irreversible transition</text>
 </svg>
-<figcaption>Credit assignment under the two rewards. A terminal reward spreads blame over the whole trace; a viability label puts it on the transition that first made the target unreachable.</figcaption>
+<figcaption>Credit assignment under terminal and viability-based rewards. Terminal verification assigns one outcome to the complete trace, whereas viability supervision identifies the first transition after which the target becomes unreachable.</figcaption>
 </figure>
 
-<h3>3. What can be proven</h3>
+<h3>3. Theoretical properties</h3>
 
-<p>Because the oracle is exact, the labels come with guarantees rather than reward-model error.</p>
+<p>Exact reachability labels support formal guarantees for action validity, convergence under viability-preserving policies and the sample complexity separating transition supervision from terminal reward.</p>
 
 <ul>
-<li><strong>Sound and complete.</strong> \(z_y(s,a)=1\) if and only if a legal continuation after \(a\) reaches the goal. This is the definition unwound: the continuation is exactly the witness.</li>
-<li><strong>Staying alive solves.</strong> If the start state is alive and a deterministic policy chooses an alive action at every nonterminal state, it reaches the goal in at most \(m-1\) steps. Each action shrinks the multiset by one, every reached state is alive by induction, and an alive single-element state can only be the target. The corollary is the sharp one: a dead transition is irrecoverable, no future policy can save the instance.</li>
-<li><strong>Exponential credit-assignment separation.</strong> On a depth-\(H\), branching-\(B\) search where exactly one action stays alive at each level and reward is given only at the end, deciding whether a fixed root action is alive from terminal-only random rollouts needs \(N=\Omega\!\left(B^{H-1}\log(1/\delta)\right)\) samples to see a single success with probability \(1-\delta\). One oracle query decides it. The proof is two lines: the success probability of a random continuation is \(p=B^{-(H-1)}\) and \((1-p)^N\le\delta\) forces \(N\ge\log(1/\delta)/(-\log(1-p))=\Theta(p^{-1}\log(1/\delta))\).</li>
+<li><strong>Soundness and completeness.</strong> The label \(z_y(s,a)=1\) holds if and only if at least one legal continuation from the successor state reaches the target, making the continuation a constructive witness of viability.</li>
+<li><strong>Convergence under viable actions.</strong> From a viable initial state, a deterministic policy that selects a viable action at every nonterminal state reaches the target within at most \(m-1\) transitions because each operation reduces the multiset cardinality by one and preserves reachability. A transition to a nonviable state is consequently irreversible.</li>
+<li><strong>Exponential separation in credit assignment.</strong> In a depth-\(H\) search tree with branching factor \(B\), one viable action at each depth and terminal-only reward, identifying a viable root action through random continuation requires \(N=\Omega\!\left(B^{H-1}\log(1/\delta)\right)\) samples to observe a success with probability \(1-\delta\). One exact reachability query determines the same label because the random-continuation probability is \(p=B^{-(H-1)}\) and \((1-p)^N\le\delta\) implies \(N\ge\log(1/\delta)/(-\log(1-p))=\Theta(p^{-1}\log(1/\delta))\).</li>
 </ul>
 
 <figure class="fig half">
 <img src="projects/vipo/fig_vipo_theorem3.png" alt="rollouts needed versus depth for branching factors 2 to 4, against one oracle query">
-<figcaption>The separation, evaluated. At depth 6 with three branches a terminal reward needs about 700 random rollouts to witness one success at 95 % confidence; the viability label needs one call. The theorem does not claim every task looks like this, only that search-like tasks with early fatal choices do, and Countdown does.</figcaption>
+<figcaption>Sample complexity of terminal and viability supervision as a function of search depth and branching factor. At depth six with three branches, approximately 700 random terminal rollouts are required to observe one successful continuation with 95 percent confidence, whereas one reachability query determines the viability of the root transition.</figcaption>
 </figure>
 
-<h3>4. Setup: one seed, one verifier, two budgets</h3>
+<h3>4. Experimental design and computational budget</h3>
 
-<p>Every method starts from the same SFT seed, a Qwen2.5-0.5B fine-tuned on Countdown demonstrations, and is scored by the same rule-based evaluator (1.0 for a valid equation using each number once, 0.1 for well-formed but wrong, 0.0 for unparseable). VPO trains for 200 self-play updates (batch 8, \(G=8\), lr \(10^{-5}\), \(\lambda_{\mathrm{KL}}=\lambda_{\mathrm{ent}}=10^{-3}\), temperature 0.8) on one H100, alternating a vLLM sampling worker and a PyTorch update worker that hand off through on-disk checkpoints because they cannot share the GPU. Evaluation is on a fresh held-out set of 500 problems with 16 rollouts per prompt, reporting Pass@k with 95 % Wilson intervals.</p>
+<p>All methods were initialized from the same Qwen2.5-0.5B model fine-tuned on Countdown demonstrations and evaluated by an identical rule-based scorer that assigned 1.0 to a valid equation using every number once, 0.1 to a well-formed but incorrect expression and 0 to an unparsable response. Viability-guided optimization used 200 self-play updates on one H100 with batches of eight states, eight candidates per state, a learning rate of 10<sup>-5</sup>, KL and entropy coefficients of 10<sup>-3</sup> and a sampling temperature of 0.8, followed by evaluation on 500 held-out problems with 16 rollouts per prompt and 95 percent Wilson intervals.</p>
 
-<p>The same checkpoint is evaluated two ways. <strong>VPO-A</strong> samples candidate steps and takes the first legal one, with no oracle at test time: this is what the policy learned. <strong>VPO-R</strong> samples candidates and lets the oracle's viability label pick an alive one: this is a diagnostic upper bound on how much signal the label carries at inference, not a second model.</p>
+<p>The trained checkpoint was evaluated as VPO-A, which selected the first legal candidate without oracle access, and as VPO-R, which used the reachability oracle to select a viable candidate from the same sampled set. VPO-A measures the policy acquired during training, whereas VPO-R estimates the performance attainable when viability information is retained during inference.</p>
 
-<p>Because the two rewards give different kinds of feedback, I tracked two cost budgets instead of one: the number of reward labels (oracle or verifier calls) and the number of training output tokens generated. RLOO: about 102,400 labels and 50.7 M tokens. VPO: about 64,000 labels and 1.54 M tokens, because a labeled sample is a single step string rather than a full answer.</p>
+<p>Computational efficiency was evaluated using both the number of reward evaluations and the number of generated training tokens because transition and terminal supervision operate at different sequence lengths. RLOO used approximately 102,400 verifier evaluations and 50.7 million generated tokens, compared with approximately 64,000 oracle evaluations and 1.54 million generated tokens for viability-guided optimization.</p>
 
 <h3>5. Results</h3>
 
 <figure class="fig">
 <img src="projects/vipo/fig_vipo_results.png" alt="Pass@1 with confidence intervals, Pass@k, and efficiency for SFT, IPO, VPO-A, RLOO, VPO-R">
-<figcaption>Fresh n = 500. Left: the action policy alone (VPO-A, 0.486) beats SFT (0.322) and IPO (0.422) with non-overlapping intervals; with the test-time reranker the same weights reach 0.884, +0.27 over RLOO. Middle: at k = 16 every method lands between 0.89 and 0.96, because with enough samples even the seed solves most problems; the informative axis is how few samples are needed. Right: per training token VPO-R is about 47× more efficient than RLOO, per reward label about 2.3×.</figcaption>
+<figcaption>Predictive performance and computational efficiency on 500 held-out Countdown problems. VPO-A achieved Pass@1 of 0.486 compared with 0.322 for supervised fine-tuning and 0.422 for IPO, while reachability-based reranking increased Pass@1 to 0.884 compared with 0.618 for RLOO. At 16 samples, Pass@16 ranged from 0.888 to 0.962 across methods, and VPO-R produced approximately 47-fold greater performance per generated training token and 2.3-fold greater performance per reward evaluation than RLOO.</figcaption>
 </figure>
 
 <table>
@@ -86,10 +86,10 @@
 
 <figure class="fig half">
 <img src="projects/vipo/paper_passk.png" alt="Pass@k curves for k from 1 to 16 with Wilson intervals">
-<figcaption>Pass@k for k = 1…16. VPO-R is highest at every k and nearly flat: its first sample already solves most problems. The others need extra samples to catch up.</figcaption>
+<figcaption>Pass@k across one to sixteen sampled responses. VPO-R produced the highest estimate at every sampling budget and obtained most of its final performance from the first reranked response, whereas the remaining methods required additional samples to approach their asymptotic success rates.</figcaption>
 </figure>
 
-<p>Two honest readings of that table. The trained weights alone (0.486) still trail RLOO (0.618) on Pass@1; the headline improvement over RLOO comes from reranking with the oracle at test time. And VPO-R with the oracle approaches the SFT seed's Pass@16 ceiling (0.888) with a single reranked answer, which is the more useful way to state the gain: the viability signal converts sixteen samples' worth of search into one.</p>
+<p>Policy-only VPO-A achieved lower Pass@1 than RLOO, with estimates of 0.486 and 0.618, respectively, showing that the largest improvement arose from reachability-based reranking during inference. A single reranked VPO-R response achieved Pass@1 of 0.884, which was comparable to the supervised seed's Pass@16 of 0.888 and indicates that viability filtering compressed much of the benefit of sixteen independent samples into one selected response.</p>
 
 <h4>5.1 Training dynamics</h4>
 
@@ -98,33 +98,33 @@
 <img src="projects/vipo/paper_alive_rate.png" alt="alive-action rate rising over training">
 <img src="projects/vipo/paper_illegal_rate.png" alt="illegal-action rate falling over training">
 </div>
-<figcaption>Self-play moves the diagnostics in the intended direction: the alive-action rate climbs to about 0.72 and the illegal-action rate falls from the seed's 0.56 to about 0.05. The policy is not merely learning to emit parseable steps; it is learning steps that keep the problem solvable.</figcaption>
+<figcaption>Evolution of transition quality during self-play. The viable-action rate increased to approximately 0.72 while the invalid-action rate decreased from 0.56 in the supervised seed to approximately 0.05, indicating simultaneous acquisition of syntactic validity and solution-preserving transitions.</figcaption>
 </figure>
 
-<h3>6. Ablations: where the gain comes from, and where it breaks</h3>
+<h3>6. Ablation analysis</h3>
 
 <figure class="fig">
 <img src="projects/vipo/fig_vipo_ablations.png" alt="inference ablation over candidate budget and training ablation over six retrained variants">
-<figcaption>Left: sweeping the candidate budget per state on the headline checkpoint. With the verifier, two candidates (0.43) already beat eight un-reranked first-legal candidates (0.36); most of the gain is realized by eight. One candidate (0.17) is worse than first-legal-of-eight because there is nothing to rerank and the filtering that first-legal gets from having several samples is lost too. Right: six 200-step retrains, one knob each, evaluated on n = 150. Prompt style, removing the oracle fallback, and zeroing the dead-move reward all leave the model within noise. The repair rule is the instructive knob.</figcaption>
+<figcaption>Effects of candidate budget and training configuration. Viability reranking achieved Pass@1 of 0.17 with one candidate and 0.43 with two candidates, compared with 0.36 for selection of the first legal transition among eight candidates, and most of the reranking improvement was recovered with eight candidates. Across six 200-step retraining experiments evaluated on 150 problems, prompt format, removal of oracle fallback and omission of the reward assigned to irreversible legal moves produced estimates within sampling uncertainty, whereas aggressive teacher-action repair destabilized training.</figcaption>
 </figure>
 
 <figure class="fig half">
 <img src="projects/vipo/paper_repair_collapse.png" alt="illegal-action rate over training for baseline versus repair equals bad">
-<figcaption>The failure mode. Under <code>repair=bad</code>, which inserts a verified-alive teacher action whenever any candidate is bad, training tracks the baseline until about step 175 and then collapses: the illegal-action rate spikes to 7/8 at step 193, the loss diverges, and Pass@1 falls to 0.193. Reranking only partially recovers it (0.533). Inserting a teacher action only when the entire group is dead (<code>no_alive</code>) is noisier but bounded. The safe setting is no repair.</figcaption>
+<figcaption>Training instability induced by aggressive action repair. Replacing any irreversible candidate with an oracle-verified teacher action tracked the reference trajectory until approximately step 175, after which the invalid-action rate reached seven of eight candidates at step 193, optimization diverged and Pass@1 declined to 0.193. Reachability reranking increased performance after collapse to 0.533, while repair applied only when every candidate was irreversible remained bounded but more variable than training without repair.</figcaption>
 </figure>
 
-<p>Why does the aggressive repair rule blow up? My reading is that it changes the sampling distribution of the group away from the policy just where the advantage is computed, so the leave-one-out baseline is contaminated by actions the policy did not produce, and late in training, when most candidates are already alive and the occasional bad one triggers a replacement, the gradient starts pushing probability toward tokens the policy never emitted. It is the same lesson as importance-weight blow-ups in off-policy RL, arriving through a side door.</p>
+<p>Aggressive repair changes the group sampling distribution at the point where the leave-one-out advantage is calculated by introducing actions not generated by the current policy. As the viable-action rate increases, infrequent replacements can therefore assign gradients to off-policy tokens with uncorrected importance ratios, providing a plausible mechanism for the late optimization instability observed in the ablation.</p>
 
-<h3>7. Investigating the premise: how hazardous is Countdown, really?</h3>
+<h3>7. Prevalence of irreversible transitions in Countdown</h3>
 
-<p>The whole method rests on the claim that legal-but-dead moves are common and hard to spot. I wanted a number, so I reimplemented the residual oracle from scratch (exact rational DP over canonicalized multisets, memoized) and ran it over 3,000 uniformly random 4-number instances with numbers and targets in 1–99. The script and its output are next to this page.</p>
+<p>The prevalence of irreversible legal transitions was quantified using an independently implemented exact rational dynamic program applied to 3,000 uniformly sampled four-number instances with operands and targets between 1 and 99.</p>
 
 <figure class="fig">
 <img src="projects/vipo/fig_vipo_hazard.png" alt="distribution of alive fraction at the root, hazard rate over alive states, summary bars">
-<figcaption>Left: on a solvable instance, only one legal first move in five keeps the target reachable; the distribution peaks near 0.15. Middle: over every alive state reachable in those instances, 80 % of legal moves with four numbers left and 83 % with three are dead. Right: 36 % of uniformly random instances are solvable at all, 8 % of solvable ones have exactly one alive first move, and the greedy move (the legal combination whose result is numerically closest to the target) is dead 53 % of the time.</figcaption>
+<figcaption>Reachability structure across 3,000 random Countdown instances. Among solvable instances, approximately one fifth of legal first moves preserved a solution, while 80 percent of legal transitions with four numbers remaining and 83 percent with three numbers remaining were irreversible. Overall, 36 percent of sampled instances were solvable, 8 percent of solvable instances had one viable initial transition and the legal operation producing the value closest to the target was irreversible in 53 percent of cases.</figcaption>
 </figure>
 
-<p>That last number is the one that matters. "Get closer to the target" is precisely the heuristic a fluent model learns from demonstrations, and it kills the instance more often than not. A few of the cases the analysis pulled out:</p>
+<p>The failure of the numerically closest transition in 53 percent of sampled instances shows that immediate proximity to the target is poorly aligned with preservation of the global solution set, despite its plausibility as a heuristic learned from successful demonstrations. Representative instances with their greedy and viable transitions are shown below.</p>
 
 <table>
 <tr><th>numbers → target</th><th>greedy move (closest to target)</th><th>alive moves instead</th></tr>
@@ -134,11 +134,11 @@
 <tr><td>[24, 25, 31, 38] → 24</td><td>38 − 24 = 14 · <span style="color:#8a3a1f">dead</span></td><td>anything that leaves the 24 alone</td></tr>
 </table>
 
-<p>The paper's training set samples solvable instances with its own number ranges, so these rates are for the uniform distribution rather than the benchmark's; the qualitative picture is what the method needs, and it holds with room to spare.</p>
+<p>These prevalence estimates describe a uniform distribution over operands and targets rather than the solvable-instance distribution used for model training, but they establish that irreversible legal transitions are common across the state space and therefore provide a frequent source of credit-assignment ambiguity.</p>
 
-<h4>7.1 Try the oracle</h4>
+<h4>7.1 Interactive viability analysis</h4>
 
-<p>This is the exact same dynamic program, in your browser. Enter numbers and a target, and every legal move is labeled the way the training reward would label it. Click a move to descend; the trail shows the residual distance \(d_y\) at each state.</p>
+<p>The interactive implementation applies the same exact dynamic program used to construct the training reward, labels every legal transition according to successor-state reachability and reports the residual solution horizon after each selected action.</p>
 
 <div class="widget" id="vpo-widget">
   <h4>viability oracle</h4>
@@ -224,34 +224,34 @@
 })();
 </script>
 
-<h3>8. Implementation notes</h3>
+<h3>8. Implementation</h3>
 
-<p>The oracle (<code>countdown_oracle.py</code>) exposes <code>min_steps_to_target</code>, <code>is_alive</code> and <code>action_labels</code> over canonicalized rational multisets. A step environment (<code>countdown_step_env.py</code>) parses the model's <code>&lt;step&gt;a op b = c&lt;/step&gt;</code> strings, checks the arithmetic and the number usage, and attaches <code>alive</code>, <code>distance_after</code> and <code>error</code> metadata. Training alternates a vLLM sampling worker and a grouped policy-update worker; they cannot share the GPU, so the orchestrator kills one before creating the other and hands state across through checkpoints on disk. KL and entropy are estimated from sampled tokens only, since forming full vocabulary distributions over prompt tokens ran out of memory, and the loss supervises generated step tokens only.</p>
+<p>The oracle in <code>countdown_oracle.py</code> computes the minimum solution horizon, state viability and transition labels over canonical rational multisets, while <code>countdown_step_env.py</code> parses generated operations, verifies arithmetic and operand use and records viability and residual-distance metadata. Training alternates between vLLM sampling and grouped PyTorch optimization through on-disk checkpoints because the workers cannot occupy the GPU simultaneously, with KL divergence and entropy estimated from sampled tokens and loss restricted to generated transition tokens.</p>
 
-<p>The RLOO and IPO baselines are my own implementations too, built as milestones before VPO: IPO trained one epoch on 48k preference pairs with \(\beta=0.05\) (chosen over 0.1 because the smaller value pushes the loss target from 5 to 10 and measurably improved Pass@1), and RLOO for 100 steps of 128 prompts × 8 rollouts with a clipped sequence-level importance weight. Both were validated on the milestone test set before being used as comparators.</p>
+<p>Comparator implementations were developed and validated before the viability experiments, with IPO trained for one epoch on 48,000 preference pairs using \(\beta=0.05\) and RLOO trained for 100 updates of 128 prompts with eight rollouts and a clipped sequence-level importance weight. Both methods were evaluated on the milestone test set before inclusion in the final comparison.</p>
 
 <figure class="fig">
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
 <img src="projects/vipo/paper_rloo_reward.png" alt="RLOO train rollout reward mean over training">
 <img src="projects/vipo/paper_rloo_passk.png" alt="RLOO versus SFT pass at k on the milestone test set">
 </div>
-<figcaption>The RLOO baseline: rollout reward from 0.29 to a peak near 0.63, and on the milestone test set Pass@1 from 0.286 to 0.504 while Pass@16 drops slightly, the usual sign that a policy has concentrated mass on likely-correct answers at the cost of diversity.</figcaption>
+<figcaption>RLOO training and milestone evaluation. Mean rollout reward increased from 0.29 to approximately 0.63, while Pass@1 increased from 0.286 to 0.504 and Pass@16 decreased slightly, consistent with concentration of probability on high-reward responses accompanied by reduced sampling diversity.</figcaption>
 </figure>
 
-<h3>9. Limitations, stated plainly</h3>
+<h3>9. Limitations</h3>
 
 <ul>
-<li>VPO changes the reward interface, so it does not receive identical feedback to RLOO. The defensible claim is the narrower one: placing the reward at the step where solvability is decided gives a more accurate and much cheaper model on this task, which is why both the label budget and the token budget are reported rather than one number.</li>
-<li>VPO-R uses the oracle at test time; it is an upper bound on what the viability signal can provide at inference. VPO-A is the fair comparison against SFT and IPO, and it does not beat RLOO on Pass@1.</li>
-<li>Countdown admits an exact oracle. Elsewhere the alive predicate would come from a simulator, a constraint solver, or a learned critic, and the soundness theorem then holds only to the extent the approximation does.</li>
-<li>The model is 0.5B parameters and the task is small; the results are about credit assignment, not about scale.</li>
+<li>Viability-guided optimization and RLOO receive rewards at different temporal resolutions, requiring computational comparison through both reward evaluations and generated tokens rather than a single feedback count.</li>
+<li>VPO-R retains oracle access during inference and therefore estimates performance with reachability-guided selection, whereas policy-only VPO-A provides the direct comparison with supervised fine-tuning and IPO and remains below RLOO on Pass@1.</li>
+<li>Exact reachability is available for Countdown, while extension to domains that require simulation, constraint solving or a learned critic will depend on the calibration and error structure of the approximate viability estimator.</li>
+<li>The experiments use a 0.5-billion-parameter model and a finite arithmetic task, leaving the behaviour of viability supervision at larger model and state-space scales unresolved.</li>
 </ul>
 
-<h3>10. What I would do next</h3>
+<h3>10. Future directions</h3>
 
 <ul>
-<li><strong>Approximate oracles.</strong> Replace the DP with a learned value head trained on oracle labels and measure how fast the theorems degrade as its accuracy drops; this is the bridge to tasks without an exact reachability predicate.</li>
-<li><strong>Distill the reranker into the policy.</strong> VPO-R shows the signal is there at inference; a second training phase that supervises the policy on the reranker's choices should close the 0.49 → 0.88 gap without an oracle at test time.</li>
-<li><strong>Harder state spaces.</strong> Sokoban-style puzzles and program synthesis with a type checker have exactly the legal-but-dead structure, with a cheap partial oracle.</li>
-<li><strong>Explain the repair collapse.</strong> The off-policy contamination story above is a hypothesis; an experiment that logs the importance ratio of inserted actions would settle it.</li>
+<li><strong>Approximate viability estimation.</strong> A learned value model trained from exact oracle labels could quantify how reachability error affects policy optimization and establish operating thresholds for tasks without an exact state predicate.</li>
+<li><strong>Policy distillation.</strong> Supervision from oracle-selected candidates could transfer the inference-time advantage of VPO-R into the policy and test whether the observed Pass@1 difference can be recovered without oracle access.</li>
+<li><strong>Higher-dimensional state spaces.</strong> Sokoban-style planning and type-constrained program synthesis provide larger search graphs in which locally valid actions can irreversibly eliminate the goal while partial viability checks remain computationally accessible.</li>
+<li><strong>Mechanistic analysis of repair instability.</strong> Logging the importance ratios and gradient contributions of inserted teacher actions would test whether off-policy contamination explains the observed late-stage collapse.</li>
 </ul>

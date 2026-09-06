@@ -1,10 +1,17 @@
 {
   "order": 2,
-  "tag": "reinforcement learning · llm reasoning",
-  "title": "ViPO: rewarding the step that keeps a problem solvable",
+  "tag": "reinforcement learning / language-model reasoning",
+  "title": "Viability-guided policy optimization for step-level credit assignment",
   "date": "2026",
-  "desc": "Step-level RL for Countdown arithmetic with an exact reachability oracle as the reward: a legal move is rewarded only if a solution still exists after it. Sound and complete labels, a provable exponential credit-assignment gap over terminal rewards, Pass@1 0.884 vs RLOO's 0.618 at 33× fewer training tokens, plus my own analysis showing 80 % of legal Countdown moves are dead and an oracle you can play with in the page.",
-  "tech": ["policy gradient", "self-play", "dynamic programming", "vLLM", "Qwen2.5-0.5B", "Modal"],
+  "desc": "Step-level reinforcement learning with an exact reachability oracle improved policy-only Pass@1 over supervised fine-tuning and IPO, while oracle-guided reranking achieved 0.884 Pass@1 using 33-fold fewer generated training tokens than RLOO.",
+  "tech": [
+    "policy gradient",
+    "self-play",
+    "dynamic programming",
+    "vLLM",
+    "Qwen2.5-0.5B",
+    "Modal"
+  ],
   "hero": "projects/vipo/fig_vipo_hazard.png",
-  "heroCaption": "how hazardous Countdown is: on a solvable instance only one legal first move in five keeps the target reachable, and the greedy 'closest to target' move is dead 53 % of the time"
+  "heroCaption": "Distribution of solution-preserving transitions and failure of greedy target-proximity heuristics across random Countdown instances."
 }
