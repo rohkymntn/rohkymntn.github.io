@@ -6,13 +6,14 @@ import pandas as pd
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+import journal_style
 from matplotlib.ticker import MaxNLocator
 ROOT=Path(__file__).resolve().parents[1];R=ROOT/'results';F=ROOT/'figures';D=ROOT/'data'
 BLUE='#2166AC';TEAL='#008577';ORANGE='#D97923';GRAY='#8B9096';RED='#B84A62'
-plt.rcParams.update({'font.family':'DejaVu Sans','font.size':8,'axes.labelsize':8,'axes.titlesize':9,'axes.spines.top':False,'axes.spines.right':False,'axes.linewidth':.6,'xtick.major.width':.6,'ytick.major.width':.6,'xtick.labelsize':7,'ytick.labelsize':7,'legend.fontsize':7,'legend.frameon':False,'pdf.fonttype':42,'ps.fonttype':42,'svg.fonttype':'none','savefig.facecolor':'white'})
+plt.rcParams.update({'font.family':'Helvetica','font.size':8,'axes.labelsize':8,'axes.titlesize':9,'axes.spines.top':False,'axes.spines.right':False,'axes.linewidth':.6,'xtick.major.width':.6,'ytick.major.width':.6,'xtick.labelsize':7,'ytick.labelsize':7,'legend.fontsize':7,'legend.frameon':False,'pdf.fonttype':42,'ps.fonttype':42,'svg.fonttype':'none','savefig.facecolor':'white'})
 
 def panel(ax,label,title):
-    ax.text(-.14,1.13,label,transform=ax.transAxes,fontweight='bold',fontsize=11,va='top')
+    ax.annotate(label,xy=(0,1),xycoords='axes fraction',xytext=(-22,10),textcoords='offset points',fontweight='bold',fontsize=8,va='bottom')
     ax.set_title(title,loc='left',pad=10,fontweight='medium')
 
 def save(fig,name):
@@ -22,10 +23,10 @@ def save(fig,name):
 def fig1():
     from scipy.stats import gaussian_kde
     b=pd.read_csv(D/'blood_metadata.csv');e=pd.read_csv(D/'external_metadata.csv');s=pd.read_csv(D/'skin_metadata.csv')
-    cohorts=[('Blood discovery · GSE41037',b.age.to_numpy(),BLUE),('Blood validation · GSE19711',e.age.to_numpy(),ORANGE)]
+    cohorts=[('Blood discovery / GSE41037',b.age.to_numpy(),BLUE),('Blood validation / GSE19711',e.age.to_numpy(),ORANGE)]
     for study,col in [(1841,'#006D77'),(2010,'#4F9085'),(10317,'#86ACA1')]:
         v=s[s.study==study].groupby('group').age.mean().to_numpy()
-        cohorts.append((f'Skin · Qiita {study}',v,col))
+        cohorts.append((f'Skin / Qiita {study}',v,col))
     fig=plt.figure(figsize=(7.2,6.4),layout='constrained')
     top,bottom=fig.subfigures(2,1,height_ratios=[1.6,1.15],hspace=.10)
     a=top.subplots();panel(a,'a','Age distribution by modality and study')
@@ -39,7 +40,7 @@ def fig1():
     a.set(yticks=range(5),yticklabels=[f'{label}  (n = {len(v)})' for label,v,c in cohorts],xlabel='Chronological age (years)',xlim=(15,95),ylim=(4.42,-.55),xticks=np.arange(20,100,10))
     a.tick_params(axis='y',length=0,pad=8);a.spines['left'].set_visible(False)
     a.xaxis.grid(True,color='#E4E6E8',lw=.5);a.set_axisbelow(True)
-    a.text(1,1.02,'Median / interquartile range · individual observations',ha='right',transform=a.transAxes,fontsize=6.5,color='#666666')
+    a.text(1,1.02,'Median / interquartile range / individual observations',ha='right',transform=a.transAxes,fontsize=6.5,color='#666666')
     lower=bottom.subplots(1,2,gridspec_kw={'wspace':.20})
     a=lower[0];panel(a,'b','Skin sampling structure')
     audit=pd.read_csv(R/'skin_study_audit.csv');ys=np.arange(len(audit))
@@ -105,7 +106,7 @@ def fig3():
     a.set(xlabel='Missing CpGs (%)',ylabel='Prediction − age (years)');a.text(.97,.06,'All 274 controls retained in primary analysis.\nDotted line: exploratory 1% missingness flag.',ha='right',transform=a.transAxes,fontsize=6.5)
     a=ax[0,1];panel(a,'b','Selected methylation markers')
     co=pd.read_csv(R/'blood_coefficients.csv').merge(annotations(),on='feature',how='left');co.to_csv(R/'blood_coefficients_annotated.csv',index=False);z=co.head(8).iloc[::-1]
-    a.barh(range(len(z)),z.coefficient_per_training_sd,color=[BLUE if v>0 else ORANGE for v in z.coefficient_per_training_sd]);a.set(yticks=range(len(z)),yticklabels=[f'{g if isinstance(g,str) and g else "unannotated"} · {c}' for g,c in zip(z.gene,z.feature)],xlabel='Ridge coefficient (years per training SD)');a.axvline(0,color=GRAY,lw=.6);a.tick_params(axis='y',labelsize=6)
+    a.barh(range(len(z)),z.coefficient_per_training_sd,color=[BLUE if v>0 else ORANGE for v in z.coefficient_per_training_sd]);a.set(yticks=range(len(z)),yticklabels=[f'{g if isinstance(g,str) and g else "unannotated"} / {c}' for g,c in zip(z.gene,z.feature)],xlabel='Ridge coefficient (years per training SD)');a.axvline(0,color=GRAY,lw=.6);a.tick_params(axis='y',labelsize=6)
     a=ax[1,0];panel(a,'c','Exploratory microbial ranks')
     imp=pd.read_csv(R/'skin_feature_importance.csv');tax=pd.read_csv(D/'raw/skin_taxonomy.tsv',sep='\t').rename(columns={'Feature.ID':'feature'});imp=imp.merge(tax,on='feature',how='left');imp.to_csv(R/'skin_features_annotated.csv',index=False);z=imp.head(8).iloc[::-1]
     def label(t):

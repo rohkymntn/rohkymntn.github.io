@@ -8,11 +8,12 @@ import pandas as pd
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+import journal_style
 from matplotlib.ticker import MultipleLocator
 R=Path(__file__).resolve().parents[1];O=R/'figures/design-review'
 s=json.loads((R/'results/integration_summary.json').read_text());rep=pd.read_csv(R/'results/integration_by_repeat.csv');study=pd.read_csv(R/'results/integration_by_study.csv')
 B='#0F4D92';T='#42949E';G='#A5A5A5';INK='#272727'
-plt.rcParams.update({'font.family':['Arial','Helvetica','DejaVu Sans'],'font.size':7,'axes.labelsize':7,'axes.titlesize':7,'axes.linewidth':.6,'axes.spines.top':False,'axes.spines.right':False,'xtick.major.width':.6,'ytick.major.width':.6,'xtick.major.size':2.5,'ytick.major.size':2.5,'legend.frameon':False,'svg.fonttype':'none','pdf.fonttype':42,'text.color':INK,'axes.labelcolor':INK})
+plt.rcParams.update({'font.family':'Helvetica','font.size':7,'axes.labelsize':7,'axes.titlesize':7,'axes.linewidth':.6,'axes.spines.top':False,'axes.spines.right':False,'xtick.major.width':.6,'ytick.major.width':.6,'xtick.major.size':2.5,'ytick.major.size':2.5,'legend.frameon':False,'svg.fonttype':'none','pdf.fonttype':42,'text.color':INK,'axes.labelcolor':INK})
 f=plt.figure(figsize=(183/25.4,105/25.4))
 # Fixed physical layout: aligned axes, no oversized headings or unused legend column.
 axes=[f.add_axes([.15,.57,.285,.32]),f.add_axes([.63,.57,.32,.32]),f.add_axes([.15,.13,.285,.28]),f.add_axes([.63,.13,.32,.28])]

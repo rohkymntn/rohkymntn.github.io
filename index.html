@@ -635,7 +635,8 @@ function openEssay(i){
 function openProject(i){
   hideBoat(); hideSubstack(); hidePostFoot();
   const p=projects[i];
-  $('rMeta').textContent='project · '+p.tag+(p.date?'  ·  '+p.date:'');
+  const projectSeparator=p.slug==='age-prediction'?' / ':' · ';
+  $('rMeta').textContent='project'+projectSeparator+p.tag+(p.date?projectSeparator+p.date:'');
   $('rTitle').textContent=p.title;
   $('rBody').innerHTML=p.body;
   // scripts inserted via innerHTML do not run: re-create them so interactive reports work

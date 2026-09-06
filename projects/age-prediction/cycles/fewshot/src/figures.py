@@ -6,10 +6,11 @@ import pandas as pd
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+import journal_style
 from matplotlib.patches import Rectangle, FancyArrowPatch
 R=Path(__file__).resolve().parents[1]; F=R/'figures'
 B='#174E78';T='#368C8A';G='#959B9F';K='#242A30';L='#E8ECEF'
-plt.rcParams.update({'font.family':'Arial','font.size':10,'axes.labelsize':10,'axes.titlesize':11,'axes.spines.top':False,'axes.spines.right':False,'axes.linewidth':.65,'xtick.major.width':.65,'ytick.major.width':.65,'legend.frameon':False,'legend.fontsize':9,'pdf.fonttype':42,'svg.fonttype':'none','text.color':K,'axes.labelcolor':K,'xtick.color':K,'ytick.color':K})
+plt.rcParams.update({'font.family':'Helvetica','font.size':10,'axes.labelsize':10,'axes.titlesize':11,'axes.spines.top':False,'axes.spines.right':False,'axes.linewidth':.65,'xtick.major.width':.65,'ytick.major.width':.65,'legend.frameon':False,'legend.fontsize':9,'pdf.fonttype':42,'svg.fonttype':'none','text.color':K,'axes.labelcolor':K,'xtick.color':K,'ytick.color':K})
 def label(a,l,t):
  a.set_title(t,loc='left',pad=14,fontweight='normal');a.annotate(l,xy=(0,1),xycoords='axes fraction',xytext=(-28,14),textcoords='offset points',fontweight='bold',fontsize=15,va='bottom')
 def save(f,n):
@@ -29,8 +30,8 @@ a=f.add_subplot(gs[0,1]);label(a,'b','External evaluation partitions')
 for i,(c,n,col) in enumerate(zip(C,N,cols)):
  d=np.load(R/f'data/{c}.npz');ns=int(d['support'].sum());nq=int((~d['support']).sum());p=ns/(ns+nq)
  a.barh(i,p,color=L,height=.40);a.barh(i,1-p,left=p,color=col,height=.40)
- a.text(p/2,i,str(ns),ha='center',va='center',fontsize=10);a.text((1+p)/2,i,str(nq),color='white',ha='center',va='center');a.text(0,i-.30,f'{n} · {c}',fontsize=10)
-a.set(xlim=(0,1),ylim=(1.55,-.75));a.axis('off');a.text(0,-.02,'Support pool',transform=a.transAxes,color=G);a.text(.48,-.02,'Fixed query set',transform=a.transAxes,color=B);a.text(0,-.17,'8 / 16 / 32 labels per draw · 20 draws',transform=a.transAxes,fontsize=9)
+ a.text(p/2,i,str(ns),ha='center',va='center',fontsize=10);a.text((1+p)/2,i,str(nq),color='white',ha='center',va='center');a.text(0,i-.30,f'{n} / {c}',fontsize=10)
+a.set(xlim=(0,1),ylim=(1.55,-.75));a.axis('off');a.text(0,-.02,'Support pool',transform=a.transAxes,color=G);a.text(.48,-.02,'Fixed query set',transform=a.transAxes,color=B);a.text(0,-.17,'8 / 16 / 32 labels per draw / 20 draws',transform=a.transAxes,fontsize=9)
 a=f.add_subplot(gs[1,:]);label(a,'c','Episodic residual adaptation');a.set(xlim=(0,10),ylim=(0,3.7));a.axis('off')
 def node(x,y,w,h,title,sub,color=L):
  a.add_patch(Rectangle((x,y),w,h,facecolor=color,edgecolor='none'));a.text(x+w/2,y+h*.65,title,ha='center',va='center',weight='bold',fontsize=10);a.text(x+w/2,y+h*.28,sub,ha='center',va='center',fontsize=9,color='#59636B')
@@ -57,7 +58,7 @@ for i,(t,col,ls) in enumerate([('Neural adapter',B,'-'),('Selected baseline',T,'
 a.text(.12,.06,'16 labels: primary endpoint\nIntervals shown below',transform=a.transAxes,fontsize=9,color=G)
 models=['source','median','affine','target_ridge','residual_linear','residual_rbf','selected_baseline','meta_no_augmentation','meta_augmented'];names=['Frozen source ridge','Support median','Affine calibration','Target-only ridge','Linear residual kernel','RBF residual kernel','CV-selected baseline','Neural, no augmentation','Neural adapter']
 for j,c in enumerate(C):
- a=f.add_subplot(gs[1,0 if j==0 else 2]);label(a,'cd'[j],N[j]+' · 16 labels')
+ a=f.add_subplot(gs[1,0 if j==0 else 2]);label(a,'cd'[j],N[j]+' / 16 labels')
  for i,m in enumerate(models):
   r=curves[(curves.cohort==c)&(curves.shots==16)&(curves.model==m)].iloc[0];col=B if 'meta_' in m else T if m=='selected_baseline' else G
   a.axhspan(i-.43,i+.43,color='#F3F6F8' if i>=6 else 'white',zorder=0);a.errorbar(r.mae,i,xerr=[[r.mae-r.low],[r.high-r.mae]],fmt='o',color=col,ms=5,lw=1.25,capsize=2)
@@ -80,7 +81,7 @@ a=axs[1,0];label(a,'c','Augmentation ablation')
 for i,c in enumerate(C):
  r=tests[(tests.cohort==c)&(tests.baseline=='meta_no_augmentation')].iloc[0];a.errorbar(r.mae_reduction,i,xerr=[[r.mae_reduction-r.low],[r.high-r.mae_reduction]],fmt='o',color=cols[i],capsize=3,ms=6)
 a.axvline(0,color=G,lw=.8,ls='--');a.set(yticks=[0,1],yticklabels=N,ylim=(1.6,-.6),xlabel='Unaugmented − augmented MAE (years)')
-a=axs[1,1];label(a,'d','Assay-matched refitting · post hoc');diag=pd.read_csv(R/'results/assay_matched_source_predictions.csv')
+a=axs[1,1];label(a,'d','Assay-matched refitting / post hoc');diag=pd.read_csv(R/'results/assay_matched_source_predictions.csv')
 for i,c in enumerate(C):
  vals=[curves[(curves.cohort==c)&(curves.shots==16)&(curves.model==m)].iloc[0].mae for m in ['source','meta_augmented']]+[diag[diag.cohort==c].absolute_error.mean()]
  a.plot(vals,[i]*3,color='#CDD3D7',lw=1,zorder=0)

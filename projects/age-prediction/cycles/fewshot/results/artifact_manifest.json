@@ -1,7 +1,7 @@
 {
   "index.html": {
-    "bytes": 21174,
-    "sha256": "6b673029a0d664955279f388cd849c019ada27c31d055b48840a1f47127a0962"
+    "bytes": 18699,
+    "sha256": "9158d85d1339aaeb89f955c5472ed9fdc9886501822814e6863ed90811ab88e1"
   },
   "requirements.txt": {
     "bytes": 106,
@@ -16,8 +16,8 @@
     "sha256": "27825bd96dced16ed2ca7530e5d22450992c40e99fd83dcb291e6a477aa74e15"
   },
   "report.html": {
-    "bytes": 18628,
-    "sha256": "589110060b727fbe056b633f8edfcb0bab7d6cedc7b5f26b9a18fcf08186f1ff"
+    "bytes": 16155,
+    "sha256": "98a96bc60ab62248d4ef46470784d0a0bef19da77df00e2225da8c62e2318883"
   },
   "meta.json": {
     "bytes": 721,
@@ -164,40 +164,40 @@
     "sha256": "0f71979ae051f9a1d7773a32e6fd82e4e58ecc89c056cf91906dbe5aacc2ab71"
   },
   "figures/figure2_external_performance.png": {
-    "bytes": 342298,
-    "sha256": "9769f54216081d045ecbdaaa91c6426c717f6d56ffdf54be6928b17e1ca28ef0"
+    "bytes": 298876,
+    "sha256": "fb19ac46fec88822a0675d0d935f14422c489f369a4d00cae98242231df1fc42"
   },
   "figures/figure1_cohorts_architecture.svg": {
-    "bytes": 33954,
-    "sha256": "ba2c55e5737e8e826a211cf8a0950ade71a5bdb35374dbe75ee75ee18dd2c05e"
+    "bytes": 32476,
+    "sha256": "c0f9f6e87db88242f2d72ffdd85f20065560f1e54d4eb3dbac90c1a5c1c35c5b"
   },
   "figures/figure2_external_performance.pdf": {
-    "bytes": 50316,
-    "sha256": "bb6ce58e42397ba49a940897161e06bbdd2c3b34d7437e2c7442560761f2c1b1"
+    "bytes": 37225,
+    "sha256": "4b587d85b375fb937a66c523723fc146d0e0d76bd0de0f01052649f8469bd736"
   },
   "figures/figure3_robustness_ablation.svg": {
-    "bytes": 37447,
-    "sha256": "ee71dcb5b5cd4de53a6a998103323e3304cc51eb4a290a8eba91a991a078d9b7"
+    "bytes": 39125,
+    "sha256": "e45ed6d5c6aa1ebb3d5c103a769a32e092a8a64bb356397379c5bf5ee6d228ec"
   },
   "figures/figure3_robustness_ablation.png": {
-    "bytes": 256892,
-    "sha256": "c35bc374188d497ba1cd5a8168ef8376d52d34a49df12ffdda48655279a5f9c4"
+    "bytes": 224601,
+    "sha256": "ea6e271ca77be246dadc09d29aa5d1ea8c5167fbc2ec380db607c66279bb15fb"
   },
   "figures/figure3_robustness_ablation.pdf": {
-    "bytes": 47306,
-    "sha256": "754d41ce488e85f281e89ca9afad557bc2f6e5065abf5e66553518e501b18839"
+    "bytes": 28632,
+    "sha256": "fbbec445a95d9bcf6c54dc8a9c68ffd8ddfa11b74a0ea291135407dd708a961f"
   },
   "figures/figure1_cohorts_architecture.pdf": {
-    "bytes": 58873,
-    "sha256": "8e1028944a4d1350b24b9e5c53bd02c9ac9de19df9b645b2ceac982697c153f5"
+    "bytes": 33881,
+    "sha256": "8c3e2ba2adb4dc4b3ab00c40bbca0f9a8bceb25a59b26c9de6b7c89c71221f96"
   },
   "figures/figure1_cohorts_architecture.png": {
-    "bytes": 347125,
-    "sha256": "06a99f497743d4d308acc8aa3fa001d76d2e3bd3ac8b09600dbbd1c5d0ae2a57"
+    "bytes": 317426,
+    "sha256": "040d76d1b0bea0dbcf17961ff91b9d67414fa6af60b33fde5fc9c0f95d0cb2f1"
   },
   "figures/figure2_external_performance.svg": {
-    "bytes": 56745,
-    "sha256": "c970478271ee0b671640d4f99f51a60bff974426ddbbe4618793232efd233d39"
+    "bytes": 54306,
+    "sha256": "553289d8d8fbd0ad171a29c5b277f0b6bb26570ce784b85d868107a41f73f69a"
   },
   "data/GSE37008.npz": {
     "bytes": 307420,
@@ -247,13 +247,17 @@
     "bytes": 908,
     "sha256": "9640bcdb8e807aa240596b2555f6fa8e658e6804c9e78508bec815c40a80f159"
   },
+  "src/journal_style.py": {
+    "bytes": 2098,
+    "sha256": "7773f2720744f89f4a2a6786d211ab2d4b81c013d1967744c2b91c2040485a53"
+  },
   "src/prepare_targets.py": {
     "bytes": 3860,
     "sha256": "f3be4190aea797096cb7197341eedec7254b56f3004ec2388c76e7d611860f6d"
   },
   "src/figures.py": {
-    "bytes": 9000,
-    "sha256": "cf6f0ade6adda91f6fdf6e474a6d8731f874f51efe9bd936ed89cd4d0db0d1d9"
+    "bytes": 9021,
+    "sha256": "78e2f6a1aa0cb6d93f7df30d8b8f0707e25817d6e6d4bd96093677638647d5a1"
   },
   "src/test_kernel.py": {
     "bytes": 1510,
@@ -272,8 +276,8 @@
     "sha256": "d61d4337e05305a67ffcb527fcc1894d88b3c75310494f6b7391f1e951bfcdd3"
   },
   "src/report.py": {
-    "bytes": 17345,
-    "sha256": "200d24a3b222fb85e229b1aed1a1e0d63cc262edce35686e8657d27b061bde97"
+    "bytes": 17671,
+    "sha256": "f7811ac873c823194dec52abb9deb696851ab0ca143f33a5d2a7908213471429"
   },
   "figures/previous/figure2_external_performance.pdf": {
     "bytes": 47433,
